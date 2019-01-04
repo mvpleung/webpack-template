@@ -1,0 +1,36 @@
+/* 
+ * @Desc: QQ卡券,全局样式.
+ * @Author: Eleven 
+ * @Date: 2018-12-18 23:49:51 
+ * @Last Modified by: Eleven
+ * @Last Modified time: 2019-01-04 11:32:41
+ */
+
+@import './common/reset';
+@import './common/mixin';
+
+html,
+body {
+  font-size: 16px; // rem方案,记得body根标签font-size重置为16px.
+  color: #333;
+  font-family: 'PingFangSC-Regular', -apple-system, BlinkMacSystemFont, 'PingFang SC',
+    'Helvetica Neue', STHeiti, 'Microsoft Yahei', Tahoma, Simsun, sans-serif;
+  -webkit-text-size-adjust: none;
+}
+
+.clearfix:after {
+  content: '';
+  display: block;
+  clear: both;
+  visibility: hidden;
+  line-height: 0;
+  height: 0;
+}
+
+input {
+  -webkit-appearance: none;
+}
+
+input[type='number'] {
+  -moz-appearance: textfield;
+}
