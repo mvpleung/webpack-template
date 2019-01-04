@@ -1,3 +1,4 @@
+import './style'
 import helloWorld from 'components/HelloWorld'
 
 class Index {

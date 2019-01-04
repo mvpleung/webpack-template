@@ -1,17 +1,16 @@
-/*
- * @Desc: QQ卡券,2019年春节会员活动.
- * @Author: Eleven
- * @Date: 2018-12-19 14:40:04
+/* 
+ * @Desc: index入口
+ * @Author: Eleven 
+ * @Date: 2019-01-05 00:55:26 
  * @Last Modified by: Eleven
- * @Last Modified time: 2019-01-04 11:45:57
+ * @Last Modified time: 2019-01-05 00:59:11
  */
 
-import 'assets/style/index'
+import 'assets/style/modules/index'
 import index from 'src/pages/Index'
 
 class ViewIndex {
   init() {
-    // 初始化
     index.init()
   }
 }

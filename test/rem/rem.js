@@ -12,9 +12,9 @@
     // docEl.style.fontSize = 100 * ( clientWidth / 750 ) + 'px';
 
     if (clientWidth >= 1080) {
-      docEl.style.fontSize = '200px';
+      docEl.style.fontSize = '100px';
     } else {
-      docEl.style.fontSize = 100 * (clientWidth / 375) + 'px';
+      docEl.style.fontSize = 100 * (clientWidth / 750) + 'px';
     }
   }
 
@@ -30,6 +30,7 @@
   // }
 
   resetRootFontSize()
+  // resetDpr()
   if (!window.addEventListener) return;
   window.addEventListener(resizeEvent, function () {
     resetRootFontSize();
