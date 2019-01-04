@@ -1,5 +1,5 @@
 # webpack-template
-> 专为懒人准备的webpack模版, 需要的配置这里都有, 可以直接用于生产.
+> 专为懒人准备的webpack模版, 需要的配置这里都有, 可以直接用于生产.
 
 ## 技术栈
 > es6 + less + zepto + art-template + webpack 4
