@@ -1,0 +1,3 @@
+<section class="music-wrap">
+  <img id="music_switch" class="music" src="~assets/images/music.jpg" alt="music">
+</section>

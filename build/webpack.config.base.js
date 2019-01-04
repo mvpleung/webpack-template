@@ -89,8 +89,7 @@ module.exports = {
     new webpack.ProvidePlugin({
       $: 'zepto',
       Zepto: 'zepto',
-      queryString: 'query-string',
-      Cookies: 'js-cookie',
+      moment: 'moment',
     }),
     new webpack.DefinePlugin({
       BUILD_ENV: JSON.stringify(process.env.NODE_ENV), // 将环境变量注入到应用中

@@ -1,9 +1,11 @@
 import './style'
-import helloWorld from 'components/HelloWorld'
+import music from 'components/Music'
+import time from 'components/Time'
 
 class Index {
   init() {
-    helloWorld.render()
+    music.init()
+    time.init()
   }
 }
 
