@@ -5,12 +5,16 @@ const base = require('./webpack.config.base')
 const utils = require('./utils')
 const paths = require('./paths')
 const packageJson = require('../package')
+const keysEntries = Object.keys(utils.entries)
+const hasIndex = keysEntries.includes('index')
+const defaultPage = hasIndex ? '' : `${keysEntries[0]}.html`
+const page = process.env.entry ? `${process.env.entry}.html` : defaultPage
 
 module.exports = merge(base, {
   devServer: {
     contentBase: paths.appDist,
-    // openPage: 'index.html', // 指定默认启动浏览器时打开的页面
-    // index: path.resolve(__dirname, '..', 'src/views/index/index.html'), // 指定首页位置
+    openPage: page, // 指定默认启动浏览器时打开的页面
+    index: page, // 指定首页位置
     host: 'localhost',  // '0.0.0.0' 可以通过外网访问
     port: 3000,
     inline: true,

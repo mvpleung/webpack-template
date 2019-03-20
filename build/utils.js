@@ -3,7 +3,7 @@
  * @Author: Eleven
  * @Date: 2018-12-18 17:32:30
  * @Last Modified by: Eleven
- * @Last Modified time: 2019-01-02 10:04:50
+ * @Last Modified time: 2019-03-20 19:04:08
  */
 
 const fs = require('fs')
@@ -92,7 +92,7 @@ const getHtmlWebpackPluginsDev = () => {
 
     // (仅)有入口的模版自动引入资源
     if (name in getEntries()) {
-      // setting.chunks = [name]
+      setting.chunks = [name]
       setting.inject = true
     }
     htmlWebpackPlugins.push(new HtmlWebpackPlugin(setting))
@@ -131,7 +131,7 @@ const getHtmlWebpackPluginsProd = () => {
 
     // (仅)有入口的模版自动引入资源
     if (name in getEntries()) {
-      // setting.chunks = [name]  // 不必指定模块，会自动全部引入
+      setting.chunks = ['manifest', 'vendor', 'common', name]
       setting.inject = true
     }
     htmlWebpackPlugins.push(new HtmlWebpackPlugin(setting))
@@ -147,6 +147,7 @@ module.exports = {
   publicPath,
   devtool,
   isWatch,
+  entries,
   getEntries,
   getHtmlWebpackPluginsDev,
   getHtmlWebpackPluginsProd,

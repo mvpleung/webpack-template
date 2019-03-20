@@ -3,11 +3,11 @@
  * @Author: Eleven 
  * @Date: 2019-01-05 00:55:26 
  * @Last Modified by: Eleven
- * @Last Modified time: 2019-01-05 00:59:11
+ * @Last Modified time: 2019-03-20 18:34:33
  */
 
-import 'assets/style/modules/index'
-import index from 'src/pages/Index'
+import 'assets/style/modules/page-b'
+import index from 'src/pages/page-b'
 
 class ViewIndex {
   init() {

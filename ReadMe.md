@@ -10,3 +10,4 @@
 4. 配置watch模式，方便在生产环境中用Charles代理本地文件；
 5. optimization配置提取runtime代码；
 6. splitChunks配置，提取vendor主要缓存包，提取common次要缓存包；
+7. 支持多页、多入口，自动扫描；

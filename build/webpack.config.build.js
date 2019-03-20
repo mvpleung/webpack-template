@@ -33,7 +33,10 @@ module.exports = merge(base, {
     new webpack.HashedModuleIdsPlugin(),
   ],
   optimization: {
-    runtimeChunk: true, // 抽取运行时代码
+    // 抽取运行时代码
+    runtimeChunk: {
+      name: 'manifest',
+    },
     splitChunks: {
       chunks: 'all',
       name: false,
