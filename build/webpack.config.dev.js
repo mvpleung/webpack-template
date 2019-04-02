@@ -1,6 +1,5 @@
 const webpack = require('webpack')
 const merge = require('webpack-merge')
-const bodyParser = require('body-parser')
 const base = require('./webpack.config.base')
 const utils = require('./utils')
 const paths = require('./paths')
@@ -40,7 +39,6 @@ module.exports = merge(base, {
     proxy: packageJson.proxy, // 代理
     before(app) {
       //  可以做本地代理
-      app.use(bodyParser.urlencoded({ extended: true }))
     },
   },
   plugins: [...utils.getHtmlWebpackPluginsDev(), new webpack.NamedModulesPlugin()],
