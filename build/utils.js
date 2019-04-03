@@ -3,7 +3,7 @@
  * @Author: Eleven
  * @Date: 2018-12-18 17:32:30
  * @Last Modified by: Eleven
- * @Last Modified time: 2019-03-20 19:04:08
+ * @Last Modified time: 2019-04-03 10:34:58
  */
 
 const fs = require('fs')
@@ -60,7 +60,7 @@ const entries = getFiles('src/views/**/*.js')
 const templates = getFiles('src/views/**/*.html')
 
 /**
- * 获取entry入口:
+ * 获取entry入口，为了处理在某些时候，entry入口会加polyfill等:
  *  1.允许文件夹层级嵌套;
  *  2.入口的名称不允许重名;
  *
