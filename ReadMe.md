@@ -11,3 +11,4 @@
 5. optimization配置提取runtime代码；
 6. splitChunks配置，提取vendor主要缓存包，提取common次要缓存包；
 7. 支持多页、多入口，自动扫描；
+8. MockJs模拟mock数据；

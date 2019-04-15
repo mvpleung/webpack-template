@@ -3,15 +3,27 @@
  * @Author: Eleven 
  * @Date: 2019-01-05 00:55:26 
  * @Last Modified by: Eleven
- * @Last Modified time: 2019-03-20 18:34:22
+ * @Last Modified time: 2019-04-15 23:45:46
  */
 
+import { isMock } from 'utils'
+import $axios from 'utils/$axios'
 import 'assets/style/modules/page-a'
 import index from 'src/pages/page-a'
+
+// 是否启用mock
+isMock && require('src/mock')
 
 class ViewIndex {
   init() {
     index.init()
+    this.testMock()
+  }
+  
+  testMock() {
+    $axios(`/test-mock`).then(res => {
+      console.log(res, 'this is the mock data')
+    })
   }
 }
 

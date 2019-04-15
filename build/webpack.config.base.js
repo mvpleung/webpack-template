@@ -93,6 +93,7 @@ module.exports = {
     }),
     new webpack.DefinePlugin({
       BUILD_ENV: JSON.stringify(process.env.NODE_ENV), // 将环境变量注入到应用中
+      IS_MOCK: JSON.stringify(process.env.IS_MOCK),
     }),
   ],
 }
