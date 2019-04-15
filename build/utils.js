@@ -3,7 +3,7 @@
  * @Author: Eleven
  * @Date: 2018-12-18 17:32:30
  * @Last Modified by: Eleven
- * @Last Modified time: 2019-04-03 10:34:58
+ * @Last Modified time: 2019-04-15 22:13:52
  */
 
 const fs = require('fs')
@@ -15,7 +15,7 @@ const NODE_ENV = process.env.NODE_ENV
 const appDirectory = fs.realpathSync(process.cwd())
 const publicPath = env[NODE_ENV].publicPath
 const devtool = env[NODE_ENV].devtool
-const isWatch = process.env.IS_WATCH === 'watch' ? true : false
+const isWatch = process.env.IS_WATCH === 'true'
 
 /**
  * 解析路径

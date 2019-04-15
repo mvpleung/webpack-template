@@ -7,8 +7,8 @@ const CleanPlugin = require('clean-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const utils = require('./utils')
 const shouldUseSourceMap = utils.devtool ? true : false
-const shouldDropDebugger = process.env.NODE_ENV === 'production' ? true : false
-const shouldDropConsole = process.env.NODE_ENV === 'production' ? true : false
+const shouldDropDebugger = process.env.NODE_ENV === 'production'
+const shouldDropConsole = process.env.NODE_ENV === 'production'
 
 module.exports = merge(base, {
   output: {

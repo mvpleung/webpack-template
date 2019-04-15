@@ -5,13 +5,13 @@
   "main": "index.js",
   "scripts": {
     "dev": "cross-env NODE_ENV=development webpack-dev-server --hot --config build/webpack.config.dev.js --mode development --colors --profile",
-    "dev:page-a": "cross-env entry=page-a NODE_ENV=development webpack-dev-server --hot --config build/webpack.config.dev.js --mode development --colors --profile",
-    "dev:page-b": "cross-env entry=page-b NODE_ENV=development webpack-dev-server --hot --config build/webpack.config.dev.js --mode development --colors --profile",
-    "te-build": "cross-env NODE_ENV=test webpack --config build/webpack.config.build.js --mode production --colors --profile",
+    "dev:page-a": "cross-env entry=page-a npm run dev",
+    "dev:page-b": "cross-env entry=page-b npm run dev",
+    "build-test": "cross-env NODE_ENV=test webpack --config build/webpack.config.build.js --mode production --colors --profile",
     "build": "cross-env NODE_ENV=production webpack --config build/webpack.config.build.js --mode production --colors --profile",
-    "watch:dev": "cross-env NODE_ENV=development IS_WATCH=watch webpack -w --config build/webpack.config.watch.js --mode production --colors --profile",
-    "watch:test": "cross-env NODE_ENV=test IS_WATCH=watch webpack -w --config build/webpack.config.watch.js --mode production --colors --profile",
-    "watch:prod": "cross-env NODE_ENV=production IS_WATCH=watch webpack -w --config build/webpack.config.watch.js --mode production --colors --profile"
+    "watch-dev": "cross-env NODE_ENV=development IS_WATCH=true webpack -w --config build/webpack.config.watch.js --mode production --colors --profile",
+    "watch-test": "cross-env NODE_ENV=test IS_WATCH=true webpack -w --config build/webpack.config.watch.js --mode production --colors --profile",
+    "watch": "cross-env NODE_ENV=production IS_WATCH=true webpack -w --config build/webpack.config.watch.js --mode production --colors --profile"
   },
   "repository": {
     "type": "git",
