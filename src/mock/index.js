@@ -3,8 +3,8 @@
  *   https://github.com/nuysoft/Mock/wiki/Getting-Started
  * @Author: Eleven 
  * @Date: 2019-04-15 23:10:38 
- * @Last Modified by: Eleven 
- * @Last Modified time: 2019-04-15 23:10:38 
+ * @Last Modified by: Eleven
+ * @Last Modified time: 2019-04-17 11:36:21
  */
 
 import Mock, { Random } from 'mockjs-async'
@@ -38,3 +38,13 @@ Mock.mock('/test-mock-async', () => {
     })
   })
 })
+
+/**
+ * 换个写法，总之只要返回的是Promise对象即可。
+ */
+// Mock.mock('/test-mock-async', async () => {
+//   const url = `http://open.ximalaya.com/activities/data/welfare/banners`
+//   const res = await $axois.get(url)
+  
+//   return res
+// })
