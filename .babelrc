@@ -8,5 +8,12 @@
       }
     ]
   ],
-  "plugins": ["@babel/plugin-transform-runtime"]
+  "plugins": [
+    "@babel/plugin-transform-runtime",
+    // 动态导入
+    "@babel/plugin-syntax-dynamic-import",
+    // 装饰器
+    ["@babel/plugin-proposal-decorators", { "legacy": true }],
+    ["@babel/plugin-proposal-class-properties", { "loose": true }]
+  ]
 }

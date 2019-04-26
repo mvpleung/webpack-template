@@ -2,9 +2,11 @@ const path = require('path')
 const webpack = require('webpack')
 const merge = require('webpack-merge')
 const base = require('./webpack.config.base')
-const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
 const CleanPlugin = require('clean-webpack-plugin')
+const TerserPlugin = require('terser-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
+const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin')
+const safePostCssParser = require('postcss-safe-parser')
 const utils = require('./utils')
 const shouldUseSourceMap = utils.devtool ? true : false
 const shouldDropDebugger = process.env.NODE_ENV === 'production'
@@ -62,24 +64,65 @@ module.exports = merge(base, {
       },
     },
     minimizer: [
-      new UglifyJsPlugin({
-        cache: true,
-        parallel: true,
-        sourceMap: shouldUseSourceMap,
-        uglifyOptions: {
+      // cheap-source-map选项不适用于此插件（TerserPlugin）
+      new TerserPlugin({
+        terserOptions: {
+          parse: {
+            // we want terser to parse ecma 8 code. However, we don't want it
+            // to apply any minfication steps that turns valid ecma 5 code
+            // into invalid ecma 5 code. This is why the 'compress' and 'output'
+            // sections only apply transformations that are ecma 5 safe
+            // https://github.com/facebook/create-react-app/pull/4234
+            ecma: 8,
+          },
           compress: {
-            warnings: false, // 在删除没有用到的代码时不输出警告
-            drop_debugger: shouldDropDebugger, // 删除debugger
-            drop_console: shouldDropConsole, // 删除console
+            ecma: 5,
+            warnings: false,
+            // Disabled because of an issue with Uglify breaking seemingly valid code:
+            // https://github.com/facebook/create-react-app/issues/2376
+            // Pending further investigation:
             // https://github.com/mishoo/UglifyJS2/issues/2011
             comparisons: false,
+            // Disabled because of an issue with Terser breaking valid code:
+            // https://github.com/facebook/create-react-app/issues/5250
+            // Pending futher investigation:
+            // https://github.com/terser-js/terser/issues/120
+            inline: 2,
+            drop_debugger: shouldDropDebugger, // 删除debugger
+            drop_console: shouldDropConsole, // 删除console
+          },
+          mangle: {
+            safari10: true,
           },
           output: {
-            beautify: false, // 不美化输出
-            comments: false, // 删除所有的注释
-            // https://github.com/facebookincubator/create-react-app/issues/2488
+            ecma: 5,
+            comments: false,  // 移除注释
+            // Turned on because emoji and regex is not minified properly using default
+            // https://github.com/facebook/create-react-app/issues/2488
             ascii_only: true,
+            beautify: false, // 不美化输出
           },
+        },
+        // Use multi-process parallel running to improve the build speed
+        // Default number of concurrent runs: os.cpus().length - 1
+        parallel: true,
+        // Enable file caching
+        cache: true,
+        sourceMap: shouldUseSourceMap,
+      }),
+      new OptimizeCSSAssetsPlugin({
+        cssProcessorOptions: {
+          parser: safePostCssParser,  // https://github.com/postcss/postcss-safe-parser
+          map: shouldUseSourceMap
+            ? {
+                // `inline: false` forces the sourcemap to be output into a
+                // separate file
+                inline: false,
+                // `annotation: true` appends the sourceMappingURL to the end of
+                // the css file, helping the browser find the sourcemap
+                annotation: true,
+              }
+            : false,
         },
       }),
     ],

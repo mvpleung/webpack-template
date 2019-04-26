@@ -2,8 +2,7 @@ const webpack = require('webpack')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const utils = require('./utils')
 const paths = require('./paths')
-const styleLoader =
-  process.env.NODE_ENV === 'development' && !utils.isWatch ? 'style-loader' : MiniCssExtractPlugin.loader
+const styleLoader = process.env.USE_STYLE_LOADER ? 'style-loader' : MiniCssExtractPlugin.loader
 
 module.exports = {
   entry: utils.getEntries(),

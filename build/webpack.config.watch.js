@@ -2,14 +2,10 @@ const path = require('path')
 const webpack = require('webpack')
 const merge = require('webpack-merge')
 const base = require('./webpack.config.base')
-const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
 const CleanPlugin = require('clean-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const paths = require('./paths')
 const utils = require('./utils')
-const shouldUseSourceMap = utils.devtool ? true : false
-const shouldDropDebugger = process.env.NODE_ENV === 'production'
-const shouldDropConsole = process.env.NODE_ENV === 'production'
 
 module.exports = merge(base, {
   output: {
@@ -17,6 +13,7 @@ module.exports = merge(base, {
     filename: 'static/js/[name].js',
     chunkFilename: 'static/js/[name].js',
   },
+  devtool: utils.devtool,
   stats: {
     chunks: false,
     children: false,
@@ -60,27 +57,5 @@ module.exports = merge(base, {
         },
       },
     },
-    minimizer: [
-      new UglifyJsPlugin({
-        cache: true,
-        parallel: true,
-        sourceMap: shouldUseSourceMap,
-        uglifyOptions: {
-          compress: {
-            warnings: false, // 在删除没有用到的代码时不输出警告
-            drop_debugger: shouldDropDebugger, // 删除debugger
-            drop_console: shouldDropConsole, // 删除console
-            // https://github.com/mishoo/UglifyJS2/issues/2011
-            comparisons: false,
-          },
-          output: {
-            beautify: false, // 不美化输出
-            comments: false, // 删除所有的注释
-            // https://github.com/facebookincubator/create-react-app/issues/2488
-            ascii_only: true,
-          },
-        },
-      }),
-    ],
   },
 })
