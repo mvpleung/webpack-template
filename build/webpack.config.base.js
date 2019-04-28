@@ -2,7 +2,8 @@ const webpack = require('webpack')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const utils = require('./utils')
 const paths = require('./paths')
-const styleLoader = process.env.USE_STYLE_LOADER ? 'style-loader' : MiniCssExtractPlugin.loader
+// 抽离css的hash命名与热更新有冲突，热更新时使用style-loader。
+const styleLoader = process.env.USE_HMR ? 'style-loader' : MiniCssExtractPlugin.loader
 
 module.exports = {
   entry: utils.getEntries(),
@@ -85,14 +86,16 @@ module.exports = {
     ],
   },
   plugins: [
+    // 大量需要使用到的模块，在此处一次性注入，避免到处import/require。
     new webpack.ProvidePlugin({
       $: 'zepto',
       Zepto: 'zepto',
       moment: 'moment',
     }),
+    // 应用中需要的process.env变量，在此注入才能使用。
     new webpack.DefinePlugin({
-      BUILD_ENV: JSON.stringify(process.env.NODE_ENV), // 将环境变量注入到应用中
-      IS_MOCK: JSON.stringify(process.env.IS_MOCK),
+      BUILD_ENV: JSON.stringify(process.env.NODE_ENV),  // 编译环境（development/test/production）
+      IS_MOCK: JSON.stringify(process.env.IS_MOCK), // 是否启用mock模拟数据
     }),
   ],
 }

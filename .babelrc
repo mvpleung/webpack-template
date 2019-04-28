@@ -4,16 +4,31 @@
       "@babel/preset-env",
       {
         "modules": false,
+        // usage，只包含需要的polyfill => 如果不设置为usage，就必须要手动在代码第一行import('@babel/polyfill')
         "useBuiltIns": "usage"
       }
     ]
   ],
   "plugins": [
-    "@babel/plugin-transform-runtime",
+    [
+      // 似乎@babel/plugin-transform-runtime已经默认包括了 @babel/polyfill（不可靠消息，待验证）
+      "@babel/plugin-transform-runtime",
+      {
+        // 按需引入的模块，作为变量，而不是全局的require导入，需依赖@babel/runtime-corejs2
+        // https://babeljs.io/docs/en/babel-plugin-transform-runtime#docsNav
+        "corejs": 2
+      }
+    ],
     // 动态导入
     "@babel/plugin-syntax-dynamic-import",
     // 装饰器
     ["@babel/plugin-proposal-decorators", { "legacy": true }],
-    ["@babel/plugin-proposal-class-properties", { "loose": true }]
+    [
+      "@babel/plugin-proposal-class-properties",
+      {
+        // babel编译时，对class的属性采用赋值表达式，而不是Object.defineProperty（更简洁）
+        "loose": true
+      }
+    ]
   ]
 }

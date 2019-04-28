@@ -4,7 +4,7 @@
   "description": "webpack-template",
   "main": "index.js",
   "scripts": {
-    "dev": "cross-env NODE_ENV=development USE_STYLE_LOADER=true webpack-dev-server --hot --config build/webpack.config.dev.js --mode development --colors --profile",
+    "dev": "cross-env NODE_ENV=development USE_HMR=true webpack-dev-server --hot --config build/webpack.config.dev.js --mode development --colors --profile",
     "dev-mock": "cross-env IS_MOCK=true npm run dev",
     "dev:page-a": "cross-env entry=page-a npm run dev",
     "dev:page-b": "cross-env entry=page-b npm run dev",
@@ -69,6 +69,7 @@
   "dependencies": {
     "@babel/polyfill": "^7.2.5",
     "@babel/runtime": "^7.2.0",
+    "@babel/runtime-corejs2": "^7.4.4",
     "axios": "^0.18.0",
     "moment": "^2.23.0"
   },

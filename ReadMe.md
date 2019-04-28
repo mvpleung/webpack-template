@@ -20,11 +20,12 @@ npm run dev-mock          # 启动本地调试，MockJs模拟接口数据
 npm run dev:page-a        # 启动本地调试，仅page-a页面
 npm run dev:page-b        # 启动本地调试，仅page-b页面
 
-npm run build-dev         # 打包代码，publicPath以/打头（可通过本地起服务访问）
+npm run build-dev         # 打包代码，publicPath以/打头（可通过本地起服务访问build后的代码）
 npm run http-server       # 启动http-server服务器，可用来访问npm run build-dev打包的代码
 npm run build-test        # 打包测试环境代码
 npm run build             # 打包生产环境代码
 
+# watch模式，移除了js、css的压缩，节省时间。
 npm run watch-dev         # 启动watch模式，本地开发环境（通常用不上）
 npm run watch-test        # 启动watch模式，测试环境
 npm run watch             # 启动watch模式，生产环境
