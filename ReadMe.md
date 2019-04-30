@@ -117,49 +117,6 @@ npm run watch             # 启动watch模式，生产环境
         3. `targets`，用来配置需要支持的的环境，不仅支持浏览器，还支持node。如果没有配置targets选项，就会读取项目中的browserslist配置项。
         4. `loose`，默认值是false，如果preset-env中包含的plugin支持loose的设置，那么可以通过这个字段来做统一的设置。
 
-    4. ES需要理解三个概念：
-        1. 最新ES 语法：比如，箭头函数
-        2. 最新ES API：，比如，Promise
-        3. 最新ES 实例方法：比如，String.protorype.includes  
-
-        `@babel/preset-env`默认支持语法转化，需要开启`useBuiltIns`配置才能转化API和实例方法。
-
-    5. `@babel/preset-env`自身将只支持到`stage-4`级别（即已经纳入ES标准的特性）。  
-        如果是React用户，可能需要一些`stage-0`基本的插件，其中的两个插件对于写JSX很有帮助。
-          - transform-do-expressions：if/else三目运算展开
-          - transform-function-bind：this绑定
-
-    6. `stage`各个级别的preset都已经被废弃，你只能通过安装各个proposal的插件去补充需要的功能。各个级别当前可以选用的proposal插件大概如下（[传送门](https://github.com/babel/babel/blob/master/packages/babel-preset-stage-0/README.md)）：
-        ```js
-        {
-          "plugins": [
-            // Stage 0
-            "@babel/plugin-proposal-function-bind",
-
-            // Stage 1
-            "@babel/plugin-proposal-export-default-from",
-            "@babel/plugin-proposal-logical-assignment-operators",
-            ["@babel/plugin-proposal-optional-chaining", { "loose": false }],
-            ["@babel/plugin-proposal-pipeline-operator", { "proposal": "minimal" }],
-            ["@babel/plugin-proposal-nullish-coalescing-operator", { "loose": false }],
-            "@babel/plugin-proposal-do-expressions",
-
-            // Stage 2
-            ["@babel/plugin-proposal-decorators", { "legacy": true }],
-            "@babel/plugin-proposal-function-sent",
-            "@babel/plugin-proposal-export-namespace-from",
-            "@babel/plugin-proposal-numeric-separator",
-            "@babel/plugin-proposal-throw-expressions",
-
-            // Stage 3
-            "@babel/plugin-syntax-dynamic-import",
-            "@babel/plugin-syntax-import-meta",
-            ["@babel/plugin-proposal-class-properties", { "loose": false }],
-            "@babel/plugin-proposal-json-strings"
-          ]
-        }
-        ```
-
 6. 使用[@babel/plugin-transform-runtime](https://babeljs.io/docs/en/babel-plugin-transform-runtime#docsNav)
     1. 安装依赖包
         ```js
@@ -404,8 +361,39 @@ npm run watch             # 启动watch模式，生产环境
               }
               ```
 
-8. babel 官方认为，把不稳定的 stage0-3 作为一种预设是不太合理的，因此babel新版本废弃了 stage 预设，转而让用户自己选择使用哪个 proposal 特性的插件，这将带来更多的明确性（用户无须理解 stage，自己选的插件，自己便能明确的知道代码中可以使用哪个特性）。所有建议特性的插件，都改变了命名规范，即类似 `@babel/plugin-proposal-function-bind` 这样的命名方式来表明这是个 proposal 阶段特性。  
-所以，处于建议阶段的特性，基本都已从`@babel/preset-env`、`@babel/polyfill`等包中被移除，需要自己去另外安装对应的preset、plugin，（一般你能找到的名称里有proposal字样的包，需要自己在`@babel/preset-env`、`@babel/plugin-transform-runtime`以为做配置）。
+8. babel 官方认为，把不稳定的 stage0-3 作为一种预设是不太合理的，`@babel/preset-env`、`@babel/polyfill`等只支持到`stage-4`级别，因此babel新版本废弃了 stage 预设，转而让用户自己选择使用哪个 proposal 特性的插件，这将带来更多的明确性（用户无须理解 stage，自己选的插件，自己便能明确的知道代码中可以使用哪个特性）。  
+所有建议特性的插件，都改变了命名规范，即类似 `@babel/plugin-proposal-function-bind` 这样的命名方式来表明这是个 proposal 阶段特性。  
+所以，处于建议阶段的特性，基本都已从`@babel/preset-env`、`@babel/polyfill`等包中被移除，需要自己去另外安装对应的preset、plugin，（一般你能找到的名称里有proposal字样的包，需要自己在`@babel/preset-env`、`@babel/plugin-transform-runtime`以外做配置）。  
+各个级别当前可以选用的proposal插件大概如下（[传送门](https://github.com/babel/babel/blob/master/packages/babel-preset-stage-0/README.md)）：
+      ```js
+      {
+        "plugins": [
+          // Stage 0
+          "@babel/plugin-proposal-function-bind",
+
+          // Stage 1
+          "@babel/plugin-proposal-export-default-from",
+          "@babel/plugin-proposal-logical-assignment-operators",
+          ["@babel/plugin-proposal-optional-chaining", { "loose": false }],
+          ["@babel/plugin-proposal-pipeline-operator", { "proposal": "minimal" }],
+          ["@babel/plugin-proposal-nullish-coalescing-operator", { "loose": false }],
+          "@babel/plugin-proposal-do-expressions",
+
+          // Stage 2
+          ["@babel/plugin-proposal-decorators", { "legacy": true }],
+          "@babel/plugin-proposal-function-sent",
+          "@babel/plugin-proposal-export-namespace-from",
+          "@babel/plugin-proposal-numeric-separator",
+          "@babel/plugin-proposal-throw-expressions",
+
+          // Stage 3
+          "@babel/plugin-syntax-dynamic-import",
+          "@babel/plugin-syntax-import-meta",
+          ["@babel/plugin-proposal-class-properties", { "loose": false }],
+          "@babel/plugin-proposal-json-strings"
+        ]
+      }
+      ```
 
 9. 配置装饰器语法支持
     1. 安装依赖
