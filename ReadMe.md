@@ -111,9 +111,9 @@ npm run watch             # 启动watch模式，生产环境
             - `false`：需要在js代码第一行主动import '@babel/polyfill'，会将@babel/polyfill整个包全部导入。  
             （不推荐，能覆盖到所有API的转译，但体积最大）
             - `entry`：需要在js代码第一行主动import '@babel/polyfill'，会将browserslist环境不支持的所有垫片都导入。  
-            （**推荐**，能够覆盖到‘hello‘.includes(‘h‘)这种句法，足够安全且代码体积不是特别大）
+            （能够覆盖到‘hello‘.includes(‘h‘)这种句法，足够安全且代码体积不是特别大）
             - `usage`：项目里不用主动import，会自动将代理已使用到的、且browserslist环境不支持的垫片导入。  
-            （推荐，但是检测不到‘hello‘.includes(‘h‘)这种句法，对这类原型链上的句法问题不会做转译，**书写代码需注意**）
+            （但是检测不到‘hello‘.includes(‘h‘)这种句法，对这类原型链上的句法问题不会做转译，**书写代码需注意**）
         3. `targets`，用来配置需要支持的的环境，不仅支持浏览器，还支持node。如果没有配置targets选项，就会读取项目中的browserslist配置项。
         4. `loose`，默认值是false，如果preset-env中包含的plugin支持loose的设置，那么可以通过这个字段来做统一的设置。
 
@@ -123,18 +123,16 @@ npm run watch             # 启动watch模式，生产环境
         npm i @babel/plugin-transform-runtime -D
         ```
 
-        1. 如果配置参数corejs未设置或为false，需安装依赖`@babel/runtime`（这部分代码会被抽离并打包到应用js里，所以可以安装在dependencies里），自动调用  
-        **备注：corejs:false，仅对es6语法转译，而不对新API转译！！**
+        1. 如果配置参数corejs未设置或为false，需安装依赖`@babel/runtime`（这部分代码会被抽离并打包到应用js里，所以可以安装在dependencies里），仅对es6语法转译，而不对新API转译。  
             ```js
             npm i @babel/runtime
             ```
 
-        2. 如果配置参数corejs设置为2，需安装依赖`@babel/runtime-corejs2`（同上，推荐安装在dependencies里。）  
-        **备注：corejs:2，对语法、新API都转译。**
+        2. 如果配置参数corejs设置为2，需安装依赖`@babel/runtime-corejs2`（同上，推荐安装在dependencies里。），对语法、新API都转译。  
             ```js
             npm i @babel/runtime-corejs2
             ```
-        3. 推荐使用`corejs:2`，但是，检测不到‘hello‘.includes(‘h‘)这种句法，所以存在一定隐患，书写代码时需注意。
+        3. 推荐使用`corejs:2`，但是，检测不到`‘hello‘.includes(‘h‘)`这种句法，所以存在一定隐患，书写代码时需注意。
 
         4. [@babel/runtime](https://babeljs.io/docs/en/babel-runtime)和[@babel/runtime-corejs2](https://babeljs.io/docs/en/babel-runtime-corejs2)这两个库唯一的区别是：corejs2这个库增加了对core-js（用来对ES6各个语法polyfill的库）这个库的依赖，所以在corejs为false的情况下，只能做语法的转换，并不能polyfill任何新API。
 
@@ -146,7 +144,7 @@ npm run watch             # 启动watch模式，生产环境
             [
               "@babel/plugin-transform-runtime",
               {
-                "corejs": 2 // 推荐2
+                "corejs": 2 // 推荐
               }
             ]
           ]
@@ -158,7 +156,7 @@ npm run watch             # 启动watch模式，生产环境
         2. `helpers`，默认值是true，用来开启是否使用helper函数来重写语法转换的函数。
         3. `useESModules`，默认值是false，是否对文件使用ES的模块语法，使用ES的模块语法可以减少文件的大小。
 
-7. `@babel/preset-env`还是`@babel/plugin-transform-runtime` ([传送门：babel polyfill 和 runtime 浅析](https://blog.csdn.net/weixin_34163741/article/details/88015827))？
+7. `@babel/preset-env`还是`@babel/plugin-transform-runtime`？ ([传送门：babel polyfill 和 runtime 浅析](https://blog.csdn.net/weixin_34163741/article/details/88015827))
     1. `@babel/preset-env + @babel/polyfill`可以转译语法、新API，但存在污染全局问题；
     
     2. `@babel/plugin-transform-runtime + @babel/runtime-corejs2`，可按需导入，转译语法、新API，且避免全局污染（babel7中@babel/polyfill是@babel/runtime-corejs2的别名），但是检测不到‘hello‘.includes(‘h‘)这种句法；
@@ -317,11 +315,97 @@ npm run watch             # 启动watch模式，生产环境
               在js代码第一行`import '@babel/polyfill'`，或在webpack的入口entry中写入模块`@babel/polyfill`，会将@babel/polyfill整个包全部导入；  
               最安全，但打包体积会大一些，一般不选用。
 
+              需要安装的全部依赖：
+              ```js
+              npm i babel-loader@8 @babel/core @babel/preset-env -D
+              npm i @babel/polyfill
+              ```
+
+              .babelrc配置文件
+              ```js
+              {
+                "presets": [
+                  [
+                    "@babel/preset-env",
+                    {
+                      "modules": false, // 推荐
+                      "useBuiltIns": "entry", // 推荐
+                    }
+                  ]
+                ],
+                "plugins": []
+              }
+              ```
+
           2. 如果是开发第三方类库 => `@babel/plugin-transform-runtime + @babel/runtime-corejs2`；  
           （或者，不做转码处理，提醒使用者自己做好兼容处理也可以。）
 
+              需要安装的全部依赖：
+              ```js
+              npm i babel-loader@8 @babel/core @babel/plugin-transform-runtime -D
+              npm i @babel/runtime-corejs2
+              ```
+
+              .babelrc配置文件
+              ```js
+              {
+                "presets": [],
+                "plugins": [
+                  [
+                    "@babel/plugin-transform-runtime",
+                    {
+                      "corejs": 2 // 推荐
+                    }
+                  ]
+                ]
+              }
+              ```
+
 8. babel 官方认为，把不稳定的 stage0-3 作为一种预设是不太合理的，因此babel新版本废弃了 stage 预设，转而让用户自己选择使用哪个 proposal 特性的插件，这将带来更多的明确性（用户无须理解 stage，自己选的插件，自己便能明确的知道代码中可以使用哪个特性）。所有建议特性的插件，都改变了命名规范，即类似 `@babel/plugin-proposal-function-bind` 这样的命名方式来表明这是个 proposal 阶段特性。  
 所以，处于建议阶段的特性，基本都已从`@babel/preset-env`、`@babel/polyfill`等包中被移除，需要自己去另外安装对应的preset、plugin，（一般你能找到的名称里有proposal字样的包，需要自己在`@babel/preset-env`、`@babel/plugin-transform-runtime`以为做配置）。
+
+9. 配置装饰器语法支持
+    1. 安装依赖
+        ```js
+        npm i @babel/plugin-proposal-decorators @babel/plugin-proposal-class-properties -D
+        ```
+
+    2. .babelrc增加配置
+        ```js
+        {
+          "presets": [],
+          "plugins": [
+            [
+              "@babel/plugin-proposal-decorators",  // @babel/plugin-proposal-decorators需要在@babel/plugin-proposal-class-properties之前
+              {
+                "legacy": true // 推荐
+              }
+            ],
+            [
+              "@babel/plugin-proposal-class-properties",
+              {
+                "loose": true // babel编译时，对class的属性采用赋值表达式，而不是Object.defineProperty（更简洁）
+              }
+            ]
+          ]
+        }
+        ```
+
+10. 配置import动态导入支持
+    1. 安装依赖
+        ```js
+        npm i @babel/plugin-syntax-dynamic-import -D
+        ```
+
+    2. .babelrc文件增加配置
+        ```js
+        {
+          "presets": [],
+          "plugins": [
+            "@babel/plugin-syntax-dynamic-import",
+          ]
+        }
+        ```
 
 9. 参考文档
     1. [一文读懂 babel7 的配置文件加载逻辑](https://segmentfault.com/a/1190000018358854)

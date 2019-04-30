@@ -3,9 +3,10 @@
  * @Author: Eleven 
  * @Date: 2019-01-05 00:55:26 
  * @Last Modified by: Eleven
- * @Last Modified time: 2019-04-15 23:45:46
+ * @Last Modified time: 2019-04-30 19:56:42
  */
 
+import '@babel/polyfill'
 import { isMock } from 'utils'
 import $axios from 'utils/$axios'
 import 'assets/style/modules/page-a'
