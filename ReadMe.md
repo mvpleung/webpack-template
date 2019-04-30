@@ -37,6 +37,7 @@ npm run watch             # 启动watch模式，生产环境
     ```js
     npm i babel-loader@8 @babel/core -D
     ```
+    > 从 babel7 开始，所有的官方插件和主要模块，都放在了 @babel 的命名空间下。从而可以避免在 npm 仓库中 babel 相关名称被抢注的问题。
 
 2. 在package.json同级添加.babelrc配置文件，先空着。
     ```js
@@ -157,7 +158,7 @@ npm run watch             # 启动watch模式，生产环境
         2. `helpers`，默认值是true，用来开启是否使用helper函数来重写语法转换的函数。
         3. `useESModules`，默认值是false，是否对文件使用ES的模块语法，使用ES的模块语法可以减少文件的大小。
 
-7. `@babel/preset-env`还是`@babel/plugin-transform-runtime`？
+7. `@babel/preset-env`还是`@babel/plugin-transform-runtime` ([传送门：babel polyfill 和 runtime 浅析](https://blog.csdn.net/weixin_34163741/article/details/88015827))？
     1. `@babel/preset-env + @babel/polyfill`可以转译语法、新API，但存在污染全局问题；
     
     2. `@babel/plugin-transform-runtime + @babel/runtime-corejs2`，可按需导入，转译语法、新API，且避免全局污染（babel7中@babel/polyfill是@babel/runtime-corejs2的别名），但是检测不到‘hello‘.includes(‘h‘)这种句法；
@@ -167,7 +168,8 @@ npm run watch             # 启动watch模式，生产环境
         1. library使用helper的方式，局部实现某个api，不会污染全局变量；
         2. modules以污染全局变量的方法来实现api；  
         3. library和modules包含的文件基本相同，最大的不同是_export.js这个文件：  
-              1. core-js/modules/_exports.js文件如下：
+
+              - core-js/modules/_exports.js文件如下：
                   ```js
                   var global = require('./_global');
                   var core = require('./_core');
@@ -214,7 +216,7 @@ npm run watch             # 启动watch模式，生产环境
                   module.exports = $export;
                   ```
 
-              2. core-js/library/_exports.js文件如下：
+              - core-js/library/_exports.js文件如下：
                   ```js
                   var global = require('./_global');
                   var core = require('./_core');
@@ -301,7 +303,7 @@ npm run watch             # 启动watch模式，生产环境
                 5. 从上面这个例子可以看出，对于Promise这个api，@babel/polyfill引用了core-js/modules中的es6.promise.js文件，因为是对全局变量进行处理，所以赋值语句不用做处理；@babel/runtime-corejs2会生成一个局部变量_promise，然后把Promise都替换成_promise，这样就不会污染全局变量了。
 
       4. **综合上面的分析，得出结论：**
-          - 如果是自己的应用 => `@babel/preset-env + @babel/polyfill`  
+          1. 如果是自己的应用 => `@babel/preset-env + @babel/polyfill`  
               1. `useBuiltIns`设置为`entry`比较不错。  
               在js代码第一行`import '@babel/polyfill'`，或在webpack的入口entry中写入模块`@babel/polyfill`，会将browserslist环境不支持的所有垫片都导入；  
               能够覆盖到`‘hello‘.includes(‘h‘)`这种句法，足够安全且代码体积不是特别大，推荐使用！
@@ -315,9 +317,12 @@ npm run watch             # 启动watch模式，生产环境
               在js代码第一行`import '@babel/polyfill'`，或在webpack的入口entry中写入模块`@babel/polyfill`，会将@babel/polyfill整个包全部导入；  
               最安全，但打包体积会大一些，一般不选用。
 
-          - 如果是开发第三方类库 => `@babel/plugin-transform-runtime + @babel/runtime-corejs2`；  
+          2. 如果是开发第三方类库 => `@babel/plugin-transform-runtime + @babel/runtime-corejs2`；  
           （或者，不做转码处理，提醒使用者自己做好兼容处理也可以。）
 
-8. 参考文档
+8. babel 官方认为，把不稳定的 stage0-3 作为一种预设是不太合理的，因此babel新版本废弃了 stage 预设，转而让用户自己选择使用哪个 proposal 特性的插件，这将带来更多的明确性（用户无须理解 stage，自己选的插件，自己便能明确的知道代码中可以使用哪个特性）。所有建议特性的插件，都改变了命名规范，即类似 `@babel/plugin-proposal-function-bind` 这样的命名方式来表明这是个 proposal 阶段特性。  
+所以，处于建议阶段的特性，基本都已从`@babel/preset-env`、`@babel/polyfill`等包中被移除，需要自己去另外安装对应的preset、plugin，（一般你能找到的名称里有proposal字样的包，需要自己在`@babel/preset-env`、`@babel/plugin-transform-runtime`以为做配置）。
+
+9. 参考文档
     1. [一文读懂 babel7 的配置文件加载逻辑](https://segmentfault.com/a/1190000018358854)
-    2. [babel polyfill runtime 浅析](https://blog.csdn.net/weixin_34163741/article/details/88015827)
+    2. [babel polyfill 和 runtime 浅析](https://blog.csdn.net/weixin_34163741/article/details/88015827)
