@@ -4,7 +4,7 @@
       "@babel/preset-env",
       {
         "modules": false,
-        "useBuiltIns": "entry" // 代码中使用到的，且browserslist声明的环境不支持的特性，均会被转译
+        "useBuiltIns": "entry" //browserslist环境不支持的所有垫片都导入；
       }
     ]
   ],
