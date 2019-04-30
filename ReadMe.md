@@ -298,7 +298,7 @@ npm run watch             # 启动watch模式，生产环境
                   var a = new _promise.default();
                   ```
 
-                5. 从上面这个例子可以看出，对于Promise这个api，@babel/polyfill引用了core-js/modules中的es6.promise.js文件，因为是对全局变量进行处理，所以赋值语句不用做处理；@babel/runtime-corejs2会生成一个局部变量_promise，然后把Promise都替换成_promise，这样就不会污染全局变量了。
+              5. 从上面这个例子可以看出，对于Promise这个api，@babel/polyfill引用了core-js/modules中的es6.promise.js文件，因为是对全局变量进行处理，所以赋值语句不用做处理；@babel/runtime-corejs2会生成一个局部变量_promise，然后把Promise都替换成_promise，这样就不会污染全局变量了。
 
       4. **综合上面的分析，得出结论：**
           1. 如果是自己的应用 => `@babel/preset-env + @babel/polyfill`  
