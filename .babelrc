@@ -12,7 +12,7 @@
  * @Author: Eleven
  * @Date: 2019-04-30 11:08:29
  * @Last Modified by: Eleven
- * @Last Modified time: 2019-04-30 14:44:41
+ * @Last Modified time: 2019-04-30 17:21:42
  */
 
 {
@@ -32,7 +32,6 @@
         //      （不推荐，能覆盖到所有API的转译，但体积最大）
         "useBuiltIns": "usage",
         // 默认值是false，是否对文件使用ES的模块语法，使用ES的模块语法可以减少文件的大小
-        "useESModules": true, 
       }
     ]
   ],
