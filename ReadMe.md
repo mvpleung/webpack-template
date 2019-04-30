@@ -117,6 +117,49 @@ npm run watch             # 启动watch模式，生产环境
         3. `targets`，用来配置需要支持的的环境，不仅支持浏览器，还支持node。如果没有配置targets选项，就会读取项目中的browserslist配置项。
         4. `loose`，默认值是false，如果preset-env中包含的plugin支持loose的设置，那么可以通过这个字段来做统一的设置。
 
+    4. ES需要理解三个概念：
+        1. 最新ES 语法：比如，箭头函数
+        2. 最新ES API：，比如，Promise
+        3. 最新ES 实例方法：比如，String.protorype.includes  
+
+        `@babel/preset-env`默认支持语法转化，需要开启`useBuiltIns`配置才能转化API和实例方法。
+
+    5. `@babel/preset-env`自身将只支持到`stage-4`级别（即已经纳入ES标准的特性）。  
+        如果是React用户，可能需要一些`stage-0`基本的插件，其中的两个插件对于写JSX很有帮助。
+          - transform-do-expressions：if/else三目运算展开
+          - transform-function-bind：this绑定
+
+    6. `stage`各个级别的preset都已经被废弃，你只能通过安装各个proposal的插件去补充需要的功能。各个级别当前可以选用的proposal插件大概如下（[传送门](https://github.com/babel/babel/blob/master/packages/babel-preset-stage-0/README.md)）：
+        ```js
+        {
+          "plugins": [
+            // Stage 0
+            "@babel/plugin-proposal-function-bind",
+
+            // Stage 1
+            "@babel/plugin-proposal-export-default-from",
+            "@babel/plugin-proposal-logical-assignment-operators",
+            ["@babel/plugin-proposal-optional-chaining", { "loose": false }],
+            ["@babel/plugin-proposal-pipeline-operator", { "proposal": "minimal" }],
+            ["@babel/plugin-proposal-nullish-coalescing-operator", { "loose": false }],
+            "@babel/plugin-proposal-do-expressions",
+
+            // Stage 2
+            ["@babel/plugin-proposal-decorators", { "legacy": true }],
+            "@babel/plugin-proposal-function-sent",
+            "@babel/plugin-proposal-export-namespace-from",
+            "@babel/plugin-proposal-numeric-separator",
+            "@babel/plugin-proposal-throw-expressions",
+
+            // Stage 3
+            "@babel/plugin-syntax-dynamic-import",
+            "@babel/plugin-syntax-import-meta",
+            ["@babel/plugin-proposal-class-properties", { "loose": false }],
+            "@babel/plugin-proposal-json-strings"
+          ]
+        }
+        ```
+
 6. 使用[@babel/plugin-transform-runtime](https://babeljs.io/docs/en/babel-plugin-transform-runtime#docsNav)
     1. 安装依赖包
         ```js
