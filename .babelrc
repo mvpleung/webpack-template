@@ -1,21 +1,47 @@
+/*
+ * @Desc: babel转码配置，若干需要注意的点：
+ *  1.polyfill还是runtime？很详细的解读。 => https://blog.csdn.net/weixin_34163741/article/details/88015827
+ *  2.@babel/preset-env + @babel/polyfill可以转译语法、API，但存在污染全局问题；
+ *  3.babel7中说明删除提案polyfill @babel/polyfill，结合@babel/plugin-transform-runtime + @babel/runtime-corejs2插件使用，
+ *     可按需导入垫片，且避免全局污染（babel7中@babel/polyfill是@babel/runtime-corejs2的别名）；
+ *  4.推荐用法，二选一即可：
+ *     如果是自己的应用 => @babel/preset-env + @babel/polyfill；
+ *     如果是开发第三方类库 => @babel/plugin-transform-runtime + @babel/runtime-corejs2；
+ *  5.过去babel会默认对模块使用strict模式，7以后如果需要开启strict模式，手动配置transform-strict-mode插件；
+
+ * @Author: Eleven
+ * @Date: 2019-04-30 11:08:29
+ * @Last Modified by: Eleven
+ * @Last Modified time: 2019-04-30 14:44:41
+ */
+
 {
   "presets": [
     [
       "@babel/preset-env",
       {
+        // 如果要使用webpack中的一些新特性，比如tree shaking 和 sideEffects，modules需要设置为false
+        // 对ES6的模块文件不做转化，因为这些特性只对ES6的模块有效，modules默认值是auto
         "modules": false,
-        // usage，只包含需要的polyfill => 如果不设置为usage，就必须要手动在代码第一行import('@babel/polyfill')
-        "useBuiltIns": "usage"
+        // 都需依赖@babel/polyfill，useBuiltIns默认值是false（最推荐使用entry）
+        // usage：项目里不用主动import，会自动将代理已使用到的、且browserslist环境不支持的垫片导入
+        //      （推荐，但是检测不到‘hello‘.includes(‘h‘)这种句法，对这类原型链上的句法问题不会做转译，书写代码需注意）
+        // entry：需要在js代码第一行主动import '@babel/polyfill'，会将browserslist环境不支持的所有垫片都导入
+        //      （推荐，能够覆盖到‘hello‘.includes(‘h‘)这种句法，足够安全且代码体积不是特别大）
+        // false：需要在js代码第一行主动import '@babel/polyfill'，会将@babel/polyfill整个包全部导入
+        //      （不推荐，能覆盖到所有API的转译，但体积最大）
+        "useBuiltIns": "usage",
+        // 默认值是false，是否对文件使用ES的模块语法，使用ES的模块语法可以减少文件的大小
+        "useESModules": true, 
       }
     ]
   ],
   "plugins": [
     [
-      // 似乎@babel/plugin-transform-runtime已经默认包括了 @babel/polyfill（不可靠消息，待验证）
       "@babel/plugin-transform-runtime",
       {
-        // 按需引入的模块，作为变量，而不是全局的require导入，需依赖@babel/runtime-corejs2
-        // https://babeljs.io/docs/en/babel-plugin-transform-runtime#docsNav
+        // false：需依赖@babel/runtime，仅对es6语法转译，而不对API转译，默认值即为false；
+        // 2：需依赖@babel/runtime-corejs2，对语法、API都转译；
         "corejs": 2
       }
     ],
