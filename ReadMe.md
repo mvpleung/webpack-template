@@ -913,8 +913,6 @@ _script-loader 把我们指定的模块 JS 文件转成纯字符串, exports-loa
     localhost:9898/views/
     ```
 
-<br><br>
-
 ## http-server，比自己配置一个 express 服务更简洁的方式，去访问打包后的资源。
 
 1. 安装依赖
@@ -948,7 +946,7 @@ _script-loader 把我们指定的模块 JS 文件转成纯字符串, exports-loa
 
 <br><br>
 
-## 参考文档:
+## 参考文档
 
 - [webpack 中文文档](https://www.webpackjs.com/concepts/) —— 直接阅读它非常有用，百度出来的教程 99%都是管中窥豹，只见一斑，会形成误导（不要问我是怎么知道的 -\_-）。
 - [NPM 中文文档](https://www.npmjs.com.cn/getting-started/what-is-npm/)
