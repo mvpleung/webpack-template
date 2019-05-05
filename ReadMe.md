@@ -440,11 +440,6 @@ npm run watch             # 启动watch模式，生产环境
         }
         ```
 
-9. 参考文档
-    1. [一文读懂 babel7 的配置文件加载逻辑](https://segmentfault.com/a/1190000018358854)
-    2. [babel polyfill 和 runtime 浅析](https://blog.csdn.net/weixin_34163741/article/details/88015827)
-
-
 ## CSS样式的处理（less预编译和postcss工具）
 
 1. 需要安装的依赖包
@@ -522,7 +517,7 @@ npm run watch             # 启动watch模式，生产环境
    Less是预处理，而PostCSS是后处理，基本支持less等预处理器的功能，自动添加浏览器厂商前缀向前兼容，允许书写下一代css语法 ，可以在编译时去除冗余的css代码，PostCSS 声称比预处理器快 3-30 倍.   **因为PostCSS，可能我们要放弃less/sass/stylus了**。
 
 
-## 图片、字体、多媒体等文件的处理
+## 图片、字体、多媒体等资源的处理
    
    1. css中引入的图片( 或其它资源 ) ==> url-loader   
    配置了url-loader以后，webpack编译时可以自动将小图转成base64编码，将大图改写url并将文件生成到指定目录下 ( *file-loader可以完成文件生成，但是不能小图转base64，所以统一用url-loader，但url-loader在处理大图的时候是自动去调用file-loader，所以你仍然需要install file-loader* )。
@@ -923,9 +918,11 @@ npm run watch             # 启动watch模式，生产环境
 
 ## 参考文档:
 - [webpack中文文档](https://www.webpackjs.com/concepts/) —— 直接阅读它非常有用，百度出来的教程99%都是管中窥豹，只见一斑，会形成误导（不要问我是怎么知道的 -_-）。
+- [NPM中文文档](https://www.npmjs.com.cn/getting-started/what-is-npm/)
 - [基于webpack的前端工程化开发之多页站点篇（一）](https://segmentfault.com/a/1190000004511992)
 - [基于webpack的前端工程化开发之多页站点篇（二）](https://segmentfault.com/a/1190000004516832)
 - [webpack在前端项目中使用心得一二](https://segmentfault.com/a/1190000009243487)
-- [NPM中文文档](https://www.npmjs.com.cn/getting-started/what-is-npm/)
 - [手摸手，带你用合理的姿势使用webpack4（上）](https://juejin.im/post/5b56909a518825195f499806)
 - [手摸手，带你用合理的姿势使用webpack4（下）](https://juejin.im/post/5b5d6d6f6fb9a04fea58aabc)
+- [一文读懂 babel7 的配置文件加载逻辑](https://segmentfault.com/a/1190000018358854)
+- [babel polyfill 和 runtime 浅析](https://blog.csdn.net/weixin_34163741/article/details/88015827)
