@@ -849,12 +849,6 @@ _script-loader 把我们指定的模块 JS 文件转成纯字符串, exports-loa
     > _以上, 演示的是对于一个第三方库( 不能 npm 安装,也不符合 webpack 规范 ), 如何去处理, 达到和正常 npm 安装一样的开发体验, 仅就 zepto 来说, npm 库有符合 webpack 规范的不同版本 ([zepto-webpack](https://www.npmjs.com/package/zepto-webpack), 或 [zepto-modules](https://www.npmjs.com/package/zepto-modules)), 有需要可以试试.  
     > 平时意图使用某个包, 先去[NPM 官网](https://www.npmjs.com/)搜一搜比较好._
 
-## 使用 happypack 来优化
-
-- [webpack 优化之 HappyPack 实战](https://www.jianshu.com/p/b9bf995f3712)
-- [happypack 原理解析](https://yq.aliyun.com/articles/67269)
-
-## 使用[cache-loader](https://www.webpackjs.com/loaders/cache-loader/)缓存编译结果
 
 ## 配置开发服务器，[webpack-dev-server](https://www.webpackjs.com/configuration/dev-server/)
 
@@ -941,6 +935,17 @@ _script-loader 把我们指定的模块 JS 文件转成纯字符串, exports-loa
    localhost:8080 或 http://127.0.0.1:8080
    ```
 
+## 常见性能优化
+
+1. 使用happypack来优化，多进程运行编译，参考文档：
+
+    - [webpack 优化之 HappyPack 实战](https://www.jianshu.com/p/b9bf995f3712)
+    - [happypack 原理解析](https://yq.aliyun.com/articles/67269)
+
+2. 使用[cache-loader](https://www.webpackjs.com/loaders/cache-loader/)缓存编译结果
+
+3. [DllPlugin](https://segmentfault.com/a/1190000015489489)拆分基础包
+
 <br><br>
 
 ## 参考文档:
@@ -950,6 +955,7 @@ _script-loader 把我们指定的模块 JS 文件转成纯字符串, exports-loa
 - [基于 webpack 的前端工程化开发之多页站点篇（一）](https://segmentfault.com/a/1190000004511992)
 - [基于 webpack 的前端工程化开发之多页站点篇（二）](https://segmentfault.com/a/1190000004516832)
 - [webpack 在前端项目中使用心得一二](https://segmentfault.com/a/1190000009243487)
+- [webpack4配置详解之逐行分析](https://segmentfault.com/a/1190000016969897)
 - [手摸手，带你用合理的姿势使用 webpack4（上）](https://juejin.im/post/5b56909a518825195f499806)
 - [手摸手，带你用合理的姿势使用 webpack4（下）](https://juejin.im/post/5b5d6d6f6fb9a04fea58aabc)
 - [一文读懂 babel7 的配置文件加载逻辑](https://segmentfault.com/a/1190000018358854)
