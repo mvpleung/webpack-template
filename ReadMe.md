@@ -490,7 +490,7 @@ npm run watch             # 启动watch模式，生产环境
      const styleLoader = process.env.USE_HMR ? 'style-loader' : MiniCssExtractPlugin.loader
 
      // 通过其他合适的方式判断是否为本地调试环境也一样，自由选择。
-     const styleLoader = process.env.NODE_ENV === 'development' ? 'style-loader' : MiniCssExtractPlugin.loader
+     const styleLoader = process.env.BUILD_ENV === 'development' ? 'style-loader' : MiniCssExtractPlugin.loader
 
      {
        test: /\.(less|css)$/,
@@ -874,7 +874,7 @@ _script-loader 把我们指定的模块 JS 文件转成纯字符串, exports-loa
 - 运行命令 ( package.json 配置命令 => npm run dev )
 
   ```bash
-  "dev": "cross-env NODE_ENV=development webpack-dev-server --mode development --colors --profile"
+  "dev": "cross-env BUILD_ENV=development webpack-dev-server --mode development --colors --profile"
   ```
 
   _根据目录结构的不同, contentBase、openPage 参数要配置合适的值, 否则运行时应该不会立刻访问到你的首页; 同时要注意你的 publicPath, 静态资源打包后生成的路径是一个需要思考的点, 这与你的目录结构有关._

@@ -6,6 +6,7 @@ const CleanPlugin = require('clean-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const paths = require('./paths')
 const utils = require('./utils')
+const devtool = process.env.devtool || false
 
 module.exports = merge(base, {
   output: {
@@ -13,7 +14,7 @@ module.exports = merge(base, {
     filename: 'static/js/[name].js',
     chunkFilename: 'static/js/[name].js',
   },
-  devtool: utils.devtool,
+  devtool: devtool,
   stats: {
     chunks: false,
     children: false,

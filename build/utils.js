@@ -3,19 +3,14 @@
  * @Author: Eleven
  * @Date: 2018-12-18 17:32:30
  * @Last Modified by: Eleven
- * @Last Modified time: 2019-04-27 03:28:27
+ * @Last Modified time: 2019-05-13 13:50:59
  */
 
 const fs = require('fs')
 const path = require('path')
 const glob = require('glob')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
-const env = require('../config/env')
-const NODE_ENV = process.env.NODE_ENV
 const appDirectory = fs.realpathSync(process.cwd())
-const publicPath = env[NODE_ENV].publicPath
-const devtool = env[NODE_ENV].devtool
-const isWatch = process.env.IS_WATCH === 'true'
 
 /**
  * 解析路径
@@ -144,9 +139,6 @@ const getHtmlWebpackPluginsProd = () => {
 
 module.exports = {
   resolveApp,
-  publicPath,
-  devtool,
-  isWatch,
   entries,
   getEntries,
   getHtmlWebpackPluginsDev,

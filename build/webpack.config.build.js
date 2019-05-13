@@ -9,9 +9,9 @@ const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin')
 const safePostCssParser = require('postcss-safe-parser')
 const utils = require('./utils')
 
-const shouldUseSourceMap = utils.devtool ? true : false
-const shouldDropDebugger = process.env.NODE_ENV === 'production'
-const shouldDropConsole = process.env.NODE_ENV === 'production'
+const shouldUseSourceMap = !!process.env.devtool
+const shouldDropDebugger = process.env.BUILD_ENV === 'production'
+const shouldDropConsole = process.env.BUILD_ENV === 'production'
 
 module.exports = merge(base, {
   output: {
