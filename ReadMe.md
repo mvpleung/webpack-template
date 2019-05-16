@@ -941,6 +941,8 @@ _script-loader 把我们指定的模块 JS 文件转成纯字符串, exports-loa
     npm i eslint eslint-loader eslint-friendly-formatter -D
     ```
 
+    > eslint-friendly-formatter，指定终端中输出eslint提示信息的格式。
+
 2. 增加配置
 
     ```js
