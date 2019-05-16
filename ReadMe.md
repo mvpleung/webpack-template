@@ -933,6 +933,73 @@ _script-loader 把我们指定的模块 JS 文件转成纯字符串, exports-loa
    localhost:8080 或 http://127.0.0.1:8080
    ```
 
+## 集成eslint
+
+1. 安装依赖
+
+    ```bash
+    npm i eslint eslint-loader eslint-friendly-formatter -D
+    ```
+
+2. 增加配置
+
+    ```js
+    {
+        test: /\.js$/,
+        enforce: 'pre',
+        loader: 'eslint-loader',
+        include: [paths.appSrc],
+        exclude: [
+          /node_modules/,
+        ],
+        options: {
+          formatter: require('eslint-friendly-formatter'),
+        },
+      },
+    ```
+
+3. `package.json`文件同级增加文件`.eslintrc.js`
+
+    ```js
+    module.exports = {
+        "root": true, 
+        "parserOptions": {
+            "sourceType": "module",
+        },
+        "env": {
+            "browser": true,
+            "es6": true,
+        },
+        "extends": "eslint:recommended",
+        "rules": {
+            
+        }
+    }
+    ```
+
+    **配置项含义：**
+    
+    - root 限定配置文件的使用范围
+    - parser 指定eslint的解析器
+    - parserOptions 设置解析器选项
+    - extends 指定eslint规范
+    - plugins 引用第三方的插件
+    - env   指定代码运行的宿主环境
+    - rules 启用额外的规则或覆盖默认的规则
+    - globals 声明在代码中的自定义全局变量
+
+4. 如果有需要跳过检查的文件/文件夹，新建`.eslintignore`文件
+
+    ```js
+    /node_modules
+    ```
+
+5. [ESLint官方规则列表](https://cn.eslint.org/docs/rules/)
+
+6. 参考文档
+
+    1. [webpack引入eslint详解](https://www.jianshu.com/p/33597b663481)
+
 ## 常见性能优化
 
 1. 使用happypack来优化，多进程运行编译，参考文档：
