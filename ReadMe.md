@@ -973,7 +973,7 @@ _script-loader 把我们指定的模块 JS 文件转成纯字符串, exports-loa
             "browser": true,
             "es6": true,
         },
-        "extends": "eslint:recommended", // 使用官方推荐规则
+        "extends": "eslint:recommended", // 使用官方推荐规则，使用其他规则，需要先install，再指定。
         "rules": {
             "no-console": "off",
             "no-undef": "off",
