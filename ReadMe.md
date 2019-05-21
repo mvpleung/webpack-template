@@ -972,6 +972,12 @@ _script-loader 把我们指定的模块 JS 文件转成纯字符串, exports-loa
         "env": {
             "browser": true,
             "es6": true,
+            "node": true,
+            "shared-node-browser": true,
+            "commonjs": true,
+        },
+        "globals": {    // 设置全局变量（false：不允许重写；）
+            "BUILD_ENV": false,
         },
         "extends": "eslint:recommended", // 使用官方推荐规则，使用其他规则，需要先install，再指定。
         "rules": {
