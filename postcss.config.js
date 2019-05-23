@@ -1,5 +1,7 @@
 module.exports = {
-  // parser: 'sugarss', // 一种更简洁的css语法格式
+  // 是一个以缩进为基础的语法，类似于 Sass 和 Stylus
+  // https://github.com/postcss/sugarss
+  // parser: 'sugarss',
   plugins: {
     'postcss-import': {},
     'postcss-preset-env': {},

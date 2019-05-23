@@ -509,16 +509,19 @@ npm run watch             # 启动watch模式，生产环境
 3.  [PostCSS](https://www.webpackjs.com/loaders/postcss-loader/) 本身不会对你的 CSS 做任何事情, 你需要安装一些 plugins 才能开始工作.  
     参考文档:
 
-    - [PostCSS 自学笔记（一）【安装使用篇】](https://segmentfault.com/a/1190000010926812),
-    - [展望未来：使用 PostCSS 和 cssnext 书写 CSS](https://www.cnblogs.com/nzbin/p/5744672.html),
-    - [使用 PostCSS+cssnext 来写 css](http://www.zhaiqianfeng.com/2017/07/postcss-autoprefixer-cssnext.html) ),
+    - [postcss GitHub 文档](https://github.com/postcss/postcss/blob/master/README-cn.md)
+    - [PostCSS 自学笔记（一）【安装使用篇】](https://segmentfault.com/a/1190000010926812)
+    - [展望未来：使用 PostCSS 和 cssnext 书写 CSS](https://www.cnblogs.com/nzbin/p/5744672.html)
+    - [使用 PostCSS+cssnext 来写 css](http://www.zhaiqianfeng.com/2017/07/postcss-autoprefixer-cssnext.html)
     - [PostCSS 及其常用插件介绍](http://www.css88.com/archives/7317)
 
       使用时在 webpack.config.js 同级目录新建 postcss.config.js 文件:
 
     ```js
     module.exports = {
-      // parser: 'sugarss', # 一种更简洁的css语法格式
+      // 是一个以缩进为基础的语法，类似于 Sass 和 Stylus
+      // https://github.com/postcss/sugarss
+      // parser: 'sugarss',
       plugins: {
         'postcss-import': {},
         'postcss-cssnext': {},
