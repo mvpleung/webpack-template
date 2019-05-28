@@ -853,6 +853,75 @@ _script-loader 把我们指定的模块 JS 文件转成纯字符串, exports-loa
     > 平时意图使用某个包, 先去[NPM 官网](https://www.npmjs.com/)搜一搜比较好._
 
 
+## 打包时排除应用中的某些模块
+
+> 某些时候，应用中依赖了某些模块，但希望将这些模块独立通过CDN引入，以减小包的体积，所以不必将这些模块打包，例如：jQuery。  
+特定场景下，这个功能会有用武之地！
+
+```js
+module.exports = {
+  ...
+  output: {
+    ...
+  },
+  externals: {
+    jquery: "jQuery"
+  },
+  ...
+}
+```
+
+
+## umd —— 打包出所有环境都可以使用的包
+
+1. 配置
+
+    ```js
+    module.exports = {
+      ...
+      entry: {
+        sdk: 'xxxxxxx.js',
+      },
+      output: {
+        ...
+        library: '[name]',
+        libraryTarget: 'umd',
+        libraryExport: 'default',
+        umdNamedDefine: true,
+      },
+      ...
+    }
+    ```
+
+2. 应用导出
+
+    ```js
+    export default {
+      a: xxxx,
+      b: xxxx,
+      c: xxxx,
+    }
+    ```
+
+3. 打包出的js，将支持import、requrie导入，script标签导入，可以通过window.sdk使用等：
+    
+    ```js
+    // import
+    import { a, b, c } from '........js'
+
+    // require
+    const anything = require('........js')
+
+    // window
+    window.sdk
+    window.sdk.a
+
+    // node
+    global.sdk
+    global.sdk.a
+    ```
+
+
 ## 配置开发服务器，[webpack-dev-server](https://www.webpackjs.com/configuration/dev-server/)
 
 - 安装依赖包
