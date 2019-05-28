@@ -886,8 +886,8 @@ module.exports = {
         ...
         library: '[name]',
         libraryTarget: 'umd',
-        libraryExport: 'default',
-        umdNamedDefine: true,
+        libraryExport: 'default', 
+        umdNamedDefine: true, // 会对 UMD 的构建过程中的 AMD 模块进行命名，否则就使用匿名的 define
       },
       ...
     }
@@ -923,7 +923,8 @@ module.exports = {
 
 4. 相关文档：
 
-    - [更复杂的导出配置](https://github.com/webpack/webpack/tree/master/examples/multi-part-library)
+    - [怎样打包一个library？](https://webpack.docschina.org/guides/author-libraries)
+    - [一次打包暴露多个库](https://github.com/webpack/webpack/tree/master/examples/multi-part-library)
 
 
 ## 配置开发服务器，[webpack-dev-server](https://www.webpackjs.com/configuration/dev-server/)
