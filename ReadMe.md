@@ -872,7 +872,7 @@ module.exports = {
 ```
 
 
-## umd —— 打包出所有环境都可以使用的包
+## [umd](https://github.com/umdjs/umd) —— 打包出所有环境都可以使用的包
 
 1. 配置
 
