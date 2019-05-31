@@ -1,11 +1,3 @@
-/*
- * @Desc: 工具函数
- * @Author: Eleven
- * @Date: 2018-12-18 17:32:30
- * @Last Modified by: Eleven
- * @Last Modified time: 2019-05-13 13:50:59
- */
-
 const fs = require('fs')
 const path = require('path')
 const glob = require('glob')
@@ -16,7 +8,7 @@ const appDirectory = fs.realpathSync(process.cwd())
  * 解析路径
  * @param {String} relativePath 相对路径
  */
-const resolveApp = (relativePath) => {
+const resolveApp = relativePath => {
   return path.resolve(appDirectory, relativePath)
 }
 
