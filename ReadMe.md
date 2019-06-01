@@ -67,7 +67,7 @@ yarn upgrade [pkgName]@[version]    // 升级依赖包，指定版本
 3. [yarn命令](https://yarnpkg.com/zh-Hans/docs/usage)
 4. [yarn和npm命令对比](https://yarn.bootcss.com/docs/migrating-from-npm/#toc-cli-commands-comparison)
 
-## [Babel 转码](https://babeljs.io/docs/en/)
+## [Babel 8](https://babeljs.io/docs/en/)
 
 > 这是最新的 babel 配置，和网上的诸多教程可能有不同，可以自行测试验证有效性。
 
@@ -159,7 +159,7 @@ yarn upgrade [pkgName]@[version]    // 升级依赖包，指定版本
             （不推荐，能覆盖到所有 API 的转译，但体积最大）
           - `entry`：需要在 js 代码第一行主动 import '@babel/polyfill'，会将 browserslist 环境不支持的所有垫片都导入。  
             （能够覆盖到‘hello‘.includes(‘h‘)这种句法，足够安全且代码体积不是特别大）
-          - `usage`：项目里不用主动 import，会自动将代理已使用到的、且 browserslist 环境不支持的垫片导入。  
+          - `usage`：项目里不用主动 import，会自动将代码里已使用到的、且 browserslist 环境不支持的垫片导入。  
             （但是检测不到‘hello‘.includes(‘h‘)这种句法，对这类原型链上的句法问题不会做转译，**书写代码需注意**）
        3. `targets`，用来配置需要支持的的环境，不仅支持浏览器，还支持 node。如果没有配置 targets 选项，就会读取项目中的 browserslist 配置项。
        4. `loose`，默认值是 false，如果 preset-env 中包含的 plugin 支持 loose 的设置，那么可以通过这个字段来做统一的设置。
@@ -905,9 +905,12 @@ module.exports = {
 ```
 
 
-## [umd](https://github.com/umdjs/umd) —— 打包出所有环境都可以使用的包
+## webpack打包js库
+
+> 通常打包js库会选择rollup，但是webpack同样可以做到，如果是需要对css、图片等有较多应用的js库，webpack会有更多优势。
 
 1. 配置
+    > [umd](https://github.com/umdjs/umd) —— 打包出所有环境都可以使用的包
 
     ```js
     module.exports = {
@@ -926,7 +929,7 @@ module.exports = {
     }
     ```
 
-2. 应用导出
+2. 代码里导出
 
     ```js
     export default {
@@ -936,7 +939,7 @@ module.exports = {
     }
     ```
 
-3. 打包出的js，将支持import、requrie导入，script标签导入，可以通过window.sdk使用等：
+3. build打包后的js，将支持import、requrie导入，script标签导入，可以通过window.sdk使用等：
     
     ```js
     // import
@@ -1023,7 +1026,9 @@ module.exports = {
     localhost:9898/views/
     ```
 
-## http-server，比自己配置一个 express 服务更简洁的方式，去访问打包后的资源。
+## http-server
+
+> 比自己配置一个 express 服务更简洁的方式，去访问打包后的资源。
 
 1. 安装依赖
 
@@ -1034,7 +1039,9 @@ module.exports = {
 2. package.json 配置命令
 
    ```json
-   "server": "http-server static"
+   "scripts": {
+      "http-server": "http-server dist"
+   }
    ```
 
 3. 访问路径
@@ -1091,9 +1098,7 @@ module.exports = {
         },
         "extends": "eslint:recommended", // 使用官方推荐规则，使用其他规则，需要先install，再指定。
         "rules": {
-            "no-console": "off",
-            "no-undef": "off",
-            "no-useless-escape": "off",
+            
         }
     }
     ```
