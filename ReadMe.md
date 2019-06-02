@@ -648,8 +648,10 @@ yarn upgrade [pkgName]@[version]    // 升级依赖包，指定版本
 1.  需要安装的依赖包
 
     ```bash
-    npm i less less-loader css-loader style-loader postcss-loader postcss-import postcss-cssnext cssnano autoprefixer -D
+    npm i less less-loader css-loader style-loader postcss-loader postcss-preset-env postcss-import cssnano postcss-safe-parser mini-css-extract-plugin -D
     ```
+
+    > 过去版本的autoprefixer、postcss-cssnext已内置在postcss-preset-env内。
 
 2.  配置
 
@@ -687,33 +689,24 @@ yarn upgrade [pkgName]@[version]    // 升级依赖包，指定版本
     ```
 
 3.  [PostCSS](https://www.webpackjs.com/loaders/postcss-loader/) 本身不会对你的 CSS 做任何事情, 你需要安装一些 plugins 才能开始工作.  
-    参考文档:
+    参考文档： [postcss GitHub 文档](https://github.com/postcss/postcss/blob/master/README-cn.md)
 
-    - [postcss GitHub 文档](https://github.com/postcss/postcss/blob/master/README-cn.md)
-    - [PostCSS 自学笔记（一）【安装使用篇】](https://segmentfault.com/a/1190000010926812)
-    - [展望未来：使用 PostCSS 和 cssnext 书写 CSS](https://www.cnblogs.com/nzbin/p/5744672.html)
-    - [使用 PostCSS+cssnext 来写 css](http://www.zhaiqianfeng.com/2017/07/postcss-autoprefixer-cssnext.html)
-    - [PostCSS 及其常用插件介绍](http://www.css88.com/archives/7317)
-
-      使用时在 package.json 同级目录新建 postcss.config.js 文件:
+    使用时在 package.json 同级目录新建 postcss.config.js 文件:
 
     ```js
     module.exports = {
-      // 是一个以缩进为基础的语法，类似于 Sass 和 Stylus
-      // https://github.com/postcss/sugarss
-      // parser: 'sugarss',
+      // parser: 'sugarss', // 是一个以缩进为基础的语法，类似于 Sass 和 Stylus，https://github.com/postcss/sugarss
       plugins: {
         'postcss-import': {},
-        'postcss-cssnext': {},
-        cssnano: {},
-      },
+        'postcss-preset-env': {},
+        'cssnano': {},
+        'postcss-flexbugs-fixes': {},
+      }
     }
     ```
 
     _常用的插件_:
 
-    - autoprefixer ——_插件在编译时自动给 css 新特性添加浏览器厂商前缀, 因此, 借助[Modernizr](http://modernizr.cn/)来添加厂商前缀已经不需要了( 还是可以用来做 js 检测浏览器兼容性的 )._
-    - postcss-cssnext ——_让你使用下一代 css 语法, 在最新的 css 规范里, 已经包含了大量 less 的内置功能_
     - cssnano ——_会压缩你的 CSS 文件来确保在开发环境中下载量尽可能的小_
 
     _其它有用的插件_:
