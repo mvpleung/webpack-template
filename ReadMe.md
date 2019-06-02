@@ -1,10 +1,10 @@
 # webpack-template
 
-> 为懒人准备的 webpack 模版，可以直接用于生产。
+> 为懒人准备的 webpack 模版，可以直接用于生产。这里单纯只做webpack打包的配置、代码的组织等，关于React、Vue等配置并不复杂，可以在需要时添加。随着webpack版本的迭代，会将最新的应用加入，持续更新......
 
 ## 技术栈
 
-> es6 + less + art-template + webpack 4
+> es6 + less + webpack 4
 
 1. 普通 H5 开发中,引入组件化；
 2. 引入 art-template 前端渲染引擎——目前前端模版里速度最快；
@@ -14,7 +14,6 @@
 6. splitChunks 配置，提取 vendor 主要缓存包，提取 common 次要缓存包；
 7. 支持多页、多入口，自动扫描，可无限层级嵌套文件夹；
 8. MockJs 模拟 mock 数据；
-9. 这里单纯只做webpack打包的配置、代码的组织等，关于React、Vue等配置并不复杂，可以在开发需要时添加；
 
 ## 运行命令
 
