@@ -114,7 +114,7 @@ module.exports = merge(base, {
       new OptimizeCSSAssetsPlugin({
         cssProcessorOptions: {
           parser: safePostCssParser,  // https://github.com/postcss/postcss-safe-parser
-          map: shouldUseSourceMap
+          map: !shouldUseSourceMap
             ? {
                 // `inline: false` forces the sourcemap to be output into a
                 // separate file

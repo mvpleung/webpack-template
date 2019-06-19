@@ -1,4 +1,7 @@
 const webpack = require('webpack')
+const os = require('os')
+const HappyPack = require('happypack')
+const HappyThreadPool = HappyPack.ThreadPool({size: os.cpus().length})
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const utils = require('./utils')
 const paths = require('./paths')
@@ -50,16 +53,20 @@ module.exports = {
         },
       },
       {
-        test: /\.(less|css)$/,
+        test: /\.css$/,
+        use: [styleLoader, 'css-loader', 'postcss-loader'],
+      },
+      {
+        test: /\.less$/,
         use: [styleLoader, 'css-loader', 'postcss-loader', 'less-loader'],
       },
       {
         test: /\.js$/,
-        loader: 'babel-loader',
+        loader: 'happypack/loader',
         include: paths.appSrc,
         exclude: /node_modules/,
         options: {
-          cacheDirectory: true,
+          id: 'happyBabel',
         },
       },
       {
@@ -97,6 +104,18 @@ module.exports = {
     ],
   },
   plugins: [
+    // 将babel-loader需要执行的动作，交给happypack
+    new HappyPack({
+      id: 'happyBabel',
+      loaders: ['cache-loader', {
+        loader: 'babel-loader',
+        options: {
+          cacheDirectory: true,
+        },
+      }],
+      threadPool: HappyThreadPool,
+      verbose: true   // 允许happypack输出日志
+    }),
     // 大量需要使用到的模块，在此处一次性注入，避免到处import/require。
     new webpack.ProvidePlugin({
       $: 'zepto',
