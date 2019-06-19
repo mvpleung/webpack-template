@@ -1,10 +1,10 @@
 # webpack-template
 
-> 为懒人准备的 webpack 模版，可以直接用于生产。
+> 为懒人准备的 webpack 模版，可以直接用于生产。这里单纯只做webpack打包的配置、代码的组织等，关于React、Vue等配置并不复杂，可以在需要时添加。随着webpack版本的迭代，会将最新的应用加入，持续更新......
 
 ## 技术栈
 
-> es6 + less + art-template + webpack 4
+> es6 + less + webpack 4
 
 1. 普通 H5 开发中,引入组件化；
 2. 引入 art-template 前端渲染引擎——目前前端模版里速度最快；
@@ -14,7 +14,6 @@
 6. splitChunks 配置，提取 vendor 主要缓存包，提取 common 次要缓存包；
 7. 支持多页、多入口，自动扫描，可无限层级嵌套文件夹；
 8. MockJs 模拟 mock 数据；
-9. 这里单纯只做webpack打包的配置、代码的组织等，关于React、Vue等配置并不复杂，可以在开发需要时添加；
 
 ## 运行命令
 
@@ -67,7 +66,7 @@ yarn upgrade [pkgName]@[version]    // 升级依赖包，指定版本
 3. [yarn命令](https://yarnpkg.com/zh-Hans/docs/usage)
 4. [yarn和npm命令对比](https://yarn.bootcss.com/docs/migrating-from-npm/#toc-cli-commands-comparison)
 
-## [Babel 转码](https://babeljs.io/docs/en/)
+## [Babel 8](https://babeljs.io/docs/en/)
 
 > 这是最新的 babel 配置，和网上的诸多教程可能有不同，可以自行测试验证有效性。
 
@@ -159,7 +158,7 @@ yarn upgrade [pkgName]@[version]    // 升级依赖包，指定版本
             （不推荐，能覆盖到所有 API 的转译，但体积最大）
           - `entry`：需要在 js 代码第一行主动 import '@babel/polyfill'，会将 browserslist 环境不支持的所有垫片都导入。  
             （能够覆盖到‘hello‘.includes(‘h‘)这种句法，足够安全且代码体积不是特别大）
-          - `usage`：项目里不用主动 import，会自动将代理已使用到的、且 browserslist 环境不支持的垫片导入。  
+          - `usage`：项目里不用主动 import，会自动将代码里已使用到的、且 browserslist 环境不支持的垫片导入。  
             （但是检测不到‘hello‘.includes(‘h‘)这种句法，对这类原型链上的句法问题不会做转译，**书写代码需注意**）
        3. `targets`，用来配置需要支持的的环境，不仅支持浏览器，还支持 node。如果没有配置 targets 选项，就会读取项目中的 browserslist 配置项。
        4. `loose`，默认值是 false，如果 preset-env 中包含的 plugin 支持 loose 的设置，那么可以通过这个字段来做统一的设置。
@@ -496,182 +495,6 @@ yarn upgrade [pkgName]@[version]    // 升级依赖包，指定版本
        }
        ```
 
-## CSS 样式的处理（less 预编译和 postcss 工具）
-
-1.  需要安装的依赖包
-
-    ```bash
-    npm i less less-loader css-loader style-loader postcss-loader postcss-import postcss-cssnext cssnano autoprefixer -D
-    ```
-
-2.  配置
-
-    _默认会将 css 一起打包到 js 里，借助 mini-css-extract-plugin 将 css 分离出来并自动在生成的 html 中 link 引入（过去版本中的 extract-text-webpack-plugin 已不推荐使用）。_
-
-    ```js
-    const MiniCssExtractPlugin = require('mini-css-extract-plugin')
-    ```
-
-    ```js
-    {
-         test: /\.(less|css)$/,
-         use: [MiniCssExtractPlugin.loader, 'css-loader', 'postcss-loader', 'less-loader'],
-     }
-
-     // 在启用dev-server时，mini-css-extract-plugin插件不能使用contenthash给文件命名 => 所以本地起dev-server服务调试时，使用style-loader
-     // USE_HMR是自定义的环境变量，意思是是否使用了热替换中间件
-     const styleLoader = process.env.USE_HMR ? 'style-loader' : MiniCssExtractPlugin.loader
-
-     // 通过其他合适的方式判断是否为本地调试环境也一样，自由选择。
-     const styleLoader = process.env.BUILD_ENV === 'development' ? 'style-loader' : MiniCssExtractPlugin.loader
-
-     {
-       test: /\.(less|css)$/,
-       use: [styleLoader, 'css-loader', 'postcss-loader', 'less-loader'],
-     },
-    ```
-
-    ```js
-    // 单独使用link标签加载css并设置路径，相对于output配置中的publickPath
-    new MiniCssExtractPlugin({
-      filename: 'static/css/[name].[contenthash:7].css', // 注意这里使用的是contenthash，否则任意的js改动，打包时都会导致css的文件名也跟着变动。
-      chunkFilename: 'static/css/[name].[contenthash:7].css',
-    })
-    ```
-
-3.  [PostCSS](https://www.webpackjs.com/loaders/postcss-loader/) 本身不会对你的 CSS 做任何事情, 你需要安装一些 plugins 才能开始工作.  
-    参考文档:
-
-    - [postcss GitHub 文档](https://github.com/postcss/postcss/blob/master/README-cn.md)
-    - [PostCSS 自学笔记（一）【安装使用篇】](https://segmentfault.com/a/1190000010926812)
-    - [展望未来：使用 PostCSS 和 cssnext 书写 CSS](https://www.cnblogs.com/nzbin/p/5744672.html)
-    - [使用 PostCSS+cssnext 来写 css](http://www.zhaiqianfeng.com/2017/07/postcss-autoprefixer-cssnext.html)
-    - [PostCSS 及其常用插件介绍](http://www.css88.com/archives/7317)
-
-      使用时在 webpack.config.js 同级目录新建 postcss.config.js 文件:
-
-    ```js
-    module.exports = {
-      // 是一个以缩进为基础的语法，类似于 Sass 和 Stylus
-      // https://github.com/postcss/sugarss
-      // parser: 'sugarss',
-      plugins: {
-        'postcss-import': {},
-        'postcss-cssnext': {},
-        cssnano: {},
-      },
-    }
-    ```
-
-    _常用的插件_:
-
-    - autoprefixer ——_插件在编译时自动给 css 新特性添加浏览器厂商前缀, 因此, 借助[Modernizr](http://modernizr.cn/)来添加厂商前缀已经不需要了( 还是可以用来做 js 检测浏览器兼容性的 )._
-    - postcss-cssnext ——_让你使用下一代 css 语法, 在最新的 css 规范里, 已经包含了大量 less 的内置功能_
-    - cssnano ——_会压缩你的 CSS 文件来确保在开发环境中下载量尽可能的小_
-
-    _其它有用的插件_:
-
-    - postcss-pxtorem ——_px 单位自动转换 rem_
-    - postcss-assets ——_插件用来处理图片和 SVG, 类似 url-load_
-    - postcss-sprites ——_将扫描你 CSS 中使用的所有图像，自动生成优化的 Sprites 图像和 CSS Sprites 代码_
-    - postcss-font-magician ——_使用自定义字体时, 自动搞定@font-face 声明_
-
-    Less 是预处理，而 PostCSS 是后处理，基本支持 less 等预处理器的功能，自动添加浏览器厂商前缀向前兼容，允许书写下一代 css 语法 ，可以在编译时去除冗余的 css 代码，PostCSS 声称比预处理器快 3-30 倍. **因为 PostCSS，可能我们要放弃 less/sass/stylus 了**。
-
-## 图片、字体、多媒体等资源的处理
-
-1.  css 中引入的图片( 或其它资源 ) ==> url-loader  
-    配置了 url-loader 以后，webpack 编译时可以自动将小图转成 base64 编码，将大图改写 url 并将文件生成到指定目录下 ( _file-loader 可以完成文件生成，但是不能小图转 base64，所以统一用 url-loader，但 url-loader 在处理大图的时候是自动去调用 file-loader，所以你仍然需要 install file-loader_ )。
-    ```js
-    // 处理图片(file-loader来处理也可以，url-loader更适合图片)
-    {
-      test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
-      loader: 'url-loader',
-      options: {
-        limit: 10000,
-        name: 'static/assets/images/[name].[hash:7].[ext]',
-      },
-    },
-    // 处理多媒体文件
-    {
-      test: /\.(mp4|webm|ogg|mp3|wav|flac|aac)(\?.*)?$/,
-      loader: 'url-loader',
-      options: {
-        limit: 10000,
-        name: 'static/assets/media/[name].[hash:7].[ext]',
-      },
-    },
-    // 处理字体文件
-    {
-        test: /\.(woff2?|eot|ttf|otf)(\?.*)?$/,
-        loader: 'url-loader',
-        options: {
-            limit: 10000,
-            name: 'static/assets/fonts/[name].[hash:7].[ext]'
-        }
-    },
-    ```
-2.  html 页面中引入的图片( 或其它资源 ) ==> html-loader  
-    css 中的图片 url-loader 处理即可，而 html 中 img 标签引入的图片，不做工作的情况下: 图片将不会被处理，路径也不会被改写，即最终编译完成后这部分图片是找不到的，怎么办? [html-loader](https://www.webpackjs.com/loaders/html-loader/) ！( _这个时候你应该是 url-loader 和 html-loader 都配置了，所以 css 中图片、页面引入的图片、css 中的字体文件、页面引入的多媒体文件等， 统统都会在编译时被处理_ )。
-
-    ```js
-    // html中引用的静态资源在这里处理,默认配置参数attrs=img:src,处理图片的src引用的资源.
-    {
-        test: /\.html$/,
-        loader: 'html-loader',
-        options: {
-            // 除了img的src,还可以继续配置处理更多html引入的资源(不能在页面直接写路径,又需要webpack处理怎么办?先require再js写入).
-            attrs: ['img:src', 'img:data-src', 'audio:src'],
-            minimize: false,
-            removeComments: true,
-            collapseWhitespace: false
-        }
-    }
-    ```
-
-3.  有的时候, 图片可能既不在 css 中, 也不在 html 中引入, 怎么办?
-
-    ```js
-    import img from 'xxx/xxx/123.jpg' 或 let img = require('xxx/xxx/123.jpg')
-    ```
-
-    js 中引用 img，webpack 将会自动搞定它。
-
-4.  图片等资源的访问路径问题：  
-    经过上面的处理，静态资源处理基本没有问题了，webpack 编译时将会将文件打包到你指定的生成目录，但是不同位置的图片路径改写会是一个问题.  
-    _全部通过绝对路径访问即可，在 output 下的 publicPath 填上适当的 server 端头，来保证所有静态资源文件路径能被访问到，具体要根据服务器部署的目录结构来做修改。_
-    ```js
-    output: {
-     path: path.resolve(__dirname, 'dist'), // 输出目录的配置，模板、样式、脚本、图片等资源的路径配置都相对于它
-     publicPath: '/', // 模板、样式、脚本、图片等资源对应的server上的路径
-    }
-    ```
-
-## 自动将打包 js 引入生成的 html 文件
-
-- [html-webpack-plugin](https://www.webpackjs.com/plugins/html-webpack-plugin/)插件，配置：
-
-  ```js
-  const HtmlWebpackPlugin = require('html-webpack-plugin')
-  ```
-
-  ```js
-  new HtmlWebpackPlugin({
-    favicon: './src/assets/img/favicon.ico', // favicon路径，通过webpack引入同时可以生成hash值
-    filename: './views/index.html', // 生成的html存放路径，相对于path
-    template: './src/views/index.html', // html模板路径
-    title: '首页', // 页面title
-    meta: '', // 允许插入meta标签,如=>meta: {viewport: 'width=device-width,initial-scale=1, shrink-to-fit=no'}
-    inject: 'body', // js插入的位置，true/'head'/'body'/false
-    hash: true, // 为静态资源生成hash值(js和css)
-    chunks: ['vendors', 'index'], // 需要在此页面引入的chunk，不配置就会引入所有页面的资源
-    minify: {
-      // 压缩html文件
-      removeComments: true, // 移除html中的注释
-      collapseWhitespace: true, // 删除空白符与换行符
-    },
-  })
-  ```
 
 ## 自动扫描 webpack 入口文件和 html 模版文件
 
@@ -819,6 +642,178 @@ yarn upgrade [pkgName]@[version]    // 升级依赖包，指定版本
   }
   ```
 
+
+## CSS 样式的处理（less 预编译和 postcss 工具）
+
+1.  需要安装的依赖包
+
+    ```bash
+    npm i less less-loader css-loader style-loader postcss-loader postcss-preset-env postcss-import cssnano postcss-safe-parser mini-css-extract-plugin -D
+    ```
+
+    > 过去版本的autoprefixer、postcss-cssnext已内置在postcss-preset-env内。
+
+2.  配置
+
+    _默认会将 css 一起打包到 js 里，借助 mini-css-extract-plugin 将 css 分离出来并自动在生成的 html 中 link 引入（过去版本中的 extract-text-webpack-plugin 已不推荐使用）。_
+
+    ```js
+    const MiniCssExtractPlugin = require('mini-css-extract-plugin')
+    ```
+
+    ```js
+    {
+         test: /\.(less|css)$/,
+         use: [MiniCssExtractPlugin.loader, 'css-loader', 'postcss-loader', 'less-loader'],
+     }
+
+     // 在启用dev-server时，mini-css-extract-plugin插件不能使用contenthash给文件命名 => 所以本地起dev-server服务调试时，使用style-loader
+     // USE_HMR是自定义的环境变量，意思是是否使用了热替换中间件
+     const styleLoader = process.env.USE_HMR ? 'style-loader' : MiniCssExtractPlugin.loader
+
+     // 通过其他合适的方式判断是否为本地调试环境也一样，自由选择。
+     const styleLoader = process.env.BUILD_ENV === 'development' ? 'style-loader' : MiniCssExtractPlugin.loader
+
+     {
+       test: /\.(less|css)$/,
+       use: [styleLoader, 'css-loader', 'postcss-loader', 'less-loader'],
+     },
+    ```
+
+    ```js
+    // 单独使用link标签加载css并设置路径，相对于output配置中的publickPath
+    new MiniCssExtractPlugin({
+      filename: 'static/css/[name].[contenthash:7].css', // 注意这里使用的是contenthash，否则任意的js改动，打包时都会导致css的文件名也跟着变动。
+      chunkFilename: 'static/css/[name].[contenthash:7].css',
+    })
+    ```
+
+3.  [PostCSS](https://www.webpackjs.com/loaders/postcss-loader/) 本身不会对你的 CSS 做任何事情, 你需要安装一些 plugins 才能开始工作.  
+    参考文档： [postcss GitHub 文档](https://github.com/postcss/postcss/blob/master/README-cn.md)
+
+    使用时在 package.json 同级目录新建 postcss.config.js 文件:
+
+    ```js
+    module.exports = {
+      // parser: 'sugarss', // 是一个以缩进为基础的语法，类似于 Sass 和 Stylus，https://github.com/postcss/sugarss
+      plugins: {
+        'postcss-import': {},
+        'postcss-preset-env': {},
+        'cssnano': {},
+        'postcss-flexbugs-fixes': {},
+      }
+    }
+    ```
+
+    _常用的插件_:
+
+    - cssnano ——_会压缩你的 CSS 文件来确保在开发环境中下载量尽可能的小_
+
+    _其它有用的插件_:
+
+    - postcss-pxtorem ——_px 单位自动转换 rem_
+    - postcss-assets ——_插件用来处理图片和 SVG, 类似 url-load_
+    - postcss-sprites ——_将扫描你 CSS 中使用的所有图像，自动生成优化的 Sprites 图像和 CSS Sprites 代码_
+    - postcss-font-magician ——_使用自定义字体时, 自动搞定@font-face 声明_
+
+    Less 是预处理，而 PostCSS 是后处理，基本支持 less 等预处理器的功能，自动添加浏览器厂商前缀向前兼容，允许书写下一代 css 语法 ，可以在编译时去除冗余的 css 代码，PostCSS 声称比预处理器快 3-30 倍. **因为 PostCSS，可能我们要放弃 less/sass/stylus 了**。
+
+## 图片、字体、多媒体等资源的处理
+
+1.  css 中引入的图片( 或其它资源 ) ==> url-loader  
+    配置了 url-loader 以后，webpack 编译时可以自动将小图转成 base64 编码，将大图改写 url 并将文件生成到指定目录下 ( _file-loader 可以完成文件生成，但是不能小图转 base64，所以统一用 url-loader，但 url-loader 在处理大图的时候是自动去调用 file-loader，所以你仍然需要 install file-loader_ )。
+    ```js
+    // 处理图片(file-loader来处理也可以，url-loader更适合图片)
+    {
+      test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
+      loader: 'url-loader',
+      options: {
+        limit: 10000,
+        name: 'static/assets/images/[name].[hash:7].[ext]',
+      },
+    },
+    // 处理多媒体文件
+    {
+      test: /\.(mp4|webm|ogg|mp3|wav|flac|aac)(\?.*)?$/,
+      loader: 'url-loader',
+      options: {
+        limit: 10000,
+        name: 'static/assets/media/[name].[hash:7].[ext]',
+      },
+    },
+    // 处理字体文件
+    {
+        test: /\.(woff2?|eot|ttf|otf)(\?.*)?$/,
+        loader: 'url-loader',
+        options: {
+            limit: 10000,
+            name: 'static/assets/fonts/[name].[hash:7].[ext]'
+        }
+    },
+    ```
+2.  html 页面中引入的图片( 或其它资源 ) ==> html-loader  
+    css 中的图片 url-loader 处理即可，而 html 中 img 标签引入的图片，不做工作的情况下: 图片将不会被处理，路径也不会被改写，即最终编译完成后这部分图片是找不到的，怎么办? [html-loader](https://www.webpackjs.com/loaders/html-loader/) ！( _这个时候你应该是 url-loader 和 html-loader 都配置了，所以 css 中图片、页面引入的图片、css 中的字体文件、页面引入的多媒体文件等， 统统都会在编译时被处理_ )。
+
+    ```js
+    // html中引用的静态资源在这里处理,默认配置参数attrs=img:src,处理图片的src引用的资源.
+    {
+        test: /\.html$/,
+        loader: 'html-loader',
+        options: {
+            // 除了img的src,还可以继续配置处理更多html引入的资源(不能在页面直接写路径,又需要webpack处理怎么办?先require再js写入).
+            attrs: ['img:src', 'img:data-src', 'audio:src'],
+            minimize: false,
+            removeComments: true,
+            collapseWhitespace: false
+        }
+    }
+    ```
+
+3.  有的时候, 图片可能既不在 css 中, 也不在 html 中引入, 怎么办?
+
+    ```js
+    import img from 'xxx/xxx/123.jpg' 或 let img = require('xxx/xxx/123.jpg')
+    ```
+
+    js 中引用 img，webpack 将会自动搞定它。
+
+4.  图片等资源的访问路径问题：  
+    经过上面的处理，静态资源处理基本没有问题了，webpack 编译时将会将文件打包到你指定的生成目录，但是不同位置的图片路径改写会是一个问题.  
+    _全部通过绝对路径访问即可，在 output 下的 publicPath 填上适当的 server 端头，来保证所有静态资源文件路径能被访问到，具体要根据服务器部署的目录结构来做修改。_
+    ```js
+    output: {
+     path: path.resolve(__dirname, 'dist'), // 输出目录的配置，模板、样式、脚本、图片等资源的路径配置都相对于它
+     publicPath: '/', // 模板、样式、脚本、图片等资源对应的server上的路径
+    }
+    ```
+
+## 自动将打包 js 引入生成的 html 文件
+
+- [html-webpack-plugin](https://www.webpackjs.com/plugins/html-webpack-plugin/)插件，配置：
+
+  ```js
+  const HtmlWebpackPlugin = require('html-webpack-plugin')
+  ```
+
+  ```js
+  new HtmlWebpackPlugin({
+    favicon: './src/assets/img/favicon.ico', // favicon路径，通过webpack引入同时可以生成hash值
+    filename: './views/index.html', // 生成的html存放路径，相对于path
+    template: './src/views/index.html', // html模板路径
+    title: '首页', // 页面title
+    meta: '', // 允许插入meta标签,如=>meta: {viewport: 'width=device-width,initial-scale=1, shrink-to-fit=no'}
+    inject: 'body', // js插入的位置，true/'head'/'body'/false
+    hash: true, // 为静态资源生成hash值(js和css)
+    chunks: ['vendors', 'index'], // 需要在此页面引入的chunk，不配置就会引入所有页面的资源
+    minify: {
+      // 压缩html文件
+      removeComments: true, // 移除html中的注释
+      collapseWhitespace: true, // 删除空白符与换行符
+    },
+  })
+  ```
+
+
 ## [如何在 webpack 中引入未模块化的库，如：Zepto](https://blog.csdn.net/sinat_17775997/article/details/70495891)
 
 _script-loader 把我们指定的模块 JS 文件转成纯字符串, exports-loader 将需要的 js 对象 module.exports 导出, 以支持 import 或 require 导入._
@@ -905,9 +900,12 @@ module.exports = {
 ```
 
 
-## [umd](https://github.com/umdjs/umd) —— 打包出所有环境都可以使用的包
+## webpack打包js库
+
+> 通常打包js库会选择rollup，但是webpack同样可以做到，如果是需要对css、图片等有较多应用的js库，webpack会有更多优势。
 
 1. 配置
+    > [umd](https://github.com/umdjs/umd) —— 打包出所有环境都可以使用的包
 
     ```js
     module.exports = {
@@ -926,7 +924,7 @@ module.exports = {
     }
     ```
 
-2. 应用导出
+2. 代码里导出
 
     ```js
     export default {
@@ -936,7 +934,7 @@ module.exports = {
     }
     ```
 
-3. 打包出的js，将支持import、requrie导入，script标签导入，可以通过window.sdk使用等：
+3. build打包后的js，将支持import、requrie导入，script标签导入，可以通过window.sdk使用等：
     
     ```js
     // import
@@ -1023,7 +1021,9 @@ module.exports = {
     localhost:9898/views/
     ```
 
-## http-server，比自己配置一个 express 服务更简洁的方式，去访问打包后的资源。
+## http-server
+
+> 比自己配置一个 express 服务更简洁的方式，去访问打包后的资源。
 
 1. 安装依赖
 
@@ -1034,7 +1034,9 @@ module.exports = {
 2. package.json 配置命令
 
    ```json
-   "server": "http-server static"
+   "scripts": {
+      "http-server": "http-server dist"
+   }
    ```
 
 3. 访问路径
@@ -1091,9 +1093,7 @@ module.exports = {
         },
         "extends": "eslint:recommended", // 使用官方推荐规则，使用其他规则，需要先install，再指定。
         "rules": {
-            "no-console": "off",
-            "no-undef": "off",
-            "no-useless-escape": "off",
+            
         }
     }
     ```
