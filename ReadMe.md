@@ -205,7 +205,7 @@ yarn upgrade [pkgName]@[version]    // 升级依赖包，指定版本
        2. `helpers`，默认值是 true，用来开启是否使用 helper 函数来重写语法转换的函数。
        3. `useESModules`，默认值是 false，是否对文件使用 ES 的模块语法，使用 ES 的模块语法可以减少文件的大小。
 
-7)  `@babel/preset-env`还是`@babel/plugin-transform-runtime`？ ([传送门：babel polyfill 和 runtime 浅析](https://blog.csdn.net/weixin_34163741/article/details/88015827))
+7)  `@babel/preset-env`还是`@babel/plugin-transform-runtime`？ ([传送门一：babel polyfill 和 runtime 浅析](https://blog.csdn.net/weixin_34163741/article/details/88015827)，[传送门二](https://www.junorz.com/archives/689.html))
 
     1.  `@babel/preset-env + @babel/polyfill`可以转译语法、新 API，但存在污染全局问题；
 
