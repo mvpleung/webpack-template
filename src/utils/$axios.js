@@ -3,11 +3,10 @@
  * @Author: Eleven 
  * @Date: 2019-04-15 23:18:15 
  * @Last Modified by: Eleven
- * @Last Modified time: 2019-04-15 23:45:30
+ * @Last Modified time: 2019-06-21 16:14:36
  */
 
 import axios from 'axios'
-import qs from 'qs'
 
 // 创建axios实例
 const instance = axios.create({
@@ -30,16 +29,7 @@ instance.interceptors.request.use( config => {
 // 响应拦截
 instance.interceptors.response.use( response => {
     // To-Do: 对响应数据做点什么
-    const { status, data } = response
-    const { data: res } = response
-    
-    if( status === 401 ){
-      
-    }
-    if( status >= 500 ){
-      console.log(res.message)
-    }
-
+    const { data } = response
     return data
   }, error => {
     // To-Do: 响应失败做点什么

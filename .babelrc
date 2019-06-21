@@ -4,7 +4,10 @@
       "@babel/preset-env",
       {
         "modules": false,
-        "useBuiltIns": "entry" //browserslist环境不支持的所有垫片都导入；
+        "useBuiltIns": "entry", // browserslist环境不支持的所有垫片都导入；
+        // https://babeljs.io/docs/en/babel-preset-env#usebuiltins
+        // https://github.com/zloirock/core-js/blob/master/docs/2019-03-19-core-js-3-babel-and-a-look-into-the-future.md
+        "corejs": 2
       }
     ]
   ],

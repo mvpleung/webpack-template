@@ -28,6 +28,16 @@ module.exports = {
     publicPath: process.env.publicPath || '/',
   },
   devtool: devtool,
+  stats: {
+    chunks: false,
+    children: false,
+    modules: false,
+    entrypoints: false,
+    performance: false,
+  },
+  performance: {
+    hints: false, // 关闭文件体积较大提示
+  },
   resolve: {
     extensions: ['.js', '.json', '.css', '.less', '.art'],
     alias: {
@@ -62,11 +72,21 @@ module.exports = {
       },
       {
         test: /\.js$/,
+        enforce: 'pre',
+        loader: 'eslint-loader',
+        include: paths.appSrc,
+        exclude: /node_modules/,
+        options: {
+          formatter: require('eslint-friendly-formatter'),
+        },
+      },
+      {
+        test: /\.js$/,
         loader: 'happypack/loader',
         include: paths.appSrc,
         exclude: /node_modules/,
         options: {
-          id: 'happyBabel',
+          id: 'happy-babel',
         },
       },
       {
@@ -106,13 +126,16 @@ module.exports = {
   plugins: [
     // 将babel-loader需要执行的动作，交给happypack
     new HappyPack({
-      id: 'happyBabel',
-      loaders: ['cache-loader', {
-        loader: 'babel-loader',
-        options: {
-          cacheDirectory: true,
-        },
-      }],
+      id: 'happy-babel',
+      loaders: [
+        'cache-loader',
+        {
+          loader: 'babel-loader',
+          options: {
+            cacheDirectory: true,
+          },
+        }
+      ],
       threadPool: HappyThreadPool,
       verbose: true   // 允许happypack输出日志
     }),
@@ -120,7 +143,6 @@ module.exports = {
     new webpack.ProvidePlugin({
       $: 'zepto',
       Zepto: 'zepto',
-      moment: 'moment',
     }),
     // 应用中需要的process.env变量，在此注入才能使用。
     new webpack.DefinePlugin({

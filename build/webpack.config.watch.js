@@ -15,12 +15,6 @@ module.exports = merge(base, {
     chunkFilename: 'static/js/[name].js',
   },
   devtool: devtool,
-  stats: {
-    chunks: false,
-    children: false,
-    modules: false,
-    entrypoints: false,
-  },
   plugins: [
     ...utils.getHtmlWebpackPluginsProd(),
     new CleanPlugin([path.resolve(__dirname, '..', 'dist-watch/*')], {

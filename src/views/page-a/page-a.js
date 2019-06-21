@@ -3,7 +3,7 @@
  * @Author: Eleven 
  * @Date: 2019-01-05 00:55:26 
  * @Last Modified by: Eleven
- * @Last Modified time: 2019-04-30 19:56:42
+ * @Last Modified time: 2019-06-21 15:59:42
  */
 
 import '@babel/polyfill'
@@ -18,7 +18,7 @@ isMock && require('src/mock')
 class ViewIndex {
   init() {
     index.init()
-    this.testMock()
+    // this.testMock()
   }
   
   testMock() {

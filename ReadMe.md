@@ -4,14 +4,15 @@
 
 ## 已添加功能
 
-1. 普通 H5 开发中,引入组件化；
-2. 引入 art-template 前端渲染引擎——目前前端模版里速度最快；
-3. 配置 dev-server 调试模式，proxy 代理接口调试；
-4. 配置 watch 模式，方便在生产环境中用 Charles 映射到本地文件；
-5. optimization 配置提取 runtime 代码；
-6. splitChunks 配置，提取 vendor 主要缓存包，提取 common 次要缓存包；
-7. 支持多页、多入口，自动扫描，可无限层级嵌套文件夹；
-8. MockJs 模拟 mock 数据；
+1. 普通 H5 开发中,引入组件化
+2. 引入 art-template 前端渲染引擎——目前前端模版里速度最快
+3. 配置 dev-server 调试模式，proxy 代理接口调试
+4. 配置 watch 模式，方便在生产环境中用 Charles 映射到本地文件
+5. optimization 配置提取 runtime 代码
+6. splitChunks 配置，提取 vendor 主要缓存包，提取 common 次要缓存包
+7. 支持多页、多入口，自动扫描，可无限层级嵌套文件夹
+8. MockJs 模拟 mock 数据
+9. eslint检查
 
 ## 运行命令
 
@@ -71,7 +72,7 @@ yarn upgrade [pkgName]@[version]    // 升级依赖包，指定版本
 1. 基础依赖包
 
    ```js
-   npm i babel-loader@8 @babel/core -D
+   yarn add babel-loader@8 @babel/core -D
    ```
 
    > 从 babel7 开始，所有的官方插件和主要模块，都放在了 @babel 的命名空间下。从而可以避免在 npm 仓库中 babel 相关名称被抢注的问题。
@@ -127,7 +128,7 @@ yarn upgrade [pkgName]@[version]    // 升级依赖包，指定版本
     1. 安装依赖包：
 
        ```js
-       npm i @babel/preset-env @babel/polyfill -D
+       yarn add @babel/preset-env @babel/polyfill  -D
        ```
 
     2. .babelrc 文件写上配置，@babel/polyfill 不用写入配置，会自动被调用。
@@ -166,18 +167,18 @@ yarn upgrade [pkgName]@[version]    // 升级依赖包，指定版本
     1. 安装依赖包
 
        ```js
-       npm i @babel/plugin-transform-runtime -D
+       yarn add @babel/plugin-transform-runtime -D
        ```
 
        1. 如果配置参数 corejs 未设置或为 false，需安装依赖`@babel/runtime`（这部分代码会被抽离并打包到应用 js 里，所以可以安装在 dependencies 里），仅对 es6 语法转译，而不对新 API 转译。
 
           ```js
-          npm i @babel/runtime
+          yarn add @babel/runtime
           ```
 
        2. 如果配置参数 corejs 设置为 2，需安装依赖`@babel/runtime-corejs2`（同上，推荐安装在 dependencies 里。），对语法、新 API 都转译。
           ```js
-          npm i @babel/runtime-corejs2
+          yarn add @babel/runtime-corejs2
           ```
        3. 推荐使用`corejs:2`，但是，检测不到`‘hello‘.includes(‘h‘)`这种句法，所以存在一定隐患，书写代码时需注意。
 
@@ -213,9 +214,9 @@ yarn upgrade [pkgName]@[version]    // 升级依赖包，指定版本
     3.  @babel/polyfill 和@babel/runtime-corejs2 都使用了 core-js(v2)这个库来进行 api 的处理。  
     core-js(v2)这个库有两个核心的文件夹，分别是 library 和 modules。@babel/runtime-corejs2 使用 library 这个文件夹，@babel/polyfill 使用 modules 这个文件夹。
 
-        1.  library 使用 helper 的方式，局部实现某个 api，不会污染全局变量； 2. modules 以污染全局变量的方法来实现 api；
-
-        2.  library 和 modules 包含的文件基本相同，最大的不同是\_export.js 这个文件：
+        1.  library 使用 helper 的方式，局部实现某个 api，不会污染全局变量； 
+        2. modules 以污染全局变量的方法来实现 api；
+        3.  library 和 modules 包含的文件基本相同，最大的不同是\_export.js 这个文件：
 
             ```js
             // core-js/modules/_exports.js
@@ -367,8 +368,8 @@ yarn upgrade [pkgName]@[version]    // 升级依赖包，指定版本
 
               需要安装的全部依赖：
               ```js
-              npm i babel-loader@8 @babel/core @babel/preset-env -D
-              npm i @babel/polyfill
+              yarn add babel-loader@8 @babel/core @babel/preset-env -D
+              yarn add @babel/polyfill
               ```
 
               .babelrc配置文件
@@ -392,8 +393,8 @@ yarn upgrade [pkgName]@[version]    // 升级依赖包，指定版本
 
               需要安装的全部依赖：
               ```js
-              npm i babel-loader@8 @babel/core @babel/plugin-transform-runtime -D
-              npm i @babel/runtime-corejs2
+              yarn add babel-loader@8 @babel/core @babel/plugin-transform-runtime -D
+              yarn add @babel/runtime-corejs2
               ```
 
               .babelrc配置文件
@@ -451,7 +452,7 @@ yarn upgrade [pkgName]@[version]    // 升级依赖包，指定版本
     1. 安装依赖
 
        ```js
-       npm i @babel/plugin-proposal-decorators @babel/plugin-proposal-class-properties -D
+       yarn add @babel/plugin-proposal-decorators @babel/plugin-proposal-class-properties -D
        ```
 
     2. .babelrc 增加配置
@@ -480,7 +481,7 @@ yarn upgrade [pkgName]@[version]    // 升级依赖包，指定版本
     1. 安装依赖
 
        ```js
-       npm i @babel/plugin-syntax-dynamic-import -D
+       yarn add @babel/plugin-syntax-dynamic-import -D
        ```
 
     2. .babelrc 文件增加配置
@@ -493,6 +494,9 @@ yarn upgrade [pkgName]@[version]    // 升级依赖包，指定版本
        }
        ```
 
+11. core-js@3的更新，带来了新的变化，**@babel/polyfill无法提供core-js@2向core-js@3过渡，所以现在有新的方案去替代@babel/polyfill！**
+    1. 传送门：https://github.com/zloirock/core-js/blob/master/docs/2019-03-19-core-js-3-babel-and-a-look-into-the-future.md
+    2. @babel/preset-env也因core-js@3的原因，需要配置corejs参数，否则webpack运行时会报warning；
 
 ## 自动扫描 webpack 入口文件和 html 模版文件
 
@@ -501,7 +505,7 @@ yarn upgrade [pkgName]@[version]    // 升级依赖包，指定版本
   a. 安装 node 模块 glob ( 扫描文件就靠它了 ).
 
   ```bash
-  npm i glob -D
+  yarn add glob -D
   ```
 
   ```js
@@ -646,7 +650,7 @@ yarn upgrade [pkgName]@[version]    // 升级依赖包，指定版本
 1.  需要安装的依赖包
 
     ```bash
-    npm i less less-loader css-loader style-loader postcss-loader postcss-preset-env postcss-import cssnano postcss-safe-parser mini-css-extract-plugin -D
+    yarn add less less-loader css-loader style-loader postcss-loader postcss-preset-env postcss-import cssnano postcss-safe-parser mini-css-extract-plugin -D
     ```
 
     > 过去版本的autoprefixer、postcss-cssnext已内置在postcss-preset-env内。
@@ -819,7 +823,7 @@ _script-loader 把我们指定的模块 JS 文件转成纯字符串, exports-loa
 1.  安装依赖包
 
     ```bash
-    npm i script-loader exports-loader -D
+    yarn add script-loader exports-loader -D
     ```
 
 2.  配置
@@ -838,7 +842,7 @@ _script-loader 把我们指定的模块 JS 文件转成纯字符串, exports-loa
     a) [打包出一个包含更多需要模块的 zepto 包 ](https://www.cnblogs.com/czf-zone/p/4433657.html)  
      从 github clone 官方的包下来, 找到名为 make 的文件 ( 在 package.json 同级目录 ), 用记事本打开, 找到这一行 `modules = (env['MODULES'] || 'zepto event ajax form ie').split(' ')`, 应该是在第 41 行, 手动修改加入你想要引入的模块, 然后保存;
 
-    b) 在 make 文件同级目录 => 右键打开终端或 git bash => 敲 npm i 安装 zepto 源码需要的 node 包 ( 这里你应当是已经已安装过 nodejs 了, 如果没有, 安装好后再做这一步 ), 等待安装结束.
+    b) 在 make 文件同级目录 => 右键打开终端或 git bash => 敲 yarn add 安装 zepto 源码需要的 node 包 ( 这里你应当是已经已安装过 nodejs 了, 如果没有, 安装好后再做这一步 ), 等待安装结束.
 
     c) 在刚才打开的 终端/git bash 敲命令 npm run-script dist, 如果没有报错, 你应该在这个打开的文件夹里可以看到生成了一个文件夹 dist, 打开它, 包含新模块的 zepto 包就在这了, Over !
 
@@ -960,7 +964,7 @@ module.exports = {
 
 - 安装依赖包
   ```bash
-  npm i webpack-dev-server -D
+  yarn add webpack-dev-server -D
   ```
 - 常用配置
   ```js
@@ -1026,7 +1030,7 @@ module.exports = {
 1. 安装依赖
 
    ```bash
-   npm i http-server -D
+   yarn add http-server -D
    ```
 
 2. package.json 配置命令
@@ -1048,7 +1052,7 @@ module.exports = {
 1. 安装依赖
 
     ```bash
-    npm i eslint eslint-loader eslint-friendly-formatter babel-eslint -D
+    yarn add eslint eslint-loader eslint-friendly-formatter babel-eslint -D
     ```
 
     > eslint-friendly-formatter，指定终端中输出eslint提示信息的格式。  

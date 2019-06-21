@@ -1,3 +1,4 @@
+import moment from 'moment'
 import './style'
 import tpl from './template'
 

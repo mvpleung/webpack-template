@@ -18,12 +18,6 @@ module.exports = merge(base, {
     filename: 'static/js/[name].[chunkhash:7].js',
     chunkFilename: 'static/js/[name].[chunkhash:7].js',
   },
-  stats: {
-    chunks: false,
-    children: false,
-    modules: false,
-    entrypoints: false,
-  },
   plugins: [
     ...utils.getHtmlWebpackPluginsProd(),
     new CleanPlugin([path.resolve(__dirname, '..', 'dist/*')], {
