@@ -3,7 +3,7 @@
  * @Author: Eleven 
  * @Date: 2019-01-05 00:55:26 
  * @Last Modified by: Eleven
- * @Last Modified time: 2019-06-21 15:59:42
+ * @Last Modified time: 2019-06-22 17:04:51
  */
 
 import '@babel/polyfill'
@@ -16,9 +16,12 @@ import index from 'src/pages/page-a'
 isMock && require('src/mock')
 
 class ViewIndex {
+  constructor() {
+    this.init()
+  }
+
   init() {
     index.init()
-    // this.testMock()
   }
   
   testMock() {
@@ -28,4 +31,4 @@ class ViewIndex {
   }
 }
 
-new ViewIndex().init()
+export default new ViewIndex()

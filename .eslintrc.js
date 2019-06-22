@@ -1,5 +1,5 @@
 module.exports = {
-  "root": true, 
+  "root": true,
   "parserOptions": {
     "sourceType": "module",
   },
@@ -19,6 +19,7 @@ module.exports = {
   },
   "extends": "eslint:recommended", // 使用官方推荐规则，使用其他规则，需要先install，再指定。
   "rules": {
+    "no-unused-vars": 1,
     "no-console": 0,
   }
 }

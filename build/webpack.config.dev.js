@@ -29,6 +29,7 @@ module.exports = merge(base, {
       children: false,
       modules: false,
       entrypoints: false,
+      performance: false,
     },
     historyApiFallback: {
       disableDotRule: true,
