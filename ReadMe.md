@@ -380,7 +380,7 @@ yarn upgrade [pkgName]@[version]    // 升级依赖包，指定版本
           5. 从上面这个例子可以看出，对于Promise这个api，@babel/polyfill引用了core-js/modules中的es6.promise.js文件，因为是对全局变量进行处理，所以赋值语句不用做处理；@babel/runtime-corejs2会生成一个局部变量_promise，然后把Promise都替换成_promise，这样就不会污染全局变量了。
 
       4. **综合上面的分析，得出结论：**
-          1. 如果是自己的应用 => `@babel/preset-env + @babel/polyfill`
+          1. 如果是自己的应用 => `@babel/preset-env + @babel/polyfill`，根据useBuiltIns参数确定如何使用@babel/polyfill。
               1. `useBuiltIns`设置为`entry`比较不错。
               在js代码第一行`import '@babel/polyfill'`，或在webpack的入口entry中写入模块`@babel/polyfill`，会将browserslist环境不支持的所有垫片都导入；
               能够覆盖到`‘hello‘.includes(‘h‘)`这种句法，足够安全且代码体积不是特别大，推荐使用！
