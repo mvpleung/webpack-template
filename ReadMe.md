@@ -530,8 +530,11 @@ yarn upgrade [pkgName]@[version]    // 升级依赖包，指定版本
        }
        ```
 
-12. 以上是cores-js@2的配置，而core-js@3的更新，带来了新的变化，**@babel/polyfill无法提供core-js@2向core-js@3过渡，所以现在有新的方案去替代@babel/polyfill！**
-    1. 传送门，作者的官方阐述：https://github.com/zloirock/core-js/blob/master/docs/2019-03-19-core-js-3-babel-and-a-look-into-the-future.md
+12. 以上是cores-js@2的配置，而core-js@3的更新，带来了新的变化，**@babel/polyfill无法提供core-js@2向core-js@3过渡，所以现在有新的方案去替代@babel/polyfill，**（需要Babel版本升级到7.4.0及以上）。
+    1. 相关文档：
+       1. [作者的官方阐述](https://github.com/zloirock/core-js/blob/master/docs/2019-03-19-core-js-3-babel-and-a-look-into-the-future.md)
+       2. [Babel 7.4.0版本的更新内容，及官方的升级建议](https://babeljs.io/blog/2019/03/19/7.4.0)
+       3. [core-js@2向core-js@3升级，官方的Pull request](https://github.com/babel/babel/pull/7646)
 
     2. @babel/preset-env也因core-js@3的原因，需要配置corejs参数，否则webpack运行时会报warning；
 
