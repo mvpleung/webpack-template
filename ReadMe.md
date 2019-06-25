@@ -5,14 +5,15 @@
 ## 已添加功能
 
 1. 普通 H5 开发中,引入组件化
-2. 引入 art-template 前端渲染引擎——目前前端模版里速度最快
+2. 引入 art-template 前端渲染引擎 —— 目前前端模版里速度最快
 3. 配置 dev-server 调试模式，proxy 代理接口调试
 4. 配置 watch 模式，方便在生产环境中用 Charles 映射到本地文件
 5. optimization 配置提取 runtime 代码
 6. splitChunks 配置，提取 vendor 主要缓存包，提取 common 次要缓存包
-7. 支持多页、多入口，自动扫描，可无限层级嵌套文件夹
+7. 支持多页、多入口，自动扫描，可无限层级文件夹嵌套
 8. MockJs 模拟 mock 数据
 9. eslint检查
+10. 常用性能优化手段
 
 ## 运行命令
 
@@ -530,7 +531,7 @@ yarn upgrade [pkgName]@[version]    // 升级依赖包，指定版本
        }
        ```
 
-12. 以上是cores-js@2的配置，而core-js@3的更新，带来了新的变化，**@babel/polyfill无法提供core-js@2向core-js@3过渡，所以现在有新的方案去替代@babel/polyfill，**（需要Babel版本升级到7.4.0及以上）。
+12. 以上是core-js@2的配置，而core-js@3的更新，带来了新的变化，**@babel/polyfill无法提供core-js@2向core-js@3过渡，所以现在有新的方案去替代@babel/polyfill，**（需要Babel版本升级到7.4.0及以上）。
     1. 相关文档：
        1. [作者的官方阐述](https://github.com/zloirock/core-js/blob/master/docs/2019-03-19-core-js-3-babel-and-a-look-into-the-future.md)
        2. [Babel 7.4.0版本的更新内容，及官方的升级建议](https://babeljs.io/blog/2019/03/19/7.4.0)
@@ -572,7 +573,7 @@ yarn upgrade [pkgName]@[version]    // 升级依赖包，指定版本
            import "regenerator-runtime/runtime"
            ```
 
-    4. 而使用@babel/transform-runtime，也随着core-js@3有更新：
+    4. 而使@babel/plugin-transform-runtime，也随着core-js@3有更新：
        1. 安装依赖
           ```sh
           yarn add babel-loader@8 @babel/core @babel/preset-env @babel/plugin-transform-runtime -D
