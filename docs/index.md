@@ -1,3 +1,5 @@
+> WEB前端工程化 —— webpack搭建详解，随着webpack、babel、postcss等的版本升级，会持续更新......
+
 ## [Babel 7](https://babeljs.io/docs/en/)
 
 > 这是最新的 babel 配置，和网上的诸多教程可能有不同，可以自行测试验证有效性。
