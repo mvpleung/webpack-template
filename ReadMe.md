@@ -1,11 +1,11 @@
-# [webpack-template](https://webpack.eleven.net.cn)
-
 > 为懒人准备的 webpack 模版，可以直接用于生产。这里单纯只做webpack构建、打包、代码的组织等，关于React、Vue等配置并不复杂，可以在需要时添加。随着webpack版本的迭代，会将最新的特性加入，持续更新......
+
+## 文档地址：https://webpack.eleven.net.cn
 
 ## 版本
 
 ```js
-webpack 4.28 + babel 7.4.5
+webpack 4 + babel 7
 ```
 
 ## 已添加功能
