@@ -930,7 +930,7 @@ _script-loader 把我们指定的模块 JS 文件转成纯字符串, exports-loa
 ## 打包时排除应用中的某些模块
 
 > 某些时候，应用中依赖了某些模块，但希望将这些模块独立通过CDN引入，以减小包的体积，所以不必将这些模块打包，例如：jQuery。  
-特定场景下，这个功能会有用武之地！
+> 特定场景下，这个功能会有用武之地！
 
 ```js
 module.exports = {
@@ -951,7 +951,8 @@ module.exports = {
 > 通常打包js库会选择rollup，但是webpack同样可以做到，如果是需要对css、图片等有较多应用的js库，webpack会有更多优势。
 
 1. 配置
-    > [umd](https://github.com/umdjs/umd) —— 打包出所有环境都可以使用的包
+    > [umd](https://github.com/umdjs/umd) —— 打包出所有环境都可以使用的包  
+
 
     ```js
     module.exports = {
@@ -998,40 +999,43 @@ module.exports = {
     global.sdk.a
     ```
 
-4. 相关文档：
-
-    - [怎样打包一个library？](https://webpack.docschina.org/guides/author-libraries)
-    - [一次打包暴露多个库](https://github.com/webpack/webpack/tree/master/examples/multi-part-library)
+4. 参考文档：  
+    1. [怎样打包一个library？](https://webpack.docschina.org/guides/author-libraries)
+    2. [一次打包暴露多个库](https://github.com/webpack/webpack/tree/master/examples/multi-part-library)
 
 
 ## 配置开发服务器，[webpack-dev-server](https://www.webpackjs.com/configuration/dev-server/)
 
-- 安装依赖包
-  ```bash
-  yarn add webpack-dev-server -D
-  ```
-- 常用配置
-  ```js
-  devServer: {
-    contentBase: path.join(__dirname, 'static'),    // # 告诉服务器从哪里提供内容(默认当前工作目录)
-    host: 'localhost',  // # 默认localhost,想外部可访问用'0.0.0.0'
-    openPage: 'views/index.html',  // # 指定默认启动浏览器时打开的页面
-    index: 'views/index.html',  // # 指定首页位置
-    port: 9090, // # 默认8080
-    inline: true, // # 可以监控js变化
-    hot: true, // # 热启动
-    open: true, // # 自动打开浏览器
-    compress: true,  // # 一切服务都启用gzip 压缩
-    watchContentBase: true  // # contentBase下文件变动将reload页面(默认false)
-  }
-  ```
-- 运行命令 ( package.json 配置命令 => npm run dev )
+1. 安装依赖包  
 
-  ```bash
-  "dev": "cross-env BUILD_ENV=development webpack-dev-server --mode development --colors --profile"
-  ```
+    ```bash
+    yarn add webpack-dev-server -D
+    ```
 
-  _根据目录结构的不同, contentBase、openPage 参数要配置合适的值, 否则运行时应该不会立刻访问到你的首页; 同时要注意你的 publicPath, 静态资源打包后生成的路径是一个需要思考的点, 这与你的目录结构有关._
+2. 常用配置  
+
+    ```js
+    devServer: {
+      contentBase: path.join(__dirname, 'static'),    // # 告诉服务器从哪里提供内容(默认当前工作目录)
+      host: 'localhost',  // # 默认localhost,想外部可访问用'0.0.0.0'
+      openPage: 'views/index.html',  // # 指定默认启动浏览器时打开的页面
+      index: 'views/index.html',  // # 指定首页位置
+      port: 9090, // # 默认8080
+      inline: true, // # 可以监控js变化
+      hot: true, // # 热启动
+      open: true, // # 自动打开浏览器
+      compress: true,  // # 一切服务都启用gzip 压缩
+      watchContentBase: true  // # contentBase下文件变动将reload页面(默认false)
+    }
+    ```
+
+3. 运行命令 ( package.json 配置命令 => npm run dev )
+
+    ```bash
+    "dev": "cross-env BUILD_ENV=development webpack-dev-server --mode development --colors --profile"
+    ```
+
+    _根据目录结构的不同, contentBase、openPage 参数要配置合适的值, 否则运行时应该不会立刻访问到你的首页; 同时要注意你的 publicPath, 静态资源打包后生成的路径是一个需要思考的点, 这与你的目录结构有关._
 
 ## 配置 node express 服务，访问打包后资源
 
@@ -1097,7 +1101,7 @@ module.exports = {
 
     ```bash
     yarn add eslint eslint-loader eslint-friendly-formatter babel-eslint -D
-    ```
+    ```  
 
     > eslint-friendly-formatter，指定终端中输出eslint提示信息的格式。  
 
@@ -1139,13 +1143,12 @@ module.exports = {
         },
         "extends": "eslint:recommended", // 使用官方推荐规则，使用其他规则，需要先install，再指定。
         "rules": {
-            
+            // 定义检查规则
         }
     }
     ```
 
-    **配置项含义：**
-    
+    **配置项含义：**  
     - root 限定配置文件的使用范围
     - parser 指定eslint的解析器
     - parserOptions 设置解析器选项
@@ -1157,23 +1160,25 @@ module.exports = {
 
 4. [ESLint官方的rules列表](https://cn.eslint.org/docs/rules/)
 
-5. 如果有需要跳过检查的文件/文件夹，新建`.eslintignore`文件
+5. 如果有需要跳过检查的文件/文件夹，有两种途径可以实现：
 
-    ```md
-    /node_modules
-    ```
+    1. 新建`.eslintignore`文件
+
+        ```md
+        /node_modules
+        ```
+
+    2. 直接在文件、代码里加标识，详细请看：[官方文档的忽略规则](https://cn.eslint.org/docs/user-guide/configuring#disabling-rules-with-inline-comments)
 
 6. 参考文档
-
     1. [webpack引入eslint详解](https://www.jianshu.com/p/33597b663481)
     2. [babel-eslint](https://www.jianshu.com/p/72169a86990f)
 
 ## 常见性能优化
 
 1. 使用happypack来优化，多进程运行编译，参考文档：
-
-    - [webpack 优化之 HappyPack 实战](https://www.jianshu.com/p/b9bf995f3712)
-    - [happypack 原理解析](https://yq.aliyun.com/articles/67269)
+    1. [webpack 优化之 HappyPack 实战](https://www.jianshu.com/p/b9bf995f3712)
+    2. [happypack 原理解析](https://yq.aliyun.com/articles/67269)
 
 2. 使用[cache-loader](https://www.webpackjs.com/loaders/cache-loader/)缓存编译结果
 
