@@ -24,8 +24,8 @@ webpack 4 + babel 7
 
 ## 运行命令
 
-> 推荐使用yarn进行包管理！  
-
+> 推荐使用yarn进行包管理！
+  
 ```bash
 yarn / yarn install    # 安装全部依赖包
 
