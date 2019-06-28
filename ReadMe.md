@@ -98,6 +98,7 @@ webpack-template
      ├─ .eslintignore           // eslint忽略配置
      ├─ .eslintrc.js            // eslint配置
      ├─ .gitignore
+     ├─ book.json               // gitbook配置文件
      ├─ package.json
      ├─ postcss.config.js       // postcss配置
      ├─ README.md
