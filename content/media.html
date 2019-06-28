@@ -1,0 +1,430 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>图片、字体、多媒体等资源的处理 · GitBook</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        
+        
+        
+    
+    <link rel="stylesheet" href="../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="inject.html" />
+    
+    
+    <link rel="prev" href="style.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    前言
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="babel.html">
+            
+                <a href="babel.html">
+            
+                    
+                    Babel 7
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="entry.html">
+            
+                <a href="entry.html">
+            
+                    
+                    自动扫描入口、HTML模版
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" data-path="style.html">
+            
+                <a href="style.html">
+            
+                    
+                    CSS样式处理
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.5" data-path="media.html">
+            
+                <a href="media.html">
+            
+                    
+                    图片、字体、多媒体等资源的处理
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6" data-path="inject.html">
+            
+                <a href="inject.html">
+            
+                    
+                    自动将打包js引入生成的html文件
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7" data-path="module.html">
+            
+                <a href="module.html">
+            
+                    
+                    如何在 webpack 中引入未模块化的库
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8" data-path="prune.html">
+            
+                <a href="prune.html">
+            
+                    
+                    打包时排除应用中的某些模块
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9" data-path="library.html">
+            
+                <a href="library.html">
+            
+                    
+                    打包js库时的应用
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10" data-path="dev-server.html">
+            
+                <a href="dev-server.html">
+            
+                    
+                    配置开发服务器
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11" data-path="node-server.html">
+            
+                <a href="node-server.html">
+            
+                    
+                    配置 node express 服务
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12" data-path="http-server.html">
+            
+                <a href="http-server.html">
+            
+                    
+                    http-server的用途
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href=".." >图片、字体、多媒体等资源的处理</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <ol>
+<li>css &#x4E2D;&#x5F15;&#x5165;&#x7684;&#x56FE;&#x7247;( &#x6216;&#x5176;&#x5B83;&#x8D44;&#x6E90; ) ==&gt; url-loader<br>&#x914D;&#x7F6E;&#x4E86; url-loader &#x4EE5;&#x540E;&#xFF0C;webpack &#x7F16;&#x8BD1;&#x65F6;&#x53EF;&#x4EE5;&#x81EA;&#x52A8;&#x5C06;&#x5C0F;&#x56FE;&#x8F6C;&#x6210; base64 &#x7F16;&#x7801;&#xFF0C;&#x5C06;&#x5927;&#x56FE;&#x6539;&#x5199; url &#x5E76;&#x5C06;&#x6587;&#x4EF6;&#x751F;&#x6210;&#x5230;&#x6307;&#x5B9A;&#x76EE;&#x5F55;&#x4E0B; ( <em>file-loader &#x53EF;&#x4EE5;&#x5B8C;&#x6210;&#x6587;&#x4EF6;&#x751F;&#x6210;&#xFF0C;&#x4F46;&#x662F;&#x4E0D;&#x80FD;&#x5C0F;&#x56FE;&#x8F6C; base64&#xFF0C;&#x6240;&#x4EE5;&#x7EDF;&#x4E00;&#x7528; url-loader&#xFF0C;&#x4F46; url-loader &#x5728;&#x5904;&#x7406;&#x5927;&#x56FE;&#x7684;&#x65F6;&#x5019;&#x662F;&#x81EA;&#x52A8;&#x53BB;&#x8C03;&#x7528; file-loader&#xFF0C;&#x6240;&#x4EE5;&#x4F60;&#x4ECD;&#x7136;&#x9700;&#x8981; install file-loader</em> )&#x3002;<pre><code class="lang-js"><span class="hljs-comment">// &#x5904;&#x7406;&#x56FE;&#x7247;(file-loader&#x6765;&#x5904;&#x7406;&#x4E5F;&#x53EF;&#x4EE5;&#xFF0C;url-loader&#x66F4;&#x9002;&#x5408;&#x56FE;&#x7247;)</span>
+{
+  test: <span class="hljs-regexp">/\.(png|jpe?g|gif|svg)(\?.*)?$/</span>,
+  loader: <span class="hljs-string">&apos;url-loader&apos;</span>,
+  options: {
+    limit: <span class="hljs-number">10000</span>,
+    name: <span class="hljs-string">&apos;static/assets/images/[name].[hash:7].[ext]&apos;</span>,
+  },
+},
+<span class="hljs-comment">// &#x5904;&#x7406;&#x591A;&#x5A92;&#x4F53;&#x6587;&#x4EF6;</span>
+{
+  test: <span class="hljs-regexp">/\.(mp4|webm|ogg|mp3|wav|flac|aac)(\?.*)?$/</span>,
+  loader: <span class="hljs-string">&apos;url-loader&apos;</span>,
+  options: {
+    limit: <span class="hljs-number">10000</span>,
+    name: <span class="hljs-string">&apos;static/assets/media/[name].[hash:7].[ext]&apos;</span>,
+  },
+},
+<span class="hljs-comment">// &#x5904;&#x7406;&#x5B57;&#x4F53;&#x6587;&#x4EF6;</span>
+{
+    test: <span class="hljs-regexp">/\.(woff2?|eot|ttf|otf)(\?.*)?$/</span>,
+    loader: <span class="hljs-string">&apos;url-loader&apos;</span>,
+    options: {
+        limit: <span class="hljs-number">10000</span>,
+        name: <span class="hljs-string">&apos;static/assets/fonts/[name].[hash:7].[ext]&apos;</span>
+    }
+},
+</code></pre>
+</li>
+<li><p>html &#x9875;&#x9762;&#x4E2D;&#x5F15;&#x5165;&#x7684;&#x56FE;&#x7247;( &#x6216;&#x5176;&#x5B83;&#x8D44;&#x6E90; ) ==&gt; html-loader<br>css &#x4E2D;&#x7684;&#x56FE;&#x7247; url-loader &#x5904;&#x7406;&#x5373;&#x53EF;&#xFF0C;&#x800C; html &#x4E2D; img &#x6807;&#x7B7E;&#x5F15;&#x5165;&#x7684;&#x56FE;&#x7247;&#xFF0C;&#x4E0D;&#x505A;&#x5DE5;&#x4F5C;&#x7684;&#x60C5;&#x51B5;&#x4E0B;: &#x56FE;&#x7247;&#x5C06;&#x4E0D;&#x4F1A;&#x88AB;&#x5904;&#x7406;&#xFF0C;&#x8DEF;&#x5F84;&#x4E5F;&#x4E0D;&#x4F1A;&#x88AB;&#x6539;&#x5199;&#xFF0C;&#x5373;&#x6700;&#x7EC8;&#x7F16;&#x8BD1;&#x5B8C;&#x6210;&#x540E;&#x8FD9;&#x90E8;&#x5206;&#x56FE;&#x7247;&#x662F;&#x627E;&#x4E0D;&#x5230;&#x7684;&#xFF0C;&#x600E;&#x4E48;&#x529E;? <a href="https://www.webpackjs.com/loaders/html-loader/" target="_blank">html-loader</a> &#xFF01;( <em>&#x8FD9;&#x4E2A;&#x65F6;&#x5019;&#x4F60;&#x5E94;&#x8BE5;&#x662F; url-loader &#x548C; html-loader &#x90FD;&#x914D;&#x7F6E;&#x4E86;&#xFF0C;&#x6240;&#x4EE5; css &#x4E2D;&#x56FE;&#x7247;&#x3001;&#x9875;&#x9762;&#x5F15;&#x5165;&#x7684;&#x56FE;&#x7247;&#x3001;css &#x4E2D;&#x7684;&#x5B57;&#x4F53;&#x6587;&#x4EF6;&#x3001;&#x9875;&#x9762;&#x5F15;&#x5165;&#x7684;&#x591A;&#x5A92;&#x4F53;&#x6587;&#x4EF6;&#x7B49;&#xFF0C; &#x7EDF;&#x7EDF;&#x90FD;&#x4F1A;&#x5728;&#x7F16;&#x8BD1;&#x65F6;&#x88AB;&#x5904;&#x7406;</em> )&#x3002;</p>
+<pre><code class="lang-js"><span class="hljs-comment">// html&#x4E2D;&#x5F15;&#x7528;&#x7684;&#x9759;&#x6001;&#x8D44;&#x6E90;&#x5728;&#x8FD9;&#x91CC;&#x5904;&#x7406;,&#x9ED8;&#x8BA4;&#x914D;&#x7F6E;&#x53C2;&#x6570;attrs=img:src,&#x5904;&#x7406;&#x56FE;&#x7247;&#x7684;src&#x5F15;&#x7528;&#x7684;&#x8D44;&#x6E90;.</span>
+{
+    test: <span class="hljs-regexp">/\.html$/</span>,
+    loader: <span class="hljs-string">&apos;html-loader&apos;</span>,
+    options: {
+        <span class="hljs-comment">// &#x9664;&#x4E86;img&#x7684;src,&#x8FD8;&#x53EF;&#x4EE5;&#x7EE7;&#x7EED;&#x914D;&#x7F6E;&#x5904;&#x7406;&#x66F4;&#x591A;html&#x5F15;&#x5165;&#x7684;&#x8D44;&#x6E90;(&#x4E0D;&#x80FD;&#x5728;&#x9875;&#x9762;&#x76F4;&#x63A5;&#x5199;&#x8DEF;&#x5F84;,&#x53C8;&#x9700;&#x8981;webpack&#x5904;&#x7406;&#x600E;&#x4E48;&#x529E;?&#x5148;require&#x518D;js&#x5199;&#x5165;).</span>
+        attrs: [<span class="hljs-string">&apos;img:src&apos;</span>, <span class="hljs-string">&apos;img:data-src&apos;</span>, <span class="hljs-string">&apos;audio:src&apos;</span>],
+        minimize: <span class="hljs-literal">false</span>,
+        removeComments: <span class="hljs-literal">true</span>,
+        collapseWhitespace: <span class="hljs-literal">false</span>
+    }
+}
+</code></pre>
+</li>
+<li><p>&#x6709;&#x7684;&#x65F6;&#x5019;, &#x56FE;&#x7247;&#x53EF;&#x80FD;&#x65E2;&#x4E0D;&#x5728; css &#x4E2D;, &#x4E5F;&#x4E0D;&#x5728; html &#x4E2D;&#x5F15;&#x5165;, &#x600E;&#x4E48;&#x529E;?</p>
+<pre><code class="lang-js"><span class="hljs-keyword">import</span> img <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;xxx/xxx/123.jpg&apos;</span> &#x6216; <span class="hljs-keyword">let</span> img = <span class="hljs-built_in">require</span>(<span class="hljs-string">&apos;xxx/xxx/123.jpg&apos;</span>)
+</code></pre>
+<p>js &#x4E2D;&#x5F15;&#x7528; img&#xFF0C;webpack &#x5C06;&#x4F1A;&#x81EA;&#x52A8;&#x641E;&#x5B9A;&#x5B83;&#x3002;</p>
+</li>
+<li><p>&#x56FE;&#x7247;&#x7B49;&#x8D44;&#x6E90;&#x7684;&#x8BBF;&#x95EE;&#x8DEF;&#x5F84;&#x95EE;&#x9898;&#xFF1A;<br>&#x7ECF;&#x8FC7;&#x4E0A;&#x9762;&#x7684;&#x5904;&#x7406;&#xFF0C;&#x9759;&#x6001;&#x8D44;&#x6E90;&#x5904;&#x7406;&#x57FA;&#x672C;&#x6CA1;&#x6709;&#x95EE;&#x9898;&#x4E86;&#xFF0C;webpack &#x7F16;&#x8BD1;&#x65F6;&#x5C06;&#x4F1A;&#x5C06;&#x6587;&#x4EF6;&#x6253;&#x5305;&#x5230;&#x4F60;&#x6307;&#x5B9A;&#x7684;&#x751F;&#x6210;&#x76EE;&#x5F55;&#xFF0C;&#x4F46;&#x662F;&#x4E0D;&#x540C;&#x4F4D;&#x7F6E;&#x7684;&#x56FE;&#x7247;&#x8DEF;&#x5F84;&#x6539;&#x5199;&#x4F1A;&#x662F;&#x4E00;&#x4E2A;&#x95EE;&#x9898;.<br><em>&#x5168;&#x90E8;&#x901A;&#x8FC7;&#x7EDD;&#x5BF9;&#x8DEF;&#x5F84;&#x8BBF;&#x95EE;&#x5373;&#x53EF;&#xFF0C;&#x5728; output &#x4E0B;&#x7684; publicPath &#x586B;&#x4E0A;&#x9002;&#x5F53;&#x7684; server &#x7AEF;&#x5934;&#xFF0C;&#x6765;&#x4FDD;&#x8BC1;&#x6240;&#x6709;&#x9759;&#x6001;&#x8D44;&#x6E90;&#x6587;&#x4EF6;&#x8DEF;&#x5F84;&#x80FD;&#x88AB;&#x8BBF;&#x95EE;&#x5230;&#xFF0C;&#x5177;&#x4F53;&#x8981;&#x6839;&#x636E;&#x670D;&#x52A1;&#x5668;&#x90E8;&#x7F72;&#x7684;&#x76EE;&#x5F55;&#x7ED3;&#x6784;&#x6765;&#x505A;&#x4FEE;&#x6539;&#x3002;</em></p>
+<pre><code class="lang-js">output: {
+ path: path.resolve(__dirname, <span class="hljs-string">&apos;dist&apos;</span>), <span class="hljs-comment">// &#x8F93;&#x51FA;&#x76EE;&#x5F55;&#x7684;&#x914D;&#x7F6E;&#xFF0C;&#x6A21;&#x677F;&#x3001;&#x6837;&#x5F0F;&#x3001;&#x811A;&#x672C;&#x3001;&#x56FE;&#x7247;&#x7B49;&#x8D44;&#x6E90;&#x7684;&#x8DEF;&#x5F84;&#x914D;&#x7F6E;&#x90FD;&#x76F8;&#x5BF9;&#x4E8E;&#x5B83;</span>
+ publicPath: <span class="hljs-string">&apos;/&apos;</span>, <span class="hljs-comment">// &#x6A21;&#x677F;&#x3001;&#x6837;&#x5F0F;&#x3001;&#x811A;&#x672C;&#x3001;&#x56FE;&#x7247;&#x7B49;&#x8D44;&#x6E90;&#x5BF9;&#x5E94;&#x7684;server&#x4E0A;&#x7684;&#x8DEF;&#x5F84;</span>
+}
+</code></pre>
+</li>
+</ol>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="style.html" class="navigation navigation-prev " aria-label="Previous page: CSS样式处理">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="inject.html" class="navigation navigation-next " aria-label="Next page: 自动将打包js引入生成的html文件">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"图片、字体、多媒体等资源的处理","level":"1.5","depth":1,"next":{"title":"自动将打包js引入生成的html文件","level":"1.6","depth":1,"path":"content/inject.md","ref":"./content/inject.md","articles":[]},"previous":{"title":"CSS样式处理","level":"1.4","depth":1,"path":"content/style.md","ref":"./content/style.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"content/media.md","mtime":"2019-06-28T13:15:46.760Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-06-28T13:26:01.817Z"},"basePath":"..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../gitbook/gitbook.js"></script>
+    <script src="../gitbook/theme.js"></script>
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+
