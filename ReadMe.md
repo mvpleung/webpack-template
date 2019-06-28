@@ -26,23 +26,28 @@ webpack 4 + babel 7
 
 > 推荐使用yarn进行包管理！
 
-```bash
-yarn / yarn install    # 安装全部依赖包
+```js
+yarn / yarn install    // 安装全部依赖包
 
-yarn dev               # 启动本地调试
-yarn dev-mock          # 启动本地调试，MockJs模拟接口数据
-yarn dev:page-a        # 启动本地调试，仅page-a页面
-yarn dev:page-b        # 启动本地调试，仅page-b页面
+yarn dev               // 启动本地调试
+yarn dev-mock          // 启动本地调试，MockJs模拟接口数据
+yarn dev:page-a        // 启动本地调试，仅page-a页面
+yarn dev:page-b        // 启动本地调试，仅page-b页面
 
-yarn build-dev         # 打包代码，publicPath以/打头（可通过本地起服务访问build后的代码）
-yarn http-server       # 启动http-server服务器，可用来访问yarn build-dev打包的代码
-yarn build-test        # 打包测试环境代码
-yarn build             # 打包生产环境代码
+yarn build-dev         // 打包代码，publicPath以/打头（可通过本地起服务访问build后的代码）
+yarn http-server       // 启动http-server服务器，可用来访问yarn build-dev打包的代码
+yarn build-test        // 打包测试环境代码
+yarn build             // 打包生产环境代码
 
-# watch模式，移除了js、css的压缩，节省时间（watch时需要build压缩版代码，可自行修改）。
-yarn watch-dev         # 启动watch模式，本地开发环境（通常用不上）
-yarn watch-test        # 启动watch模式，测试环境
-yarn watch             # 启动watch模式，生产环境
+// watch模式，移除了js、css的压缩，节省时间（watch时需要build压缩版代码，可自行修改）。
+yarn watch-dev         // 启动watch模式，本地开发环境（通常用不上）
+yarn watch-test        // 启动watch模式，测试环境
+yarn watch             // 启动watch模式，生产环境
+
+// gitbook文档命令
+yarn doc-dev           // 本地调试gitbook
+yarn doc-build         // 编译gitbook
+yarn doc-publish       // 打包&发布文档
 ```
 
 ## Yarn和NPM的选择？
@@ -76,11 +81,14 @@ yarn upgrade [pkgName]@[version]    // 升级依赖包，指定版本
 
 ```js
 webpack-template
+     ├─ _book                   // 文档（gitbook）编译结果
      ├─ build                   // webpack配置
      ├─ config                  // 构建（环境）相关配置
      ├─ dist                    // build输出目录
      ├─ dist-watch              // watch模式，build的输出目录
      ├─ docs                    // 文档
+     │   ├─ webpack                   // webpack配置详细文档
+     │
      ├─ node_modules
      ├─ src                     // 源代码目录
      │   ├─ assets                   // 静态资源、全局样式
