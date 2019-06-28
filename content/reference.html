@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>配置 node express 服务 · GitBook</title>
+        <title>参考文档 · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -57,10 +57,8 @@
     <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="http-server.html" />
     
-    
-    <link rel="prev" href="dev-server.html" />
+    <link rel="prev" href="optimize.html" />
     
 
     </head>
@@ -219,7 +217,7 @@
             
         </li>
     
-        <li class="chapter active" data-level="1.11" data-path="node-server.html">
+        <li class="chapter " data-level="1.11" data-path="node-server.html">
             
                 <a href="node-server.html">
             
@@ -271,7 +269,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.15" data-path="reference.html">
+        <li class="chapter active" data-level="1.15" data-path="reference.html">
             
                 <a href="reference.html">
             
@@ -314,7 +312,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >配置 node express 服务</a>
+        <a href=".." >参考文档</a>
     </h1>
 </div>
 
@@ -329,35 +327,18 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h2 id="&#x914D;&#x7F6E;-node-express-&#x670D;&#x52A1;&#xFF0C;&#x8BBF;&#x95EE;&#x6253;&#x5305;&#x540E;&#x8D44;&#x6E90;">&#x914D;&#x7F6E; node express &#x670D;&#x52A1;&#xFF0C;&#x8BBF;&#x95EE;&#x6253;&#x5305;&#x540E;&#x8D44;&#x6E90;</h2>
+                                <h2 id="&#x53C2;&#x8003;&#x6587;&#x6863;">&#x53C2;&#x8003;&#x6587;&#x6863;</h2>
 <ol>
-<li><p>&#x65B0;&#x5EFA; prod.server.js &#x6587;&#x4EF6;</p>
-<pre><code class="lang-js"><span class="hljs-keyword">let</span> express = <span class="hljs-built_in">require</span>(<span class="hljs-string">&apos;express&apos;</span>)
-<span class="hljs-keyword">let</span> compression = <span class="hljs-built_in">require</span>(<span class="hljs-string">&apos;compression&apos;</span>)
-
-<span class="hljs-keyword">let</span> app = express()
-<span class="hljs-keyword">let</span> port = <span class="hljs-number">9898</span>
-
-app.use(compression())
-app.use(express.static(<span class="hljs-string">&apos;./static/&apos;</span>))
-
-<span class="hljs-built_in">module</span>.exports = app.listen(port, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">err</span>) </span>{
-  <span class="hljs-keyword">if</span> (err) {
-    <span class="hljs-built_in">console</span>.log(err)
-    <span class="hljs-keyword">return</span>
-  }
-  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&apos;Listening at http://localhost:&apos;</span> + port + <span class="hljs-string">&apos;\n&apos;</span>)
-})
-</code></pre>
-</li>
-<li><p>&#x8FD0;&#x884C;&#x547D;&#x4EE4;</p>
-<pre><code class="lang-bash">node prod.server.js
-</code></pre>
-</li>
-<li><p>&#x8BBF;&#x95EE;&#x8DEF;&#x5F84;</p>
-<pre><code class="lang-bash">localhost:9898/views/
-</code></pre>
-</li>
+<li><a href="https://www.webpackjs.com/concepts/" target="_blank">webpack &#x4E2D;&#x6587;&#x6587;&#x6863;</a> &#x2014;&#x2014; &#x76F4;&#x63A5;&#x9605;&#x8BFB;&#x5B83;&#x975E;&#x5E38;&#x6709;&#x7528;&#xFF0C;&#x767E;&#x5EA6;&#x51FA;&#x6765;&#x7684;&#x6559;&#x7A0B; 99%&#x90FD;&#x662F;&#x7BA1;&#x4E2D;&#x7AA5;&#x8C79;&#xFF0C;&#x53EA;&#x89C1;&#x4E00;&#x6591;&#xFF0C;&#x4F1A;&#x5F62;&#x6210;&#x8BEF;&#x5BFC;&#xFF08;&#x4E0D;&#x8981;&#x95EE;&#x6211;&#x662F;&#x600E;&#x4E48;&#x77E5;&#x9053;&#x7684; -_-&#xFF09;&#x3002;</li>
+<li><a href="https://www.npmjs.com.cn/getting-started/what-is-npm/" target="_blank">NPM &#x4E2D;&#x6587;&#x6587;&#x6863;</a></li>
+<li><a href="https://segmentfault.com/a/1190000004511992" target="_blank">&#x57FA;&#x4E8E; webpack &#x7684;&#x524D;&#x7AEF;&#x5DE5;&#x7A0B;&#x5316;&#x5F00;&#x53D1;&#x4E4B;&#x591A;&#x9875;&#x7AD9;&#x70B9;&#x7BC7;&#xFF08;&#x4E00;&#xFF09;</a></li>
+<li><a href="https://segmentfault.com/a/1190000004516832" target="_blank">&#x57FA;&#x4E8E; webpack &#x7684;&#x524D;&#x7AEF;&#x5DE5;&#x7A0B;&#x5316;&#x5F00;&#x53D1;&#x4E4B;&#x591A;&#x9875;&#x7AD9;&#x70B9;&#x7BC7;&#xFF08;&#x4E8C;&#xFF09;</a></li>
+<li><a href="https://segmentfault.com/a/1190000009243487" target="_blank">webpack &#x5728;&#x524D;&#x7AEF;&#x9879;&#x76EE;&#x4E2D;&#x4F7F;&#x7528;&#x5FC3;&#x5F97;&#x4E00;&#x4E8C;</a></li>
+<li><a href="https://segmentfault.com/a/1190000016969897" target="_blank">webpack4&#x914D;&#x7F6E;&#x8BE6;&#x89E3;&#x4E4B;&#x9010;&#x884C;&#x5206;&#x6790;</a></li>
+<li><a href="https://juejin.im/post/5b56909a518825195f499806" target="_blank">&#x624B;&#x6478;&#x624B;&#xFF0C;&#x5E26;&#x4F60;&#x7528;&#x5408;&#x7406;&#x7684;&#x59FF;&#x52BF;&#x4F7F;&#x7528; webpack4&#xFF08;&#x4E0A;&#xFF09;</a></li>
+<li><a href="https://juejin.im/post/5b5d6d6f6fb9a04fea58aabc" target="_blank">&#x624B;&#x6478;&#x624B;&#xFF0C;&#x5E26;&#x4F60;&#x7528;&#x5408;&#x7406;&#x7684;&#x59FF;&#x52BF;&#x4F7F;&#x7528; webpack4&#xFF08;&#x4E0B;&#xFF09;</a></li>
+<li><a href="https://segmentfault.com/a/1190000018358854" target="_blank">&#x4E00;&#x6587;&#x8BFB;&#x61C2; babel7 &#x7684;&#x914D;&#x7F6E;&#x6587;&#x4EF6;&#x52A0;&#x8F7D;&#x903B;&#x8F91;</a></li>
+<li><a href="https://blog.csdn.net/weixin_34163741/article/details/88015827" target="_blank">babel polyfill &#x548C; runtime &#x6D45;&#x6790;</a></li>
 </ol>
 
                                 
@@ -386,14 +367,10 @@ app.use(express.static(<span class="hljs-string">&apos;./static/&apos;</span>))
 
             
                 
-                <a href="dev-server.html" class="navigation navigation-prev " aria-label="Previous page: 配置开发服务器">
+                <a href="optimize.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page: 常见性能优化">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
-                
-                <a href="http-server.html" class="navigation navigation-next " aria-label="Next page: http-server的用途">
-                    <i class="fa fa-angle-right"></i>
-                </a>
                 
             
         
@@ -402,7 +379,7 @@ app.use(express.static(<span class="hljs-string">&apos;./static/&apos;</span>))
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"配置 node express 服务","level":"1.11","depth":1,"next":{"title":"http-server的用途","level":"1.12","depth":1,"path":"content/http-server.md","ref":"./content/http-server.md","articles":[]},"previous":{"title":"配置开发服务器","level":"1.10","depth":1,"path":"content/dev-server.md","ref":"./content/dev-server.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"content/node-server.md","mtime":"2019-06-28T13:24:53.407Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-06-28T13:30:30.573Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"参考文档","level":"1.15","depth":1,"previous":{"title":"常见性能优化","level":"1.14","depth":1,"path":"content/optimize.md","ref":"./content/optimize.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"content/reference.md","mtime":"2019-06-28T13:29:30.173Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-06-28T13:30:30.573Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

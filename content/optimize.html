@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>配置 node express 服务 · GitBook</title>
+        <title>常见性能优化 · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -57,10 +57,10 @@
     <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="http-server.html" />
+    <link rel="next" href="reference.html" />
     
     
-    <link rel="prev" href="dev-server.html" />
+    <link rel="prev" href="eslint.html" />
     
 
     </head>
@@ -219,7 +219,7 @@
             
         </li>
     
-        <li class="chapter active" data-level="1.11" data-path="node-server.html">
+        <li class="chapter " data-level="1.11" data-path="node-server.html">
             
                 <a href="node-server.html">
             
@@ -258,7 +258,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.14" data-path="optimize.html">
+        <li class="chapter active" data-level="1.14" data-path="optimize.html">
             
                 <a href="optimize.html">
             
@@ -314,7 +314,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >配置 node express 服务</a>
+        <a href=".." >常见性能优化</a>
     </h1>
 </div>
 
@@ -329,34 +329,17 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h2 id="&#x914D;&#x7F6E;-node-express-&#x670D;&#x52A1;&#xFF0C;&#x8BBF;&#x95EE;&#x6253;&#x5305;&#x540E;&#x8D44;&#x6E90;">&#x914D;&#x7F6E; node express &#x670D;&#x52A1;&#xFF0C;&#x8BBF;&#x95EE;&#x6253;&#x5305;&#x540E;&#x8D44;&#x6E90;</h2>
+                                <h2 id="&#x5E38;&#x89C1;&#x6027;&#x80FD;&#x4F18;&#x5316;">&#x5E38;&#x89C1;&#x6027;&#x80FD;&#x4F18;&#x5316;</h2>
 <ol>
-<li><p>&#x65B0;&#x5EFA; prod.server.js &#x6587;&#x4EF6;</p>
-<pre><code class="lang-js"><span class="hljs-keyword">let</span> express = <span class="hljs-built_in">require</span>(<span class="hljs-string">&apos;express&apos;</span>)
-<span class="hljs-keyword">let</span> compression = <span class="hljs-built_in">require</span>(<span class="hljs-string">&apos;compression&apos;</span>)
-
-<span class="hljs-keyword">let</span> app = express()
-<span class="hljs-keyword">let</span> port = <span class="hljs-number">9898</span>
-
-app.use(compression())
-app.use(express.static(<span class="hljs-string">&apos;./static/&apos;</span>))
-
-<span class="hljs-built_in">module</span>.exports = app.listen(port, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">err</span>) </span>{
-  <span class="hljs-keyword">if</span> (err) {
-    <span class="hljs-built_in">console</span>.log(err)
-    <span class="hljs-keyword">return</span>
-  }
-  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&apos;Listening at http://localhost:&apos;</span> + port + <span class="hljs-string">&apos;\n&apos;</span>)
-})
-</code></pre>
+<li><p>&#x4F7F;&#x7528;happypack&#x6765;&#x4F18;&#x5316;&#xFF0C;&#x591A;&#x8FDB;&#x7A0B;&#x8FD0;&#x884C;&#x7F16;&#x8BD1;&#xFF0C;&#x53C2;&#x8003;&#x6587;&#x6863;&#xFF1A;</p>
+<ol>
+<li><a href="https://www.jianshu.com/p/b9bf995f3712" target="_blank">webpack &#x4F18;&#x5316;&#x4E4B; HappyPack &#x5B9E;&#x6218;</a></li>
+<li><a href="https://yq.aliyun.com/articles/67269" target="_blank">happypack &#x539F;&#x7406;&#x89E3;&#x6790;</a></li>
+</ol>
 </li>
-<li><p>&#x8FD0;&#x884C;&#x547D;&#x4EE4;</p>
-<pre><code class="lang-bash">node prod.server.js
-</code></pre>
+<li><p>&#x4F7F;&#x7528;<a href="https://www.webpackjs.com/loaders/cache-loader/" target="_blank">cache-loader</a>&#x7F13;&#x5B58;&#x7F16;&#x8BD1;&#x7ED3;&#x679C;</p>
 </li>
-<li><p>&#x8BBF;&#x95EE;&#x8DEF;&#x5F84;</p>
-<pre><code class="lang-bash">localhost:9898/views/
-</code></pre>
+<li><p><a href="https://segmentfault.com/a/1190000015489489" target="_blank">DllPlugin</a>&#x62C6;&#x5206;&#x57FA;&#x7840;&#x5305;</p>
 </li>
 </ol>
 
@@ -386,12 +369,12 @@ app.use(express.static(<span class="hljs-string">&apos;./static/&apos;</span>))
 
             
                 
-                <a href="dev-server.html" class="navigation navigation-prev " aria-label="Previous page: 配置开发服务器">
+                <a href="eslint.html" class="navigation navigation-prev " aria-label="Previous page: 集成eslint">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
                 
-                <a href="http-server.html" class="navigation navigation-next " aria-label="Next page: http-server的用途">
+                <a href="reference.html" class="navigation navigation-next " aria-label="Next page: 参考文档">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -402,7 +385,7 @@ app.use(express.static(<span class="hljs-string">&apos;./static/&apos;</span>))
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"配置 node express 服务","level":"1.11","depth":1,"next":{"title":"http-server的用途","level":"1.12","depth":1,"path":"content/http-server.md","ref":"./content/http-server.md","articles":[]},"previous":{"title":"配置开发服务器","level":"1.10","depth":1,"path":"content/dev-server.md","ref":"./content/dev-server.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"content/node-server.md","mtime":"2019-06-28T13:24:53.407Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-06-28T13:30:30.573Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"常见性能优化","level":"1.14","depth":1,"next":{"title":"参考文档","level":"1.15","depth":1,"path":"content/reference.md","ref":"./content/reference.md","articles":[]},"previous":{"title":"集成eslint","level":"1.13","depth":1,"path":"content/eslint.md","ref":"./content/eslint.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"content/optimize.md","mtime":"2019-06-28T13:28:08.896Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-06-28T13:30:30.573Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
