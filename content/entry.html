@@ -1,0 +1,400 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>自动扫描入口、HTML模版 · GitBook</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        
+        
+        
+    
+    <link rel="stylesheet" href="../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="style.html" />
+    
+    
+    <link rel="prev" href="babel.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    前言
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="babel.html">
+            
+                <a href="babel.html">
+            
+                    
+                    Babel 7
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.3" data-path="entry.html">
+            
+                <a href="entry.html">
+            
+                    
+                    自动扫描入口、HTML模版
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" data-path="style.html">
+            
+                <a href="style.html">
+            
+                    
+                    CSS样式处理
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href=".." >自动扫描入口、HTML模版</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <ul>
+<li><p><em>&#x6B63;&#x5E38;&#x5982;&#x679C;&#x6709;&#x591A;&#x4E2A;&#x5165;&#x53E3;&#xFF0C;&#x9700;&#x8981;&#x5728; entry &#x4E2D;&#xFF0C;&#x4EE5;&#x5BF9;&#x8C61;&#x5F62;&#x5F0F;&#x5C06;&#x6240;&#x6709;&#x5165;&#x53E3;&#x90FD;&#x914D;&#x7F6E;&#x4E00;&#x904D;&#xFF0C;html &#x6A21;&#x7248;&#x76EE;&#x5F55;&#x4E5F;&#x9700;&#x8981; new &#x5F88;&#x591A;&#x4E2A; HtmlWebpackPlugin &#x6765;&#x914D;&#x7F6E;&#x5BF9;&#x5E94;&#x7684;&#x9875;&#x9762;&#x6A21;&#x7248;&#xFF0C;&#x662F;&#x5426;&#x53EF;&#x4EE5;&#x81EA;&#x52A8;&#x626B;&#x63CF;? &#x65E0;&#x8BBA;&#x591A;&#x5C11;&#x4E2A;&#x5165;&#x53E3;&#xFF0C;&#x53EA;&#x7BA1;&#x65B0;&#x5EFA;&#xFF0C;&#x800C;&#x4E0D;&#x7528;&#x7BA1;&#x7406;&#x5165;&#x53E3;&#x914D;&#x7F6E;&#xFF1F;&#x53EF;&#x4EE5;&#x7684;&#xFF01;</em></p>
+<p>a. &#x5B89;&#x88C5; node &#x6A21;&#x5757; glob ( &#x626B;&#x63CF;&#x6587;&#x4EF6;&#x5C31;&#x9760;&#x5B83;&#x4E86; ).</p>
+<pre><code class="lang-bash">yarn add glob -D
+</code></pre>
+<pre><code class="lang-js"><span class="hljs-keyword">const</span> glob = <span class="hljs-built_in">require</span>(<span class="hljs-string">&apos;glob&apos;</span>)
+</code></pre>
+<p>b. &#x81EA;&#x52A8;&#x626B;&#x63CF;&#x83B7;&#x53D6;&#x5165;&#x53E3;&#x6587;&#x4EF6;&#x3001;html &#x6A21;&#x7248;&#xFF08;&#x7EDF;&#x4E00;&#x653E;&#x5728; utils.js &#x6587;&#x4EF6;&#x91CC;&#xFF09;</p>
+<pre><code class="lang-js"><span class="hljs-comment">/**
+ * &#x83B7;&#x53D6;&#x6587;&#x4EF6;
+ * @param {String} filesPath &#x6587;&#x4EF6;&#x76EE;&#x5F55;
+ * @returns {Object} &#x6587;&#x4EF6;&#x96C6;&#x5408;(&#x6587;&#x4EF6;&#x540D;: &#x6587;&#x4EF6;&#x8DEF;&#x5F84;)
+ */</span>
+<span class="hljs-keyword">const</span> getFiles = filesPath =&gt; {
+  <span class="hljs-keyword">let</span> files = glob.sync(filesPath)
+  <span class="hljs-keyword">let</span> obj = {}
+  <span class="hljs-keyword">let</span> filePath, basename, extname
+
+  <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span>; i &lt; files.length; i++) {
+    filePath = files[i]
+    extname = path.extname(filePath) <span class="hljs-comment">// &#x6269;&#x5C55;&#x540D; eg: .html</span>
+    basename = path.basename(filePath, extname) <span class="hljs-comment">// &#x6587;&#x4EF6;&#x540D; eg: index</span>
+    <span class="hljs-comment">// eg: { index: &apos;/src/views/index/index.js&apos; }</span>
+    obj[basename] = path.resolve(appDirectory, filePath)
+  }
+  <span class="hljs-keyword">return</span> obj
+}
+
+<span class="hljs-comment">/**
+ * &#x6253;&#x5305;&#x5165;&#x53E3;
+ *  1.&#x5141;&#x8BB8;&#x6587;&#x4EF6;&#x5939;&#x5C42;&#x7EA7;&#x5D4C;&#x5957;;
+ *  2.&#x5165;&#x53E3;js&#x7684;&#x540D;&#x79F0;&#x4E0D;&#x5141;&#x8BB8;&#x91CD;&#x540D;;
+ */</span>
+<span class="hljs-keyword">const</span> entries = getFiles(<span class="hljs-string">&apos;src/views/**/*.js&apos;</span>)
+
+<span class="hljs-comment">/**
+ * &#x9875;&#x9762;&#x7684;&#x6A21;&#x7248;
+ *  1.&#x5141;&#x8BB8;&#x6587;&#x4EF6;&#x5939;&#x5C42;&#x7EA7;&#x5D4C;&#x5957;;
+ *  2.html&#x7684;&#x540D;&#x79F0;&#x4E0D;&#x5141;&#x8BB8;&#x91CD;&#x540D;;
+ */</span>
+<span class="hljs-keyword">const</span> templates = getFiles(<span class="hljs-string">&apos;src/views/**/*.html&apos;</span>)
+
+<span class="hljs-comment">/**
+ * &#x83B7;&#x53D6;entry&#x5165;&#x53E3;&#xFF0C;&#x4E3A;&#x4E86;&#x5904;&#x7406;&#x5728;&#x67D0;&#x4E9B;&#x65F6;&#x5019;&#xFF0C;entry&#x5165;&#x53E3;&#x4F1A;&#x52A0; polyfill&#x7B49;:
+ *  1.&#x5141;&#x8BB8;&#x6587;&#x4EF6;&#x5939;&#x5C42;&#x7EA7;&#x5D4C;&#x5957;;
+ *  2.&#x5165;&#x53E3;&#x7684;&#x540D;&#x79F0;&#x4E0D;&#x5141;&#x8BB8;&#x91CD;&#x540D;;
+ *
+ * @returns {Object} entry &#x5165;&#x53E3;&#x5217;&#x8868;(&#x5BF9;&#x8C61;&#x5F62;&#x5F0F;)
+ */</span>
+<span class="hljs-keyword">const</span> getEntries = () =&gt; {
+  <span class="hljs-keyword">let</span> entry = {}
+
+  <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> name <span class="hljs-keyword">in</span> entries) {
+    entry[name] = entries[name]
+  }
+  <span class="hljs-keyword">return</span> entry
+}
+</code></pre>
+<p>c. webpack &#x6253;&#x5305;&#x5165;&#x53E3;</p>
+<pre><code class="lang-js"><span class="hljs-built_in">module</span>.exports = {
+  entry: utils.getEntries(),
+}
+</code></pre>
+<p>d. html &#x6A21;&#x7248;&#x81EA;&#x52A8;&#x5F15;&#x5165;&#x6253;&#x5305;&#x8D44;&#x6E90;&#xFF08;&#x533A;&#x5206; dev &#x548C; prod &#x73AF;&#x5883;&#xFF0C;&#x914D;&#x7F6E;&#x4E0D;&#x540C;&#xFF0C;&#x540C;&#x6837;&#x62BD;&#x79BB;&#x5230; utils.js &#x6587;&#x4EF6;&#x66F4;&#x597D;&#x4E00;&#x4E9B;&#xFF09;</p>
+<pre><code class="lang-js"><span class="hljs-comment">/**
+ * &#x751F;&#x6210;webpack.config.dev.js&#x7684;plugins&#x4E0B;new HtmlWebpackPlugin()&#x914D;&#x7F6E;
+ * @returns {Array} new HtmlWebpackPlugin()&#x5217;&#x8868;
+ */</span>
+<span class="hljs-keyword">const</span> getHtmlWebpackPluginsDev = () =&gt; {
+  <span class="hljs-keyword">let</span> htmlWebpackPlugins = []
+  <span class="hljs-keyword">let</span> setting = <span class="hljs-literal">null</span>
+
+  <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> name <span class="hljs-keyword">in</span> templates) {
+    setting = {
+      filename: <span class="hljs-string">`<span class="hljs-subst">${name}</span>.html`</span>,
+      template: templates[name],
+      inject: <span class="hljs-literal">false</span>, <span class="hljs-comment">// js&#x63D2;&#x5165;&#x7684;&#x4F4D;&#x7F6E;&#xFF0C;true/&apos;head&apos;/&apos;body&apos;/false</span>
+    }
+
+    <span class="hljs-comment">// (&#x4EC5;)&#x6709;&#x5165;&#x53E3;&#x7684;&#x6A21;&#x7248;&#x81EA;&#x52A8;&#x5F15;&#x5165;&#x8D44;&#x6E90;</span>
+    <span class="hljs-keyword">if</span> (name <span class="hljs-keyword">in</span> getEntries()) {
+      setting.chunks = [name]
+      setting.inject = <span class="hljs-literal">true</span>
+    }
+    htmlWebpackPlugins.push(<span class="hljs-keyword">new</span> HtmlWebpackPlugin(setting))
+    setting = <span class="hljs-literal">null</span>
+  }
+
+  <span class="hljs-keyword">return</span> htmlWebpackPlugins
+}
+
+<span class="hljs-comment">/**
+ * &#x751F;&#x6210;webpack.config.prod.js&#x7684;plugins&#x4E0B;new HtmlWebpackPlugin()&#x914D;&#x7F6E;
+ * @returns {Array} new HtmlWebpackPlugin()&#x5217;&#x8868;
+ */</span>
+<span class="hljs-keyword">const</span> getHtmlWebpackPluginsProd = () =&gt; {
+  <span class="hljs-keyword">let</span> htmlWebpackPlugins = []
+  <span class="hljs-keyword">let</span> setting = <span class="hljs-literal">null</span>
+
+  <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> name <span class="hljs-keyword">in</span> templates) {
+    setting = {
+      filename: <span class="hljs-string">`<span class="hljs-subst">${name}</span>.html`</span>,
+      template: templates[name],
+      minify: {
+        removeComments: <span class="hljs-literal">true</span>,
+        collapseWhitespace: <span class="hljs-literal">true</span>,
+        removeRedundantAttributes: <span class="hljs-literal">true</span>,
+        useShortDoctype: <span class="hljs-literal">true</span>,
+        removeEmptyAttributes: <span class="hljs-literal">true</span>,
+        removeStyleLinkTypeAttributes: <span class="hljs-literal">true</span>,
+        keepClosingSlash: <span class="hljs-literal">true</span>,
+        minifyJS: <span class="hljs-literal">true</span>,
+        minifyCSS: <span class="hljs-literal">true</span>,
+        minifyURLs: <span class="hljs-literal">true</span>,
+      },
+      inject: <span class="hljs-literal">false</span>, <span class="hljs-comment">// js&#x63D2;&#x5165;&#x7684;&#x4F4D;&#x7F6E;&#xFF0C;true/&apos;head&apos;/&apos;body&apos;/false</span>
+    }
+
+    <span class="hljs-comment">// (&#x4EC5;)&#x6709;&#x5165;&#x53E3;&#x7684;&#x6A21;&#x7248;&#x81EA;&#x52A8;&#x5F15;&#x5165;&#x8D44;&#x6E90;</span>
+    <span class="hljs-keyword">if</span> (name <span class="hljs-keyword">in</span> getEntries()) {
+      setting.chunks = [<span class="hljs-string">&apos;manifest&apos;</span>, <span class="hljs-string">&apos;vendor&apos;</span>, <span class="hljs-string">&apos;common&apos;</span>, name]
+      setting.inject = <span class="hljs-literal">true</span>
+    }
+    htmlWebpackPlugins.push(<span class="hljs-keyword">new</span> HtmlWebpackPlugin(setting))
+    setting = <span class="hljs-literal">null</span>
+  }
+
+  <span class="hljs-keyword">return</span> htmlWebpackPlugins
+}
+</code></pre>
+</li>
+</ul>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="babel.html" class="navigation navigation-prev " aria-label="Previous page: Babel 7">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="style.html" class="navigation navigation-next " aria-label="Next page: CSS样式处理">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"自动扫描入口、HTML模版","level":"1.3","depth":1,"next":{"title":"CSS样式处理","level":"1.4","depth":1,"path":"content/style.md","ref":"./content/style.md","articles":[]},"previous":{"title":"Babel 7","level":"1.2","depth":1,"path":"content/babel.md","ref":"./content/babel.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"content/entry.md","mtime":"2019-06-28T13:12:54.793Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-06-28T13:14:49.315Z"},"basePath":"..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../gitbook/gitbook.js"></script>
+    <script src="../gitbook/theme.js"></script>
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+
