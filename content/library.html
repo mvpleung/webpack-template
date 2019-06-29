@@ -256,7 +256,7 @@
                 <a href="style.html">
             
                     
-                    样式的处理
+                    CSS样式的处理
             
                 </a>
             
@@ -334,7 +334,7 @@
                 <a href="http-server.html">
             
                     
-                    http-server的用途
+                    配置 http-server
             
                 </a>
             
@@ -428,31 +428,29 @@
                                 
                                 <h2 id="webpack&#x6253;&#x5305;js&#x5E93;">webpack&#x6253;&#x5305;js&#x5E93;</h2>
 <blockquote>
-<p>&#x901A;&#x5E38;&#x6253;&#x5305;js&#x5E93;&#x4F1A;&#x9009;&#x62E9;rollup&#xFF0C;&#x4F46;&#x662F;webpack&#x540C;&#x6837;&#x53EF;&#x4EE5;&#x505A;&#x5230;&#xFF0C;&#x5982;&#x679C;&#x662F;&#x9700;&#x8981;&#x5BF9;css&#x3001;&#x56FE;&#x7247;&#x7B49;&#x6709;&#x8F83;&#x591A;&#x5E94;&#x7528;&#x7684;js&#x5E93;&#xFF0C;webpack&#x4F1A;&#x6709;&#x66F4;&#x591A;&#x4F18;&#x52BF;&#x3002;</p>
+<p>&#x901A;&#x5E38;&#x6253;&#x5305;js&#x5E93;&#x4F1A;&#x9009;&#x62E9; rollup&#xFF0C;&#x4F46;&#x662F; webpack &#x540C;&#x6837;&#x53EF;&#x4EE5;&#x505A;&#x5230;&#xFF0C;&#x5982;&#x679C;&#x662F;&#x9700;&#x8981;&#x5BF9; css&#x3001;&#x56FE;&#x7247;&#x7B49;&#x6709;&#x8F83;&#x591A;&#x5E94;&#x7528;&#x7684; js &#x5E93;&#xFF0C;webpack &#x4F1A;&#x6709;&#x66F4;&#x591A;&#x4F18;&#x52BF;&#x3002;</p>
 </blockquote>
 <ol>
-<li>&#x914D;&#x7F6E;<blockquote>
+<li><p>&#x914D;&#x7F6E;</p>
+<pre><code class="lang-js"> <span class="hljs-built_in">module</span>.exports = {
+   ...
+   entry: {
+     sdk: <span class="hljs-string">&apos;xxxxxxx.js&apos;</span>,
+   },
+   output: {
+     ...
+     library: <span class="hljs-string">&apos;[name]&apos;</span>, <span class="hljs-comment">// &#x88AB;&#x6302;&#x8F7D;&#x5230;&#x5168;&#x5C40;&#x5BF9;&#x8C61;&#xFF08;window&#x3001;global&#xFF09;&#x4E0A;&#x7684;&#x53D8;&#x91CF;&#x540D;&#x79F0;</span>
+     libraryTarget: <span class="hljs-string">&apos;umd&apos;</span>, <span class="hljs-comment">// &#x6A21;&#x5757;&#x89C4;&#x8303;&#xFF0C;umd &#x5305;&#x542B;&#x5168;&#x90E8;&#x6A21;&#x5757;&#x89C4;&#x8303;</span>
+     libraryExport: <span class="hljs-string">&apos;default&apos;</span>, <span class="hljs-comment">// &#x5BFC;&#x51FA;&#x7684;&#x5BF9;&#x8C61;&#xFF0C;&#x9ED8;&#x8BA4;&#x662F; default</span>
+     umdNamedDefine: <span class="hljs-literal">true</span>, <span class="hljs-comment">// &#x4F1A;&#x5BF9; UMD &#x7684;&#x6784;&#x5EFA;&#x8FC7;&#x7A0B;&#x4E2D;&#x7684; AMD &#x6A21;&#x5757;&#x8FDB;&#x884C;&#x547D;&#x540D;&#xFF0C;&#x5426;&#x5219;&#x5C31;&#x4F7F;&#x7528;&#x533F;&#x540D;&#x7684; define</span>
+   },
+   ...
+ }
+</code></pre>
+<blockquote>
 <p><a href="https://github.com/umdjs/umd" target="_blank">umd</a> &#x2014;&#x2014; &#x6253;&#x5305;&#x51FA;&#x6240;&#x6709;&#x73AF;&#x5883;&#x90FD;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;&#x7684;&#x5305;  </p>
 </blockquote>
 </li>
-</ol>
-<pre><code>```js
-module.exports = {
-  ...
-  entry: {
-    sdk: &apos;xxxxxxx.js&apos;,
-  },
-  output: {
-    ...
-    library: &apos;[name]&apos;,
-    libraryTarget: &apos;umd&apos;,
-    libraryExport: &apos;default&apos;, 
-    umdNamedDefine: true, // &#x4F1A;&#x5BF9; UMD &#x7684;&#x6784;&#x5EFA;&#x8FC7;&#x7A0B;&#x4E2D;&#x7684; AMD &#x6A21;&#x5757;&#x8FDB;&#x884C;&#x547D;&#x540D;&#xFF0C;&#x5426;&#x5219;&#x5C31;&#x4F7F;&#x7528;&#x533F;&#x540D;&#x7684; define
-  },
-  ...
-}
-```
-</code></pre><ol>
 <li><p>&#x4EE3;&#x7801;&#x91CC;&#x5BFC;&#x51FA;</p>
 <pre><code class="lang-js"> <span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> {
    a: xxxx,
@@ -461,7 +459,7 @@ module.exports = {
  }
 </code></pre>
 </li>
-<li><p>build&#x6253;&#x5305;&#x540E;&#x7684;js&#xFF0C;&#x5C06;&#x652F;&#x6301;import&#x3001;requrie&#x5BFC;&#x5165;&#xFF0C;script&#x6807;&#x7B7E;&#x5BFC;&#x5165;&#xFF0C;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;window.sdk&#x4F7F;&#x7528;&#x7B49;&#xFF1A;</p>
+<li><p>build&#x6253;&#x5305;&#x540E;&#x7684;js&#xFF0C;&#x5C06;&#x652F;&#x6301;import&#x3001;requrie&#x5BFC;&#x5165;&#xFF0C;script&#x6807;&#x7B7E;&#x5F15;&#x5165;&#xFF0C;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;window.sdk&#x4F7F;&#x7528;&#x7B49;&#xFF1A;</p>
 <pre><code class="lang-js"> <span class="hljs-comment">// import</span>
  <span class="hljs-keyword">import</span> { a, b, c } <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;........js&apos;</span>
 
@@ -527,7 +525,7 @@ module.exports = {
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"打包js库时的应用","level":"1.9","depth":1,"next":{"title":"配置 node express 服务","level":"1.10","depth":1,"path":"content/node-server.md","ref":"./content/node-server.md","articles":[]},"previous":{"title":"打包时排除应用中的某些模块","level":"1.8","depth":1,"path":"content/prune.md","ref":"./content/prune.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"content/library.md","mtime":"2019-06-28T13:22:16.324Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-06-29T09:28:18.667Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"打包js库时的应用","level":"1.9","depth":1,"next":{"title":"配置 node express 服务","level":"1.10","depth":1,"path":"content/node-server.md","ref":"./content/node-server.md","articles":[]},"previous":{"title":"打包时排除应用中的某些模块","level":"1.8","depth":1,"path":"content/prune.md","ref":"./content/prune.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"content/library.md","mtime":"2019-06-29T10:07:59.207Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-06-29T10:18:47.210Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
