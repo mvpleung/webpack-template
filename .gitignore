@@ -2,6 +2,7 @@
 /dist
 /dist-watch
 /docs/_book
+/_book
 
 # misc
 .DS_Store

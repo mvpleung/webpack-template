@@ -30,6 +30,7 @@ webpack 4 + babel 7
 
 ```js
 yarn / yarn install    // 安装全部依赖包
+gitbook install        // 安装gitbook插件
 
 yarn dev               // 启动本地调试
 yarn dev-mock          // 启动本地调试，MockJs模拟接口数据

@@ -15,9 +15,9 @@
     "watch-test": "cross-env BUILD_ENV=test IS_WATCH=true webpack -w --config build/webpack.config.watch.js --mode production --colors --profile",
     "watch": "cross-env BUILD_ENV=production IS_WATCH=true webpack -w --config build/webpack.config.watch.js --mode production --colors --profile",
     "http-server": "http-server dist",
-    "doc-dev": "gitbook serve docs/webpack docs/_book",
-    "doc-build": "gitbook build docs/webpack docs/_book && cp docs/webpack/CNAME docs/_book/",
-    "doc-publish": "yarn doc-build && gh-pages -d docs/_book"
+    "doc-dev": "gitbook serve",
+    "doc-build": "gitbook build && cp docs/webpack/CNAME _book/",
+    "doc-publish": "yarn doc-build && gh-pages -d _book"
   },
   "repository": {
     "type": "git",

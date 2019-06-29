@@ -1,0 +1,39 @@
+{
+  "root": "./docs/webpack",
+  "author" : "Eleven",
+  "links" : {
+    "sidebar" : {
+        "GitHub" : "https://github.com/Eleven90"
+    }
+  },
+  "language" : "zh-hans",
+  "plugins": [
+    "-sharing",
+    "github-buttons",
+    "copy-code-button",
+    "simple-page-toc",
+    "ace",
+    "splitter",
+    "toggle-chapters",
+    "anchors"
+  ],
+  "pluginsConfig": {
+    "github-buttons": {
+      "buttons": [{
+        "user": "Eleven90",
+        "repo": "webpack-template",
+        "type": "star",
+        "count": true,
+        "size": "small"
+      }]
+    },
+    "simple-page-toc": {
+      "maxDepth": 3,
+      "skipFirstH1": true
+    },
+    "fontsettings": {
+      "theme": "white",
+      "family": "serif"
+    }
+  }
+}
