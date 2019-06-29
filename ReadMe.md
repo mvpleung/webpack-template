@@ -1,3 +1,5 @@
+# webpack-template
+
 > 为懒人准备的 webpack 模版，可以直接用于生产。这里单纯只做webpack构建、打包、代码的组织等，关于React、Vue等配置并不复杂，可以在需要时添加。随着webpack版本的迭代，会将最新的特性加入，持续更新......
 
 ## 文档地址：https://webpack.eleven.net.cn
@@ -47,7 +49,7 @@ yarn watch             // 启动watch模式，生产环境
 // gitbook文档命令
 yarn doc-dev           // 本地调试gitbook
 yarn doc-build         // 编译gitbook
-yarn doc-publish       // 打包&发布文档
+yarn doc-publish       // 打包&发布gitbook文档
 ```
 
 ## Yarn和NPM的选择？
@@ -81,13 +83,13 @@ yarn upgrade [pkgName]@[version]    // 升级依赖包，指定版本
 
 ```js
 webpack-template
-     ├─ _book                   // 文档（gitbook）编译结果
      ├─ build                   // webpack配置
      ├─ config                  // 构建（环境）相关配置
      ├─ dist                    // build输出目录
      ├─ dist-watch              // watch模式，build的输出目录
      ├─ docs                    // 文档
-     │   ├─ webpack                   // webpack配置详细文档
+     │   ├─ _book                   // 文档（gitbook）编译输出目录
+     │   ├─ webpack                 // webpack配置详细文档
      │
      ├─ node_modules
      ├─ src                     // 源代码目录
@@ -106,9 +108,8 @@ webpack-template
      ├─ .eslintignore           // eslint忽略配置
      ├─ .eslintrc.js            // eslint配置
      ├─ .gitignore
-     ├─ book.json               // gitbook配置文件
      ├─ package.json
      ├─ postcss.config.js       // postcss配置
      ├─ README.md
-     ├─ yarn.lock               // yarn锁定版本配置文件
+     ├─ yarn.lock               // yarn锁定版本配置文件（自动生成）
 ```

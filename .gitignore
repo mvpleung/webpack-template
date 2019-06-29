@@ -1,7 +1,7 @@
 /node_modules
 /dist
 /dist-watch
-/_book
+/docs/_book
 
 # misc
 .DS_Store
