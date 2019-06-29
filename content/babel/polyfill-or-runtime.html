@@ -439,8 +439,7 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <ol>
-<li><p><code>@babel/polyfill</code>&#x8FD8;&#x662F;<code>@babel/plugin-transform-runtime</code>&#xFF1F; (<a href="https://blog.csdn.net/weixin_34163741/article/details/88015827" target="_blank">&#x4F20;&#x9001;&#x95E8;&#x4E00;&#xFF1A;babel polyfill &#x548C; runtime &#x6D45;&#x6790;</a>&#xFF0C;<a href="https://www.junorz.com/archives/689.html" target="_blank">&#x4F20;&#x9001;&#x95E8;&#x4E8C;</a>)</p>
+                                <h3 id="babelpolyfill-&#x8FD8;&#x662F;-babelplugin-transform-runtime-&#xFF1F;">@babel/polyfill &#x8FD8;&#x662F; @babel/plugin-transform-runtime &#xFF1F;</h3>
 <ol>
 <li><p><code>@babel/preset-env + @babel/polyfill</code>&#x53EF;&#x4EE5;&#x8F6C;&#x8BD1;&#x8BED;&#x6CD5;&#x3001;&#x65B0; API&#xFF0C;&#x4F46;&#x5B58;&#x5728;&#x6C61;&#x67D3;&#x5168;&#x5C40;&#x95EE;&#x9898;&#xFF1B;</p>
 </li>
@@ -564,96 +563,102 @@
 <li><p>&#x53EF;&#x4EE5;&#x770B;&#x51FA;&#xFF0C;library&#x4E0B;&#x7684;&#x8FD9;&#x4E2A;$export&#x65B9;&#x6CD5;&#xFF0C;&#x4F1A;&#x5B9E;&#x73B0;&#x4E00;&#x4E2A;wrapper&#x51FD;&#x6570;&#xFF0C;&#x9632;&#x6B62;&#x6C61;&#x67D3;&#x5168;&#x5C40;&#x53D8;&#x91CF;&#x3002;</p>
 </li>
 <li><p>&#x4F8B;&#x5982;&#x5BF9;Promise&#x7684;&#x8F6C;&#x8BD1;&#xFF0C;@babel/polyfill&#x548C;@babel/runtime-corejs2&#x7684;&#x8F6C;&#x8BD1;&#x65B9;&#x5F0F;&#x5DEE;&#x5F02;&#x5982;&#x4E0B;&#xFF1A;  </p>
-<p> ```js
- var p = new Promise();</p>
-</li>
-</ol>
-</li>
-</ol>
-</li>
-</ol>
-<pre><code>        // @babel/polyfill
-        require(&quot;core-js/modules/es6.promise&quot;);
-        var p = new Promise();
+<pre><code class="lang-js"> <span class="hljs-keyword">var</span> p = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Promise</span>();
 
+ <span class="hljs-comment">// @babel/polyfill</span>
+ <span class="hljs-built_in">require</span>(<span class="hljs-string">&quot;core-js/modules/es6.promise&quot;</span>);
+ <span class="hljs-keyword">var</span> p = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Promise</span>();
 
-        // @babel/runtime-corejs2
-        var _interopRequireDefault = require(&quot;@babel/runtime-corejs2/helpers/interopRequireDefault&quot;);
-        var _promise = _interopRequireDefault(require(&quot;@babel/runtime-corejs2/core-js/promise&quot;));
-        var a = new _promise.default();
-        ```
-
-    6. &#x4ECE;&#x4E0A;&#x9762;&#x8FD9;&#x4E2A;&#x4F8B;&#x5B50;&#x53EF;&#x4EE5;&#x770B;&#x51FA;&#xFF0C;&#x5BF9;&#x4E8E;Promise&#x8FD9;&#x4E2A;api&#xFF0C;@babel/polyfill&#x5F15;&#x7528;&#x4E86;core-js/modules&#x4E2D;&#x7684;es6.promise.js&#x6587;&#x4EF6;&#xFF0C;&#x56E0;&#x4E3A;&#x662F;&#x5BF9;&#x5168;&#x5C40;&#x53D8;&#x91CF;&#x8FDB;&#x884C;&#x5904;&#x7406;&#xFF0C;&#x6240;&#x4EE5;&#x8D4B;&#x503C;&#x8BED;&#x53E5;&#x4E0D;&#x7528;&#x505A;&#x5904;&#x7406;&#xFF1B;@babel/runtime-corejs2&#x4F1A;&#x751F;&#x6210;&#x4E00;&#x4E2A;&#x5C40;&#x90E8;&#x53D8;&#x91CF;_promise&#xFF0C;&#x7136;&#x540E;&#x628A;Promise&#x90FD;&#x66FF;&#x6362;&#x6210;_promise&#xFF0C;&#x8FD9;&#x6837;&#x5C31;&#x4E0D;&#x4F1A;&#x6C61;&#x67D3;&#x5168;&#x5C40;&#x53D8;&#x91CF;&#x4E86;&#x3002;
-
-4. **&#x7EFC;&#x5408;&#x4E0A;&#x9762;&#x7684;&#x5206;&#x6790;&#xFF0C;&#x5F97;&#x51FA;&#x7ED3;&#x8BBA;&#xFF1A;**
-    1. &#x5982;&#x679C;&#x662F;&#x81EA;&#x5DF1;&#x7684;&#x5E94;&#x7528; =&gt; `@babel/preset-env + @babel/polyfill`&#xFF0C;&#x6839;&#x636E;useBuiltIns&#x53C2;&#x6570;&#x786E;&#x5B9A;&#x5982;&#x4F55;&#x4F7F;&#x7528;@babel/polyfill&#x3002;
-        1. `useBuiltIns`&#x8BBE;&#x7F6E;&#x4E3A;`entry`&#x6BD4;&#x8F83;&#x4E0D;&#x9519;&#x3002;
-          &#x5728;js&#x4EE3;&#x7801;&#x7B2C;&#x4E00;&#x884C;`import &apos;@babel/polyfill&apos;`&#xFF0C;&#x6216;&#x5728;webpack&#x7684;&#x5165;&#x53E3;entry&#x4E2D;&#x5199;&#x5165;&#x6A21;&#x5757;`@babel/polyfill`&#xFF0C;&#x4F1A;&#x5C06;browserslist&#x73AF;&#x5883;&#x4E0D;&#x652F;&#x6301;&#x7684;&#x6240;&#x6709;&#x57AB;&#x7247;&#x90FD;&#x5BFC;&#x5165;&#xFF1B;
-          &#x80FD;&#x591F;&#x8986;&#x76D6;&#x5230;`&#x2018;hello&#x2018;.includes(&#x2018;h&#x2018;)`&#x8FD9;&#x79CD;&#x53E5;&#x6CD5;&#xFF0C;&#x8DB3;&#x591F;&#x5B89;&#x5168;&#x4E14;&#x4EE3;&#x7801;&#x4F53;&#x79EF;&#x4E0D;&#x662F;&#x7279;&#x522B;&#x5927;&#xFF0C;&#x63A8;&#x8350;&#x4F7F;&#x7528;&#xFF01;
-
-        2. `useBuiltIns`&#x8BBE;&#x7F6E;&#x4E3A;`usage`&#x3002;
-          &#x9879;&#x76EE;&#x91CC;&#x4E0D;&#x7528;&#x4E3B;&#x52A8;import&#xFF0C;&#x4F1A;&#x81EA;&#x52A8;&#x5C06;&#x4EE3;&#x7801;&#x91CC;&#x5DF2;&#x4F7F;&#x7528;&#x5230;&#x7684;&#x3001;&#x4E14;browserslist&#x73AF;&#x5883;&#x4E0D;&#x652F;&#x6301;&#x7684;&#x57AB;&#x7247;&#x5BFC;&#x5165;&#xFF1B;
-          &#x76F8;&#x5BF9;&#x5B89;&#x5168;&#x4E14;&#x6253;&#x5305;&#x7684;js&#x4F53;&#x79EF;&#x4E0D;&#x5927;&#xFF0C;&#x4F46;&#x662F;&#xFF0C;&#x901A;&#x5E38;&#x6211;&#x4EEC;&#x8F6C;&#x8BD1;&#x90FD;&#x4F1A;&#x6392;&#x9664;`node_modules/`&#x76EE;&#x5F55;&#xFF0C;&#x5982;&#x679C;&#x4F7F;&#x7528;&#x5230;&#x7684;&#x7B2C;&#x4E09;&#x65B9;&#x5305;&#x6709;&#x4E2A;&#x522B;&#x672A;&#x505A;&#x597D;ES6&#x8F6C;&#x8BD1;&#xFF0C;&#x6709;&#x9047;&#x5230;bug&#x7684;&#x53EF;&#x80FD;&#x6027;&#xFF0C;&#x5E76;&#x4E14;&#x68C0;&#x6D4B;&#x4E0D;&#x5230;`&#x2018;hello&#x2018;.includes(&#x2018;h&#x2018;)`&#x8FD9;&#x79CD;&#x53E5;&#x6CD5;&#x3002;
-          &#x4EE3;&#x7801;&#x4E66;&#x5199;&#x89C4;&#x8303;&#xFF0C;&#x4E14;&#x4FE1;&#x4EFB;&#x7B2C;&#x4E09;&#x65B9;&#x5305;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;&#xFF01;
-
-        3. `useBuiltIns`&#x8BBE;&#x7F6E;&#x4E3A;`false`&#x6BD4;&#x8F83;&#x4E0D;&#x9519;&#x3002;
-          &#x5728;js&#x4EE3;&#x7801;&#x7B2C;&#x4E00;&#x884C;`import &apos;@babel/polyfill&apos;`&#xFF0C;&#x6216;&#x5728;webpack&#x7684;&#x5165;&#x53E3;entry&#x4E2D;&#x5199;&#x5165;&#x6A21;&#x5757;`@babel/polyfill`&#xFF0C;&#x4F1A;&#x5C06;@babel/polyfill&#x6574;&#x4E2A;&#x5305;&#x5168;&#x90E8;&#x5BFC;&#x5165;&#xFF1B;
-          &#x6700;&#x5B89;&#x5168;&#xFF0C;&#x4F46;&#x6253;&#x5305;&#x4F53;&#x79EF;&#x4F1A;&#x5927;&#x4E00;&#x4E9B;&#xFF0C;&#x4E00;&#x822C;&#x4E0D;&#x9009;&#x7528;&#x3002;
-
-          &#x9700;&#x8981;&#x5B89;&#x88C5;&#x7684;&#x5168;&#x90E8;&#x4F9D;&#x8D56;&#xFF1A;
-          ```js
-          yarn add babel-loader@8 @babel/core @babel/preset-env -D
-          yarn add @babel/polyfill
-          ```
-
-          .babelrc&#x914D;&#x7F6E;&#x6587;&#x4EF6;
-          ```js
-          {
-            &quot;presets&quot;: [
-              [
-                &quot;@babel/preset-env&quot;,
-                {
-                  &quot;modules&quot;: false, // &#x63A8;&#x8350;
-                  &quot;useBuiltIns&quot;: &quot;entry&quot;, // &#x63A8;&#x8350;
-                  &quot;corejs&quot;: 2, // &#x65B0;&#x7248;&#x672C;&#x7684;@babel/polyfill&#x5305;&#x542B;&#x4E86;core-js@2&#x548C;core-js@3&#x7248;&#x672C;&#xFF0C;&#x6240;&#x4EE5;&#x9700;&#x8981;&#x58F0;&#x660E;&#x7248;&#x672C;&#xFF0C;&#x5426;&#x5219;webpack&#x8FD0;&#x884C;&#x65F6;&#x4F1A;&#x62A5;warning&#xFF0C;&#x6B64;&#x5904;&#x6682;&#x65F6;&#x4F7F;&#x7528;core-js@2&#x7248;&#x672C;&#xFF08;&#x672B;&#x5C3E;&#x4F1A;&#x9644;&#x4E0A;@core-js@3&#x600E;&#x4E48;&#x7528;&#xFF09;
-                }
-              ]
-            ],
-            &quot;plugins&quot;: []
-          }
-          ```
-
-    2. &#x5982;&#x679C;&#x662F;&#x5F00;&#x53D1;&#x7B2C;&#x4E09;&#x65B9;&#x7C7B;&#x5E93; =&gt; `@babel/preset-env + @babel/plugin-transform-runtime + @babel/runtime-corejs2`&#xFF1B;
-    &#xFF08;&#x6216;&#x8005;&#xFF0C;&#x4E0D;&#x505A;&#x8F6C;&#x7801;&#x5904;&#x7406;&#xFF0C;&#x63D0;&#x9192;&#x4F7F;&#x7528;&#x8005;&#x81EA;&#x5DF1;&#x505A;&#x597D;&#x517C;&#x5BB9;&#x5904;&#x7406;&#x4E5F;&#x53EF;&#x4EE5;&#x3002;&#xFF09;
-
-          &#x9700;&#x8981;&#x5B89;&#x88C5;&#x7684;&#x5168;&#x90E8;&#x4F9D;&#x8D56;&#xFF1A;
-          ```js
-          yarn add babel-loader@8 @babel/core @babel/preset-env @babel/plugin-transform-runtime -D
-          yarn add @babel/runtime-corejs2
-          ```
-
-          .babelrc&#x914D;&#x7F6E;&#x6587;&#x4EF6;
-          ```js
-          {
-            &quot;presets&quot;: [
-              [
-                &quot;@babel/preset-env&quot;,
-                {
-                  &quot;modules&quot;: false,
-                }
-              ]
-            ],
-            &quot;plugins&quot;: [
-              [
-                &quot;@babel/plugin-transform-runtime&quot;,
-                {
-                  &quot;corejs&quot;: 2 // &#x63A8;&#x8350;
-                }
-              ]
-            ]
-          }
-          ```
+ <span class="hljs-comment">// @babel/runtime-corejs2</span>
+ <span class="hljs-keyword">var</span> _interopRequireDefault = <span class="hljs-built_in">require</span>(<span class="hljs-string">&quot;@babel/runtime-corejs2/helpers/interopRequireDefault&quot;</span>);
+ <span class="hljs-keyword">var</span> _promise = _interopRequireDefault(<span class="hljs-built_in">require</span>(<span class="hljs-string">&quot;@babel/runtime-corejs2/core-js/promise&quot;</span>));
+ <span class="hljs-keyword">var</span> a = <span class="hljs-keyword">new</span> _promise.default();
 </code></pre>
+</li>
+<li><p>&#x4ECE;&#x4E0A;&#x9762;&#x8FD9;&#x4E2A;&#x4F8B;&#x5B50;&#x53EF;&#x4EE5;&#x770B;&#x51FA;&#xFF0C;&#x5BF9;&#x4E8E;Promise&#x8FD9;&#x4E2A;api&#xFF0C;@babel/polyfill&#x5F15;&#x7528;&#x4E86;core-js/modules&#x4E2D;&#x7684;es6.promise.js&#x6587;&#x4EF6;&#xFF0C;&#x56E0;&#x4E3A;&#x662F;&#x5BF9;&#x5168;&#x5C40;&#x53D8;&#x91CF;&#x8FDB;&#x884C;&#x5904;&#x7406;&#xFF0C;&#x6240;&#x4EE5;&#x8D4B;&#x503C;&#x8BED;&#x53E5;&#x4E0D;&#x7528;&#x505A;&#x5904;&#x7406;&#xFF1B;@babel/runtime-corejs2&#x4F1A;&#x751F;&#x6210;&#x4E00;&#x4E2A;&#x5C40;&#x90E8;&#x53D8;&#x91CF;_promise&#xFF0C;&#x7136;&#x540E;&#x628A;Promise&#x90FD;&#x66FF;&#x6362;&#x6210;_promise&#xFF0C;&#x8FD9;&#x6837;&#x5C31;&#x4E0D;&#x4F1A;&#x6C61;&#x67D3;&#x5168;&#x5C40;&#x53D8;&#x91CF;&#x4E86;&#x3002;</p>
+</li>
+</ol>
+</li>
+<li><p><strong>&#x7EFC;&#x5408;&#x4E0A;&#x9762;&#x7684;&#x5206;&#x6790;&#xFF0C;&#x5F97;&#x51FA;&#x7ED3;&#x8BBA;&#xFF1A;</strong></p>
+<ol>
+<li><p>&#x5982;&#x679C;&#x662F;&#x81EA;&#x5DF1;&#x7684;&#x5E94;&#x7528;&#xFF1A; <code>@babel/preset-env + @babel/polyfill</code></p>
+<ol>
+<li><p>&#x6839;&#x636E;useBuiltIns&#x53C2;&#x6570;&#x786E;&#x5B9A;&#x5982;&#x4F55;&#x4F7F;&#x7528;@babel/polyfill&#xFF0C;&#x5177;&#x4F53;&#x53C2;&#x6570;&#x8BBE;&#x7F6E;&#x603B;&#x7ED3;&#x5982;&#x4E0B;&#xFF1A;</p>
+<ol>
+<li><p><code>useBuiltIns</code>&#x8BBE;&#x7F6E;&#x4E3A;<code>entry</code>&#x6BD4;&#x8F83;&#x4E0D;&#x9519;&#xFF0C;&#x63A8;&#x8350;&#x4F7F;&#x7528;&#x3002;<br>&#x5728;js&#x4EE3;&#x7801;&#x7B2C;&#x4E00;&#x884C;<code>import &apos;@babel/polyfill&apos;</code>&#xFF0C;&#x6216;&#x5728;webpack&#x7684;&#x5165;&#x53E3;entry&#x4E2D;&#x5199;&#x5165;&#x6A21;&#x5757;<code>@babel/polyfill</code>&#xFF0C;&#x4F1A;&#x5C06;browserslist&#x73AF;&#x5883;&#x4E0D;&#x652F;&#x6301;&#x7684;&#x6240;&#x6709;&#x57AB;&#x7247;&#x90FD;&#x5BFC;&#x5165;&#xFF1B;
+&#x80FD;&#x591F;&#x8986;&#x76D6;&#x5230;<code>&#x2018;hello&#x2018;.includes(&#x2018;h&#x2018;)</code>&#x8FD9;&#x79CD;&#x53E5;&#x6CD5;&#xFF0C;&#x8DB3;&#x591F;&#x5B89;&#x5168;&#x4E14;&#x4EE3;&#x7801;&#x4F53;&#x79EF;&#x4E0D;&#x662F;&#x7279;&#x522B;&#x5927;&#xFF01;</p>
+</li>
+<li><p><code>useBuiltIns</code>&#x8BBE;&#x7F6E;&#x4E3A;<code>usage</code>&#x3002;<br>&#x9879;&#x76EE;&#x91CC;&#x4E0D;&#x7528;&#x4E3B;&#x52A8;import&#xFF0C;&#x4F1A;&#x81EA;&#x52A8;&#x5C06;&#x4EE3;&#x7801;&#x91CC;&#x5DF2;&#x4F7F;&#x7528;&#x5230;&#x7684;&#x3001;&#x4E14;browserslist&#x73AF;&#x5883;&#x4E0D;&#x652F;&#x6301;&#x7684;&#x57AB;&#x7247;&#x5BFC;&#x5165;&#xFF1B;
+&#x76F8;&#x5BF9;&#x5B89;&#x5168;&#x4E14;&#x6253;&#x5305;&#x7684;js&#x4F53;&#x79EF;&#x4E0D;&#x5927;&#xFF0C;&#x4F46;&#x662F;&#xFF0C;&#x901A;&#x5E38;&#x6211;&#x4EEC;&#x8F6C;&#x8BD1;&#x90FD;&#x4F1A;&#x6392;&#x9664;<code>node_modules/</code>&#x76EE;&#x5F55;&#xFF0C;&#x5982;&#x679C;&#x4F7F;&#x7528;&#x5230;&#x7684;&#x7B2C;&#x4E09;&#x65B9;&#x5305;&#x6709;&#x4E2A;&#x522B;&#x672A;&#x505A;&#x597D;ES6&#x8F6C;&#x8BD1;&#xFF0C;&#x6709;&#x9047;&#x5230;bug&#x7684;&#x53EF;&#x80FD;&#x6027;&#xFF0C;&#x5E76;&#x4E14;&#x68C0;&#x6D4B;&#x4E0D;&#x5230;<code>&#x2018;hello&#x2018;.includes(&#x2018;h&#x2018;)</code>&#x8FD9;&#x79CD;&#x53E5;&#x6CD5;&#x3002;
+&#x4EE3;&#x7801;&#x4E66;&#x5199;&#x89C4;&#x8303;&#xFF0C;&#x4E14;&#x4FE1;&#x4EFB;&#x7B2C;&#x4E09;&#x65B9;&#x5305;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;&#xFF01;</p>
+</li>
+<li><p><code>useBuiltIns</code>&#x8BBE;&#x7F6E;&#x4E3A;<code>false</code>&#x6BD4;&#x8F83;&#x4E0D;&#x9519;&#x3002;<br>&#x5728;js&#x4EE3;&#x7801;&#x7B2C;&#x4E00;&#x884C;<code>import &apos;@babel/polyfill&apos;</code>&#xFF0C;&#x6216;&#x5728;webpack&#x7684;&#x5165;&#x53E3;entry&#x4E2D;&#x5199;&#x5165;&#x6A21;&#x5757;<code>@babel/polyfill</code>&#xFF0C;&#x4F1A;&#x5C06;@babel/polyfill&#x6574;&#x4E2A;&#x5305;&#x5168;&#x90E8;&#x5BFC;&#x5165;&#xFF1B;
+&#x6700;&#x5B89;&#x5168;&#xFF0C;&#x4F46;&#x6253;&#x5305;&#x4F53;&#x79EF;&#x4F1A;&#x5927;&#x4E00;&#x4E9B;&#xFF0C;&#x4E00;&#x822C;&#x4E0D;&#x9009;&#x7528;&#x3002;</p>
+</li>
+</ol>
+</li>
+<li><p>&#x9700;&#x8981;&#x5B89;&#x88C5;&#x7684;&#x5168;&#x90E8;&#x4F9D;&#x8D56;&#xFF1A;</p>
+<pre><code class="lang-js"> yarn add babel-loader@<span class="hljs-number">8</span> @babel/core @babel/preset-env -D
+ yarn add @babel/polyfill
+</code></pre>
+</li>
+<li><p>.babelrc&#x914D;&#x7F6E;&#x6587;&#x4EF6;</p>
+<pre><code class="lang-js"> {
+   <span class="hljs-string">&quot;presets&quot;</span>: [
+     [
+       <span class="hljs-string">&quot;@babel/preset-env&quot;</span>,
+       {
+         <span class="hljs-string">&quot;modules&quot;</span>: <span class="hljs-literal">false</span>, <span class="hljs-comment">// &#x63A8;&#x8350;</span>
+         <span class="hljs-string">&quot;useBuiltIns&quot;</span>: <span class="hljs-string">&quot;entry&quot;</span>, <span class="hljs-comment">// &#x63A8;&#x8350;</span>
+         <span class="hljs-string">&quot;corejs&quot;</span>: <span class="hljs-number">2</span>, <span class="hljs-comment">// &#x65B0;&#x7248;&#x672C;&#x7684;@babel/polyfill&#x5305;&#x542B;&#x4E86;core-js@2&#x548C;core-js@3&#x7248;&#x672C;&#xFF0C;&#x6240;&#x4EE5;&#x9700;&#x8981;&#x58F0;&#x660E;&#x7248;&#x672C;&#xFF0C;&#x5426;&#x5219;webpack&#x8FD0;&#x884C;&#x65F6;&#x4F1A;&#x62A5;warning&#xFF0C;&#x6B64;&#x5904;&#x6682;&#x65F6;&#x4F7F;&#x7528;core-js@2&#x7248;&#x672C;&#xFF08;&#x672B;&#x5C3E;&#x4F1A;&#x9644;&#x4E0A;@core-js@3&#x600E;&#x4E48;&#x7528;&#xFF09;</span>
+       }
+     ]
+   ],
+   <span class="hljs-string">&quot;plugins&quot;</span>: []
+ }
+</code></pre>
+</li>
+</ol>
+</li>
+<li><p>&#x5982;&#x679C;&#x662F;&#x5F00;&#x53D1;&#x7B2C;&#x4E09;&#x65B9;&#x7C7B;&#x5E93;&#xFF1A; <code>@babel/preset-env + @babel/plugin-transform-runtime + @babel/runtime-corejs2</code>&#xFF08;&#x6216;&#x8005;&#xFF0C;&#x4E0D;&#x505A;&#x8F6C;&#x7801;&#x5904;&#x7406;&#xFF0C;&#x63D0;&#x9192;&#x4F7F;&#x7528;&#x8005;&#x81EA;&#x5DF1;&#x505A;&#x597D;&#x517C;&#x5BB9;&#x5904;&#x7406;&#x4E5F;&#x53EF;&#x4EE5;&#xFF09;&#x3002;</p>
+<ol>
+<li><p>&#x9700;&#x8981;&#x5B89;&#x88C5;&#x7684;&#x5168;&#x90E8;&#x4F9D;&#x8D56;&#xFF1A;</p>
+<pre><code class="lang-js"> yarn add babel-loader@<span class="hljs-number">8</span> @babel/core @babel/preset-env @babel/plugin-transform-runtime -D
+ yarn add @babel/runtime-corejs2
+</code></pre>
+</li>
+<li><p>.babelrc&#x914D;&#x7F6E;&#x6587;&#x4EF6;</p>
+<pre><code class="lang-js"> {
+   <span class="hljs-string">&quot;presets&quot;</span>: [
+     [
+       <span class="hljs-string">&quot;@babel/preset-env&quot;</span>,
+       {
+         <span class="hljs-string">&quot;modules&quot;</span>: <span class="hljs-literal">false</span>,
+       }
+     ]
+   ],
+   <span class="hljs-string">&quot;plugins&quot;</span>: [
+     [
+       <span class="hljs-string">&quot;@babel/plugin-transform-runtime&quot;</span>,
+       {
+         <span class="hljs-string">&quot;corejs&quot;</span>: <span class="hljs-number">2</span> <span class="hljs-comment">// &#x63A8;&#x8350;</span>
+       }
+     ]
+   ]
+ }
+</code></pre>
+</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+<h3 id="&#x53C2;&#x8003;&#x6587;&#x6863;">&#x53C2;&#x8003;&#x6587;&#x6863;</h3>
+<ol>
+<li><a href="https://blog.csdn.net/weixin_34163741/article/details/88015827" target="_blank">babel polyfill &#x548C; runtime &#x6D45;&#x6790;</a></li>
+<li><a href="https://www.junorz.com/archives/689.html" target="_blank">Babel + Webpack &#x914D;&#x7F6E;&#x524D;&#x7AEF;&#x9879;&#x76EE;</a></li>
+</ol>
+
                                 
                                 </section>
                             
@@ -696,7 +701,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"polyfill方案的对比","level":"1.2.4","depth":2,"next":{"title":"提案级别的插件","level":"1.2.5","depth":2,"path":"content/babel/proposal.md","ref":"./content/babel/proposal.md","articles":[]},"previous":{"title":"@babel/plugin-transform-runtime","level":"1.2.3","depth":2,"path":"content/babel/transform-runtime.md","ref":"./content/babel/transform-runtime.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"content/babel/polyfill-or-runtime.md","mtime":"2019-06-29T06:50:02.097Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-06-29T07:04:53.038Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"polyfill方案的对比","level":"1.2.4","depth":2,"next":{"title":"提案级别的插件","level":"1.2.5","depth":2,"path":"content/babel/proposal.md","ref":"./content/babel/proposal.md","articles":[]},"previous":{"title":"@babel/plugin-transform-runtime","level":"1.2.3","depth":2,"path":"content/babel/transform-runtime.md","ref":"./content/babel/transform-runtime.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"content/babel/polyfill-or-runtime.md","mtime":"2019-06-29T07:33:23.379Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-06-29T08:22:33.256Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>
