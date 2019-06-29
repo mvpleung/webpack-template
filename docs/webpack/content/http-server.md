@@ -1,6 +1,4 @@
-## http-server
-
-> 比自己配置一个 express 服务更简洁的方式，去访问打包后的资源。
+> 比自己配置一个 node express 服务更简洁的方式，去访问打包后的资源，可以使用 http-server 。
 
 1. 安装依赖
 

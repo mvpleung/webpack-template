@@ -1,6 +1,8 @@
-## 配置 node express 服务，访问打包后资源
+## 配置 node express 服务
 
-1.  新建 prod.server.js 文件
+> 某些时候可能希望本地访问打包后的资源，可以配置一个 node express 服务完成。当然，你也可以通过它代理接口，mock数据（虽然不必如此）。
+
+1.  新建 prod.server.js 文件，放到 package.json 同级目录
 
     ```js
     let express = require('express')

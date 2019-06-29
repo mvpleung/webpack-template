@@ -1,17 +1,15 @@
-##### 配置 import 动态导入支持
+1. 安装依赖
 
-    1. 安装依赖
+    ```js
+    yarn add @babel/plugin-syntax-dynamic-import -D
+    ```
 
-       ```js
-       yarn add @babel/plugin-syntax-dynamic-import -D
-       ```
-
-    2. .babelrc 文件增加配置
-       ```js
-       {
-         "presets": [],
-         "plugins": [
-           "@babel/plugin-syntax-dynamic-import",
-         ]
-       }
-       ```
+2. .babelrc 文件增加配置
+    ```js
+    {
+      "presets": [],
+      "plugins": [
+        "@babel/plugin-syntax-dynamic-import",
+      ]
+    }
+    ```

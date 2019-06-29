@@ -1,6 +1,7 @@
 # [webpack-template](https://github.com/Eleven90/webpack-template)
 
-> 为懒人准备的 webpack 模版，可以直接用于生产。这里单纯只做webpack构建、打包、代码的组织等，关于React、Vue等配置并不复杂，可以在需要时添加。随着webpack版本的迭代，会将最新的特性加入，持续更新......
+> &emsp;&emsp;为懒人准备的 webpack 模版，可以直接用于生产。这里单纯只做webpack构建、打包、代码的组织等，关于React、Vue等配置并不复杂，可以在需要时添加。随着webpack版本的迭代，会将最新的特性加入，持续更新...  
+> &emsp;&emsp;Demo地址：[https://github.com/Eleven90/webpack-template](https://github.com/Eleven90/webpack-template)
 
 ## 版本
 
@@ -28,7 +29,7 @@ yarn upgrade [pkgName]              // 升级依赖包 —— npm update [pkgNam
 yarn upgrade [pkgName]@[version]    // 升级依赖包，指定版本
 ```
 
-##### 参考文档
+## 参考文档
 
 1. [yarn中文网](https://yarnpkg.com/zh-Hans/)
 2. [yarn安装](https://yarnpkg.com/zh-Hans/)  —— 预警：如果本机已经安装过`NodeJS`，使用`brew`安装`yarn`时，推荐使用`brew install yarn --without-node`命令，否则可能导致其它bug。

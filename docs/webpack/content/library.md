@@ -1,10 +1,8 @@
 ## webpack打包js库
 
-> 通常打包js库会选择rollup，但是webpack同样可以做到，如果是需要对css、图片等有较多应用的js库，webpack会有更多优势。
+> 通常打包js库会选择 rollup，但是 webpack 同样可以做到，如果是需要对 css、图片等有较多应用的 js 库，webpack 会有更多优势。
 
 1. 配置
-    > [umd](https://github.com/umdjs/umd) —— 打包出所有环境都可以使用的包  
-
 
     ```js
     module.exports = {
@@ -14,14 +12,16 @@
       },
       output: {
         ...
-        library: '[name]',
-        libraryTarget: 'umd',
-        libraryExport: 'default', 
+        library: '[name]', // 被挂载到全局对象（window、global）上的变量名称
+        libraryTarget: 'umd', // 模块规范，umd 包含全部模块规范
+        libraryExport: 'default', // 导出的对象，默认是 default
         umdNamedDefine: true, // 会对 UMD 的构建过程中的 AMD 模块进行命名，否则就使用匿名的 define
       },
       ...
     }
     ```
+
+    > [umd](https://github.com/umdjs/umd) —— 打包出所有环境都可以使用的包  
 
 2. 代码里导出
 
@@ -33,7 +33,7 @@
     }
     ```
 
-3. build打包后的js，将支持import、requrie导入，script标签导入，可以通过window.sdk使用等：
+3. build打包后的js，将支持import、requrie导入，script标签引入，可以通过window.sdk使用等：
     
     ```js
     // import

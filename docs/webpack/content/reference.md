@@ -1,6 +1,6 @@
 ## 参考文档
 
-1. [webpack 中文文档](https://www.webpackjs.com/concepts/) —— 直接阅读它非常有用，百度出来的教程 99%都是管中窥豹，只见一斑，会形成误导（不要问我是怎么知道的 -\_-）。
+1. [webpack 中文文档](https://www.webpackjs.com/concepts/) —— 直接阅读它非常有用，百度出来的教程 99%都是管中窥豹，只见一斑，会形成误导（不要问我是怎么知道的 -_-）。
 2. [NPM 中文文档](https://www.npmjs.com.cn/getting-started/what-is-npm/)
 3. [基于 webpack 的前端工程化开发之多页站点篇（一）](https://segmentfault.com/a/1190000004511992)
 4. [基于 webpack 的前端工程化开发之多页站点篇（二）](https://segmentfault.com/a/1190000004516832)
