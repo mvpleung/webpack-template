@@ -84,12 +84,12 @@ yarn upgrade [pkgName]@[version]    // 升级依赖包，指定版本
 
 ```js
 webpack-template
+     ├─ _book                   // gitbook编译结果目录
      ├─ build                   // webpack配置
      ├─ config                  // 构建（环境）相关配置
      ├─ dist                    // build输出目录
      ├─ dist-watch              // watch模式，build的输出目录
      ├─ docs                    // 文档
-     │   ├─ _book                   // 文档（gitbook）编译输出目录
      │   ├─ webpack                 // webpack配置详细文档
      │
      ├─ node_modules
@@ -109,6 +109,7 @@ webpack-template
      ├─ .eslintignore           // eslint忽略配置
      ├─ .eslintrc.js            // eslint配置
      ├─ .gitignore
+     ├─ book.json               // gitbook配置
      ├─ package.json
      ├─ postcss.config.js       // postcss配置
      ├─ README.md
