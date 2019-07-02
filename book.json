@@ -15,7 +15,8 @@
     "ace",
     "splitter",
     "toggle-chapters",
-    "anchors"
+    "anchors",
+    "anchor-navigation-ex"
   ],
   "pluginsConfig": {
     "github-buttons": {
@@ -34,6 +35,10 @@
     "fontsettings": {
       "theme": "white",
       "family": "serif"
+    },
+    "anchor-navigation-ex": {
+      "showLevel": false,
+      "showGoTop": false
     }
   }
 }
