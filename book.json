@@ -14,7 +14,6 @@
     "simple-page-toc",
     "ace",
     "splitter",
-    "toggle-chapters",
     "anchors"
   ],
   "pluginsConfig": {
