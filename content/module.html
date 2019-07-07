@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>如何在 webpack 中引入未模块化的库 · GitBook</title>
+        <title>如何在 webpack 中引入未模块化的库 · webpack-template</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -29,6 +29,10 @@
                 
             
                 
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-back-to-top-button/plugin.css">
+                
+            
+                
                 <link rel="stylesheet" href="../gitbook/gitbook-plugin-highlight/website.css">
                 
             
@@ -38,6 +42,10 @@
             
                 
                 <link rel="stylesheet" href="../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-theme-vuejs-2/vue.css">
                 
             
         
@@ -103,6 +111,7 @@
                 
 
 
+
 <ul class="summary">
     
     
@@ -127,7 +136,7 @@
                 <a href="../">
             
                     
-                    前言 . webpack-template
+                    前言
             
                 </a>
             
@@ -427,6 +436,7 @@
 </ul>
 
 
+
                 </nav>
             
         
@@ -436,6 +446,7 @@
         
             <div class="body-inner">
                 
+
                     
 
 <div class="book-header" role="navigation">
@@ -539,6 +550,7 @@
                         </div>
                     </div>
                 
+
             </div>
 
             
@@ -559,7 +571,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"如何在 webpack 中引入未模块化的库","level":"1.7","depth":1,"next":{"title":"打包时排除应用中的某些模块","level":"1.8","depth":1,"path":"content/prune.md","ref":"./content/prune.md","articles":[]},"previous":{"title":"图片、字体、多媒体等资源的处理","level":"1.6","depth":1,"path":"content/media.md","ref":"./content/media.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-sharing","github-buttons","copy-code-button","simple-page-toc","ace","splitter","anchors"],"root":"./docs/webpack","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"ace":{},"simple-page-toc":{"maxDepth":3,"skipFirstH1":true},"splitter":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"serif","size":2},"highlight":{},"github-buttons":{"buttons":[{"user":"Eleven90","repo":"webpack-template","type":"star","count":true,"size":"small"}]},"copy-code-button":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{}},"theme":"default","author":"Eleven","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"language":"zh-hans","links":{"sidebar":{"Eleven":"https://github.com/Eleven90"}},"gitbook":"*"},"file":{"path":"content/module.md","mtime":"2019-06-29T10:01:00.741Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-07-04T07:03:05.819Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"如何在 webpack 中引入未模块化的库","level":"1.7","depth":1,"next":{"title":"打包时排除应用中的某些模块","level":"1.8","depth":1,"path":"content/prune.md","ref":"./content/prune.md","articles":[]},"previous":{"title":"图片、字体、多媒体等资源的处理","level":"1.6","depth":1,"path":"content/media.md","ref":"./content/media.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-sharing","github-buttons","copy-code-button","simple-page-toc","ace","splitter","anchors","back-to-top-button","theme-vuejs-2"],"root":"./docs/webpack","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"ace":{},"simple-page-toc":{"maxDepth":3,"skipFirstH1":true},"splitter":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"theme-vuejs-2":{},"fontsettings":{"theme":"white","family":"serif","size":2},"highlight":{},"back-to-top-button":{},"github-buttons":{"buttons":[{"user":"Eleven90","repo":"webpack-template","type":"star","count":true,"size":"small"}]},"copy-code-button":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{}},"theme":"default","author":"Eleven","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"webpack-template","language":"zh-hans","links":{"sidebar":{"Eleven":"https://github.com/Eleven90"}},"gitbook":"*"},"file":{"path":"content/module.md","mtime":"2019-06-29T10:01:00.741Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-07-07T12:32:30.765Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
@@ -586,6 +598,10 @@
     
         
         <script src="../gitbook/gitbook-plugin-splitter/splitter.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-back-to-top-button/plugin.js"></script>
         
     
         
