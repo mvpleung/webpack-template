@@ -1,6 +1,6 @@
 # Summary
 
-* [前言 . webpack-template](README.md)
+* [前言](README.md)
 * [自动扫描入口js、HTML模版](./content/entry.md)
 * [配置dev-server](./content/dev-server.md)
 * [Babel 7 转码](./content/babel/index.md)

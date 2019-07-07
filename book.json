@@ -1,5 +1,6 @@
 {
   "root": "./docs/webpack",
+  "title": "webpack-template",
   "author" : "Eleven",
   "links" : {
     "sidebar" : {
@@ -14,7 +15,9 @@
     "simple-page-toc",
     "ace",
     "splitter",
-    "anchors"
+    "anchors",
+    "back-to-top-button",
+    "theme-vuejs-2"
   ],
   "pluginsConfig": {
     "github-buttons": {
