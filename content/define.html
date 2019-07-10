@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>常见性能优化 · webpack-template</title>
+        <title>注入应用的全局变量 · webpack-template</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -78,10 +78,10 @@
     <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="reference.html" />
+    <link rel="next" href="module.html" />
     
     
-    <link rel="prev" href="eslint.html" />
+    <link rel="prev" href="provide.html" />
     
 
     <style>
@@ -345,7 +345,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.9" data-path="define.html">
+        <li class="chapter active" data-level="1.9" data-path="define.html">
             
                 <a href="define.html">
             
@@ -436,7 +436,7 @@
             
         </li>
     
-        <li class="chapter active" data-level="1.16" data-path="optimize.html">
+        <li class="chapter " data-level="1.16" data-path="optimize.html">
             
                 <a href="optimize.html">
             
@@ -494,7 +494,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >常见性能优化</a>
+        <a href=".." >注入应用的全局变量</a>
     </h1>
 </div>
 
@@ -509,18 +509,26 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h2 id="&#x5E38;&#x89C1;&#x6027;&#x80FD;&#x4F18;&#x5316;"><a name="&#x5E38;&#x89C1;&#x6027;&#x80FD;&#x4F18;&#x5316;" class="plugin-anchor" href="#&#x5E38;&#x89C1;&#x6027;&#x80FD;&#x4F18;&#x5316;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x5E38;&#x89C1;&#x6027;&#x80FD;&#x4F18;&#x5316;</h2>
+                                <h2 id="&#x6CE8;&#x5165;&#x5E94;&#x7528;&#x7684;&#x5168;&#x5C40;&#x53D8;&#x91CF;"><a name="&#x6CE8;&#x5165;&#x5E94;&#x7528;&#x7684;&#x5168;&#x5C40;&#x53D8;&#x91CF;" class="plugin-anchor" href="#&#x6CE8;&#x5165;&#x5E94;&#x7528;&#x7684;&#x5168;&#x5C40;&#x53D8;&#x91CF;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x6CE8;&#x5165;&#x5E94;&#x7528;&#x7684;&#x5168;&#x5C40;&#x53D8;&#x91CF;</h2>
 <ol>
-<li>&#x4F7F;&#x7528;happypack&#x6765;&#x4F18;&#x5316;&#xFF0C;&#x591A;&#x8FDB;&#x7A0B;&#x8FD0;&#x884C;&#x7F16;&#x8BD1;&#xFF0C;&#x53C2;&#x8003;&#x6587;&#x6863;&#xFF1A;<ol>
-<li><a href="https://www.jianshu.com/p/b9bf995f3712" target="_blank">webpack &#x4F18;&#x5316;&#x4E4B; HappyPack &#x5B9E;&#x6218;</a></li>
-<li><a href="https://yq.aliyun.com/articles/67269" target="_blank">happypack &#x539F;&#x7406;&#x89E3;&#x6790;</a></li>
-</ol>
+<li><p>process.env&#x662F;nodejs&#x8FD0;&#x884C;&#x73AF;&#x5883;&#x4E0B;&#x7684;&#x5168;&#x5C40;&#x53D8;&#x91CF;&#xFF0C;&#x5728;&#x6211;&#x4EEC;&#x7684;&#x5E94;&#x7528;&#x4EE3;&#x7801;&#xFF08;&#x5982;src&#x76EE;&#x5F55;&#x4E0B;&#x7684;&#x4EE3;&#x7801;&#xFF09;&#x4E2D;&#x662F;&#x65E0;&#x6CD5;&#x76F4;&#x63A5;&#x8BFB;&#x53D6;&#x5230;&#x7684;&#xFF0C;&#x5982;&#x679C;&#x60F3;&#x8981;&#x5728;&#x5E94;&#x7528;&#x4EE3;&#x7801;&#x4E2D;&#x8BFB;&#x53D6;&#x5230;process.env&#xFF0C;&#x6216;&#x8005;&#x5982;package.json&#x4E2D;&#x7684;&#x6570;&#x636E;&#xFF0C;&#x6216;&#x5176;&#x5B83;nodejs&#x73AF;&#x5883;&#x4E2D;&#x624D;&#x6709;&#x7684;&#x53D8;&#x91CF;&#xFF0C;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;webpack.DefinePlugin&#x5C06;&#x5B83;&#x4EEC;&#x6CE8;&#x5165;&#x5230;&#x5E94;&#x7528;&#x4E2D;&#xFF0C;&#x5C06;&#x88AB;&#x58F0;&#x660E;&#x4E3A;&#x5168;&#x5C40;&#x53D8;&#x91CF;&#xFF0C;&#x76F4;&#x63A5;&#x8BFB;&#x53D6;&#x5373;&#x53EF;&#x3002;</p>
 </li>
-</ol>
-<ol>
-<li><p>&#x4F7F;&#x7528;<a href="https://www.webpackjs.com/loaders/cache-loader/" target="_blank">cache-loader</a>&#x7F13;&#x5B58;&#x7F16;&#x8BD1;&#x7ED3;&#x679C;</p>
+<li><p>&#x5982;react&#x811A;&#x624B;&#x67B6;&#xFF0C;&#x662F;&#x4EE5;&#x8FD9;&#x79CD;&#x65B9;&#x5F0F;&#xFF0C;&#x5C06;&#x6240;&#x6709;&#x7684;process.env&#x53D8;&#x91CF;&#xFF0C;&#x5168;&#x90E8;&#x6CE8;&#x5165;&#x5230;&#x4E86;&#x5E94;&#x7528;&#x4EE3;&#x7801;&#x4E2D;&#xFF0C;&#x6240;&#x4EE5;&#x4F7F;&#x7528;react&#x811A;&#x624B;&#x67B6;&#x642D;&#x5EFA;&#x7684;&#x5E94;&#x7528;&#xFF0C;&#x53EF;&#x4EE5;&#x76F4;&#x63A5;&#x901A;&#x8FC7;<code>process.env.</code>&#x8BFB;&#x53D6;&#x5230;&#x73AF;&#x5883;&#x53D8;&#x91CF;&#x3002;</p>
 </li>
-<li><p><a href="https://segmentfault.com/a/1190000015489489" target="_blank">DllPlugin</a>&#x62C6;&#x5206;&#x57FA;&#x7840;&#x5305;</p>
+<li><p>&#x901A;&#x5E38;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x8FD9;&#x79CD;&#x65B9;&#x5F0F;&#xFF0C;&#x53BB;&#x914D;&#x7F6E;&#x3001;&#x8BFB;&#x53D6;&#x7CFB;&#x7EDF;&#x7684;&#x7248;&#x672C;&#x53F7;&#xFF1B;&#x901A;&#x8FC7;&#x81EA;&#x5DF1;&#x5B9A;&#x4E49;&#x73AF;&#x5883;&#x53D8;&#x91CF;&#xFF0C;&#x6CE8;&#x5165;&#x5230;&#x5E94;&#x7528;&#x4E2D;&#xFF0C;&#x53BB;&#x533A;&#x5206;&#x7F16;&#x8BD1;&#x73AF;&#x5883;&#x3002;</p>
+</li>
+<li><p>&#x793A;&#x4F8B;&#x4EE3;&#x7801;&#xFF1A;</p>
+<pre><code class="lang-js"> <span class="hljs-built_in">module</span>.exports = {
+   ...
+   plugins: [
+     <span class="hljs-comment">// &#x5E94;&#x7528;&#x4E2D;&#x9700;&#x8981;&#x7684;process.env&#x53D8;&#x91CF;&#xFF0C;&#x5728;&#x6B64;&#x6CE8;&#x5165;&#x624D;&#x80FD;&#x4F7F;&#x7528;&#x3002;</span>
+     <span class="hljs-keyword">new</span> webpack.DefinePlugin({
+       BUILD_ENV: <span class="hljs-built_in">JSON</span>.stringify(process.env.BUILD_ENV),  <span class="hljs-comment">// &#x7F16;&#x8BD1;&#x73AF;&#x5883;&#xFF08;development/test/production&#xFF09;</span>
+     }),
+   ],
+   ...
+ }
+</code></pre>
 </li>
 </ol>
 
@@ -551,12 +559,12 @@
 
             
                 
-                <a href="eslint.html" class="navigation navigation-prev " aria-label="Previous page: 集成eslint">
+                <a href="provide.html" class="navigation navigation-prev " aria-label="Previous page: 全局注入模块，省去到处导入">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
                 
-                <a href="reference.html" class="navigation navigation-next " aria-label="Next page: 参考文档">
+                <a href="module.html" class="navigation navigation-next " aria-label="Next page: 在 webpack 中引入未模块化的库">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -567,7 +575,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"常见性能优化","level":"1.16","depth":1,"next":{"title":"参考文档","level":"1.17","depth":1,"path":"content/reference.md","ref":"./content/reference.md","articles":[]},"previous":{"title":"集成eslint","level":"1.15","depth":1,"path":"content/eslint.md","ref":"./content/eslint.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-sharing","github-buttons","copy-code-button","simple-page-toc","ace","splitter","anchors","back-to-top-button","theme-vuejs-2"],"root":"./docs/webpack","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"ace":{},"simple-page-toc":{"maxDepth":3,"skipFirstH1":true},"splitter":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"theme-vuejs-2":{},"fontsettings":{"theme":"white","family":"serif","size":2},"highlight":{},"back-to-top-button":{},"github-buttons":{"buttons":[{"user":"Eleven90","repo":"webpack-template","type":"star","count":true,"size":"small"}]},"copy-code-button":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{}},"theme":"default","author":"Eleven","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"webpack-template","language":"zh-hans","links":{"sidebar":{"Eleven":"https://github.com/Eleven90"}},"gitbook":"*"},"file":{"path":"content/optimize.md","mtime":"2019-06-29T10:13:45.564Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-07-10T04:19:23.967Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"注入应用的全局变量","level":"1.9","depth":1,"next":{"title":"在 webpack 中引入未模块化的库","level":"1.10","depth":1,"path":"content/module.md","ref":"./content/module.md","articles":[]},"previous":{"title":"全局注入模块，省去到处导入","level":"1.8","depth":1,"path":"content/provide.md","ref":"./content/provide.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-sharing","github-buttons","copy-code-button","simple-page-toc","ace","splitter","anchors","back-to-top-button","theme-vuejs-2"],"root":"./docs/webpack","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"ace":{},"simple-page-toc":{"maxDepth":3,"skipFirstH1":true},"splitter":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"theme-vuejs-2":{},"fontsettings":{"theme":"white","family":"serif","size":2},"highlight":{},"back-to-top-button":{},"github-buttons":{"buttons":[{"user":"Eleven90","repo":"webpack-template","type":"star","count":true,"size":"small"}]},"copy-code-button":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{}},"theme":"default","author":"Eleven","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"webpack-template","language":"zh-hans","links":{"sidebar":{"Eleven":"https://github.com/Eleven90"}},"gitbook":"*"},"file":{"path":"content/define.md","mtime":"2019-07-10T04:18:14.833Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-07-10T04:19:23.967Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
