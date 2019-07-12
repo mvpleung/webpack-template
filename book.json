@@ -17,7 +17,8 @@
     "splitter",
     "anchors",
     "back-to-top-button",
-    "theme-vuejs-2"
+    "theme-vuejs-2",
+    "favicon"
   ],
   "pluginsConfig": {
     "github-buttons": {
@@ -36,6 +37,10 @@
     "fontsettings": {
       "theme": "white",
       "family": "serif"
+    },
+    "favicon":{
+      "shortcut": "./src/assets/images/favicon.ico",
+      "bookmark": "./src/assets/images/favicon.ico"
     }
   }
 }
