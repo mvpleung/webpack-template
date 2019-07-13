@@ -18,7 +18,11 @@
     "anchors",
     "back-to-top-button",
     "theme-vuejs-2",
-    "favicon"
+    "favicon",
+    "pageview-count",
+    "lightbox",
+    "tbfed-pagefooter",
+    "hide-element"
   ],
   "pluginsConfig": {
     "github-buttons": {
@@ -39,8 +43,15 @@
       "family": "serif"
     },
     "favicon":{
-      "shortcut": "./src/assets/images/favicon.ico",
-      "bookmark": "./src/assets/images/favicon.ico"
+      "shortcut": "./assets/images/favicon.ico",
+      "bookmark": "./assets/images/favicon.ico"
+    },
+    "tbfed-pagefooter": {
+      "modify_label": "Last modified time：",
+      "modify_format": "YYYY-MM-DD HH:mm:ss"
+    },
+    "hide-element": {
+      "elements": [".gitbook-link", ".copyright"]
     }
   }
 }
