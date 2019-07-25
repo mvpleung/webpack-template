@@ -22,7 +22,7 @@
     "lightbox",
     "tbfed-pagefooter",
     "hide-element",
-    "code"
+    "copy-code-button"
   ],
   "pluginsConfig": {
     "github-buttons": {
