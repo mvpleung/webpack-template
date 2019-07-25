@@ -11,7 +11,6 @@
   "plugins": [
     "-sharing",
     "github-buttons",
-    "copy-code-button",
     "simple-page-toc",
     "ace",
     "splitter",
@@ -22,7 +21,8 @@
     "pageview-count",
     "lightbox",
     "tbfed-pagefooter",
-    "hide-element"
+    "hide-element",
+    "code"
   ],
   "pluginsConfig": {
     "github-buttons": {

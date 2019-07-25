@@ -17,7 +17,7 @@
     "http-server": "http-server dist",
     "doc-dev": "gitbook serve",
     "doc-build": "gitbook build && cp docs/webpack/CNAME _book/",
-    "doc-publish": "yarn doc-build && gh-pages -d _book"
+    "doc-release": "yarn doc-build && gh-pages -d _book"
   },
   "repository": {
     "type": "git",
