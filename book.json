@@ -10,6 +10,8 @@
   "language" : "zh-hans",
   "plugins": [
     "-sharing",
+    "-lunr",
+    "-search",
     "github-buttons",
     "simple-page-toc",
     "ace",
@@ -22,7 +24,8 @@
     "lightbox",
     "tbfed-pagefooter",
     "hide-element",
-    "copy-code-button"
+    "copy-code-button",
+    "search-pro-fixed"
   ],
   "pluginsConfig": {
     "github-buttons": {
