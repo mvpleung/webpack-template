@@ -3,6 +3,7 @@
   "version": "4.1.0",
   "description": "webpack-template",
   "main": "index.js",
+  "private": true,
   "scripts": {
     "dev": "cross-env BUILD_ENV=development USE_HMR=true webpack-dev-server --hot --config build/webpack.config.dev.js --mode development --colors --profile",
     "dev-mock": "cross-env IS_MOCK=true npm run dev",

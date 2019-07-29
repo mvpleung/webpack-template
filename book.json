@@ -22,7 +22,7 @@
     "lightbox",
     "tbfed-pagefooter",
     "hide-element",
-    "copy-code-button"
+    "code-optimize"
   ],
   "pluginsConfig": {
     "github-buttons": {
@@ -52,6 +52,9 @@
     },
     "hide-element": {
       "elements": [".gitbook-link", ".copyright"]
+    },
+    "code-optimize": {
+      "showLines": false
     }
   }
 }
