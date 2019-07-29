@@ -58,6 +58,7 @@ module.exports = merge(base, {
         },
       },
     },
+    // minimize: true, // mode: production 默认为 true
     minimizer: [
       // cheap-source-map选项不适用于此插件（TerserPlugin）
       new TerserPlugin({

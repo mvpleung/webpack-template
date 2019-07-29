@@ -8,8 +8,17 @@
     }
   },
   "language" : "zh-hans",
+  "styles": {
+    "website": "./assets/styles/website.css",
+    "ebook": "./assets/styles/ebook.css",
+    "pdf": "./assets/styles/pdf.css",
+    "mobi": "./assets/styles/mobile.css",
+    "epub": "./assets/styles/epub.css"
+  },
   "plugins": [
     "-sharing",
+    "-lunr",
+    "-search",
     "github-buttons",
     "simple-page-toc",
     "ace",
@@ -22,7 +31,8 @@
     "lightbox",
     "tbfed-pagefooter",
     "hide-element",
-    "code-optimize"
+    "code-optimize",
+    "search-pro-fixed"
   ],
   "pluginsConfig": {
     "github-buttons": {

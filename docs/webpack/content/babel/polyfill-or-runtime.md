@@ -11,6 +11,7 @@ core-js(v2)这个库有两个核心的文件夹，分别是 library 和 modules�
     2. modules 以污染全局变量的方法来实现 api；
     3. library 和 modules 包含的文件基本相同，最大的不同是\_export.js 这个文件：
 
+        modules
         ```js
         // core-js/modules/_exports.js
         var global = require('./_global');
@@ -58,6 +59,7 @@ core-js(v2)这个库有两个核心的文件夹，分别是 library 和 modules�
         module.exports = $export;
         ```
 
+        library
         ```js
         // core-js/library/_exports.js
         var global = require('./_global');

@@ -15,7 +15,7 @@
     ```js
     const MiniCssExtractPlugin = require('mini-css-extract-plugin')
     ```
-
+    loader
     ```js
     {
          test: /\.(less|css)$/,
@@ -34,7 +34,7 @@
        use: [styleLoader, 'css-loader', 'postcss-loader', 'less-loader'],
      },
     ```
-
+    plugin
     ```js
     // 单独使用link标签加载css并设置路径，相对于output配置中的publickPath
     new MiniCssExtractPlugin({
