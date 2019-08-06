@@ -1,7 +1,7 @@
 const webpack = require('webpack')
 const os = require('os')
 const HappyPack = require('happypack')
-const HappyThreadPool = HappyPack.ThreadPool({size: os.cpus().length})
+const HappyThreadPool = HappyPack.ThreadPool({ size: os.cpus().length })
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const utils = require('./utils')
 const paths = require('./paths')
@@ -13,8 +13,8 @@ const styleLoader = process.env.USE_HMR ? 'style-loader' : MiniCssExtractPlugin.
 const envCustom = env[BUILD_ENV]
 
 // 注入自定义的process.env环境变量
-if(BUILD_ENV && envCustom && typeof envCustom === 'object') {
-  for(let key in envCustom) {
+if (BUILD_ENV && envCustom && typeof envCustom === 'object') {
+  for (let key in envCustom) {
     process.env[key] = envCustom[key]
   }
 }

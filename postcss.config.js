@@ -7,5 +7,8 @@ module.exports = {
     'postcss-preset-env': {},
     'cssnano': {},
     'postcss-flexbugs-fixes': {},
+    // 'postcss-sprites': {
+    //   spritePath: 'dist/static/assets/images/sprites'
+    // }
   }
 }

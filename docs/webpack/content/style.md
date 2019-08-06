@@ -65,7 +65,8 @@
     3. 其它有用的插件:
         * postcss-pxtorem —— _px 单位自动转换 rem_
         * postcss-assets —— _插件用来处理图片和 SVG, 类似 url-load_
-        * postcss-sprites —— _将扫描你 CSS 中使用的所有图像，自动生成优化的 Sprites 图像和 CSS Sprites 代码_
+        * [postcss-sprites](https://www.ctolib.com/topics-83660.html) —— _自动合成雪碧图，提供了细致的配置方法、插件去自定义控制（看上去略复杂）_
+        * [img-loader](https://github.com/vanwagonet/img-loader) —— _自动压缩图片，参数控制压缩比率_
         * postcss-font-magician —— _使用自定义字体时, 自动搞定@font-face 声明_
 
 4. Less 是预处理，而 PostCSS 是后处理，基本支持 less 等预处理器的功能，自动添加浏览器厂商前缀向前兼容，允许书写下一代 css 语法 ，可以在编译时去除冗余的 css 代码，PostCSS 声称比预处理器快 3-30 倍，**因为 PostCSS，可能我们要放弃 less/sass/stylus 了**。
