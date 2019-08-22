@@ -25,7 +25,7 @@
 * [集成eslint](./content/eslint.md)
 * [常见性能优化](./content/optimize.md)
 * [create-react-app 中 webpack 改造]()
-  * [编译期判断环境：test、uat、production；]()
+  * [编译期判断环境：test、uat、production]()
   * [添加中添加 watch 模式]()
   * [添加 less 支持]()
   * [添加 splitChunks 拆包]()
