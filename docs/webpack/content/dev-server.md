@@ -63,3 +63,51 @@
     ```
 
     > 不同操作系统传递参数的形式不一样，cross-env 可以抹平这个平台差异。
+
+4. 雕虫小技：
+
+    1. dev-server 的代码通常在内存中，但也可以写入硬盘，产出实体文件：
+
+        ```js
+        {
+          writeToDisk: true,
+        }
+        ```
+
+        通常可以用于代理映射文件调试，编译时会产出许多带 hash 的js 文件，不带 hash 的文件同样**也是实时编译的**。
+
+    2. 有的时候，启动服务时，想要默认使用本地的 ip 地址打开：
+
+        ```js
+        {
+          useLocalIp: true,
+          disableHostCheck: true, // true：不进行host检查
+          // host: '0.0.0.0', // 建议不在这里配置
+        }
+        ```
+
+        同时还需要将 host 配置为 `0.0.0.0`，这个配置建议在 scripts 命令中追加，而非在配置中写死，否则将来不想要这种方式往回改折腾，取巧一点，配个新命令：
+
+        ```js
+        "dev-ip": "yarn run dev --host 0.0.0.0",
+        ```
+
+    3. 有时启动的时候希望是指定的调试域名，例如：`local.test.baidu.com`：
+
+        ```js
+        {
+          open: true,
+          public: 'local.test.baidu.com',
+          port: 8080,
+        }
+        ```
+
+        服务启动后将自动打开 `local.test.baidu.com:8080` 访问
+
+    4. dev-server 调试时，启动 gzip 压缩：
+
+        ```js
+        {
+          compress: true,
+        }
+        ```
