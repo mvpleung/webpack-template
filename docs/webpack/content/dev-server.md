@@ -102,6 +102,12 @@
         }
         ```
 
+        同时需要将 `127.0.0.1` 修改为指定的 host，可以借助 iHost 等工具去修改，各个工具大同小异，格式如下：
+
+        ```js
+        127.0.0.1 local.test.ximalaya.com
+        ```
+        
         服务启动后将自动打开 `local.test.baidu.com:8080` 访问
 
     4. dev-server 调试时，启动 gzip 压缩：
