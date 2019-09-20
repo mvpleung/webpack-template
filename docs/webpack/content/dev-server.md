@@ -80,8 +80,8 @@
 
         ```js
         {
-          useLocalIp: true,
           disableHostCheck: true, // true：不进行host检查
+          // useLocalIp: true, // 建议不在这里配置
           // host: '0.0.0.0', // 建议不在这里配置
         }
         ```
@@ -89,7 +89,7 @@
         同时还需要将 host 配置为 `0.0.0.0`，这个配置建议在 scripts 命令中追加，而非在配置中写死，否则将来不想要这种方式往回改折腾，取巧一点，配个新命令：
 
         ```js
-        "dev-ip": "yarn run dev --host 0.0.0.0",
+        "dev-ip": "yarn run dev --host 0.0.0.0 --useLocalIp",
         ```
 
     3. 有时启动的时候希望是指定的调试域名，例如：`local.test.baidu.com`：
