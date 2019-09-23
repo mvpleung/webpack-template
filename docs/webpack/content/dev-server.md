@@ -97,7 +97,7 @@
         ```js
         {
           open: true,
-          public: 'local.test.baidu.com',
+          public: 'local.test.baidu.com:8080', // 需要带上端口
           port: 8080,
         }
         ```
