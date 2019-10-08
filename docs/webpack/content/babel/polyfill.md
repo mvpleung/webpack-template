@@ -5,7 +5,7 @@
 1. 安装依赖包：
 
     ```js
-    yarn add @babel/polyfill  -D
+    yarn add @babel/polyfill
     ```
 
 2. .babelrc 文件写上配置，@babel/polyfill 不用写入配置，会根据useBuiltIns参数去决定如何被调用。
