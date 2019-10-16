@@ -30,7 +30,6 @@ webpack 4 + babel 7
 
 ```js
 yarn / yarn install    // 安装全部依赖包
-gitbook install        // 安装gitbook插件（为了和项目依赖区分开，通过这种方式去安装gitbook需要的插件）
 
 yarn dev               // 启动本地调试
 yarn dev-mock          // 启动本地调试，MockJs模拟接口数据
@@ -46,11 +45,6 @@ yarn build             // 打包生产环境代码
 yarn watch-dev         // 启动watch模式，本地开发环境（通常用不上）
 yarn watch-test        // 启动watch模式，测试环境
 yarn watch             // 启动watch模式，生产环境
-
-// gitbook文档命令
-yarn doc-dev           // 本地调试gitbook
-yarn doc-build         // 编译gitbook
-yarn doc-publish       // 打包&发布gitbook文档
 ```
 
 ## Yarn和NPM的选择？
@@ -89,9 +83,6 @@ webpack-template
      ├─ config                  // 构建（环境）相关配置
      ├─ dist                    // build输出目录
      ├─ dist-watch              // watch模式，build的输出目录
-     ├─ docs                    // 文档
-     │   ├─ webpack                 // webpack配置详细文档
-     │
      ├─ node_modules
      ├─ src                     // 源代码目录
      │   ├─ assets                   // 静态资源、全局样式
@@ -109,7 +100,6 @@ webpack-template
      ├─ .eslintignore           // eslint忽略配置
      ├─ .eslintrc.js            // eslint配置
      ├─ .gitignore
-     ├─ book.json               // gitbook配置
      ├─ package.json
      ├─ postcss.config.js       // postcss配置
      ├─ README.md
