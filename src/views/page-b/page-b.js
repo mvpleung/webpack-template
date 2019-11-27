@@ -3,7 +3,7 @@
  * @Author: Eleven 
  * @Date: 2019-01-05 00:55:26 
  * @Last Modified by: Eleven
- * @Last Modified time: 2019-06-22 17:32:29
+ * @Last Modified time: 2019-11-27 11:35:43
  */
 
 // 取代core-js@2的@babel/polyfill
@@ -24,19 +24,6 @@ class ViewIndex {
   
   init() {
     index.init()
-
-    const a = {
-      x: 1,
-      y: 2,
-    }
-
-    const b = {
-      z: 3,
-      k: 'eleven',
-    }
-
-    const demo = Object.assign({}, a, b)
-    console.log(demo)
   }
 }
 

@@ -11,12 +11,12 @@ module.exports = {
   },
   test: { // 测试环境
     NODE_ENV: 'test',
-    publicPath: '//static2.test.ximalaya.com/sr012018/project-name/last/dist/',
+    publicPath: '/', // 服务器静态资源路径
     devtool: 'cheap-module-source-map',
   },
   production: {  // 生产环境
     NODE_ENV: 'production',
-    publicPath: '//s1.xmcdn.com/sr012018/project-name/last/dist/',
+    publicPath: '/', // 服务器静态资源路径
     devtool: false,
   },
 }
